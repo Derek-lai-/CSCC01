@@ -9,3 +9,6 @@
 * Yang Wang (998606147)
 * Maxime Gosselin (998852763)
 
+## Scrum Board
+Our virtual scrumboard is located on a public Trello board [here](https://trello.com/b/zKcBrSNT/minute-made)
+
