@@ -11,5 +11,6 @@
 
 ## Scrum Board
 Our virtual scrumboard is located on a public Trello board [here](https://trello.com/b/zKcBrSNT/minute-made)
+
 Our CRC cards can be found on our Google Drive [here] (https://drive.google.com/folderview?id=0BygYHN45P5B4N1M3TlFQeVpYOU0&usp=sharing)
 
