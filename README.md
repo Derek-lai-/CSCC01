@@ -17,6 +17,8 @@ Our CRC cards can be found on our Google Drive [here] (https://drive.google.com/
 
 An copy of our Phase 02 document can be found on Google Drive [here](https://docs.google.com/document/d/1Onl3or2vS8kziFg0Z5Spa9VsSvPIY7IM-Z5QrSEDq-w/edit?usp=sharing)
 
+A PDF of the written portion of Phase 2
+
 ## Starting the App
 
 1. Clone repository using this link - https://github.com/CSCC01/Minute-Made.git
