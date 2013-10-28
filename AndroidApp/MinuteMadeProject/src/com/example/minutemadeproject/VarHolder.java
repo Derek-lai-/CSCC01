@@ -12,13 +12,17 @@ package com.example.minutemadeproject;
  * more information.
  * Make sure you use private static for varible you want 
  * to cache, and create a get object function that returns
- * the object
+ * the object, and a set function
  */
 class VarHolder {
 	
-	private static User user;
+	private static Instructor user;
 	
-	static User getUser(){
+	static Instructor getUser(){
 		return user;
+	}
+	
+	static void setUser(Instructor u){
+		user = u;
 	}
 }
