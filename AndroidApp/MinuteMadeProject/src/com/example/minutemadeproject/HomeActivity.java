@@ -63,8 +63,12 @@ public class HomeActivity extends Activity {
 
                 // check if the Stored password matches with  Password entered by user
                 if (password.equals(storedPassword)) {
-                    Toast.makeText(HomeActivity.this, "Thank you for logging in " + userName, Toast.LENGTH_LONG).show();
-                    dialog.dismiss();
+                    //Toast.makeText(HomeActivity.this, "Thank you for logging in " + userName, Toast.LENGTH_LONG).show();
+                    //dialog.dismiss();
+                	Instructor usr = new Instructor(userName, "", "", "");
+                	VarHolder.setUser(usr);
+                	Intent intent = new Intent(getApplicationContext(), Mainmenu.class);
+                	startActivity(intent);
                 } else {
                     Toast.makeText(HomeActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
                 }
