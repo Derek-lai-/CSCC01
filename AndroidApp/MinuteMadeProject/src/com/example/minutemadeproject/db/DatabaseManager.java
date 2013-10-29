@@ -1,4 +1,4 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.db;
 
 import android.content.Context;
 

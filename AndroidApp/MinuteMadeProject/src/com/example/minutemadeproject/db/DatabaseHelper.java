@@ -1,12 +1,21 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.minutemadeproject.Assignment;
+import com.example.minutemadeproject.Course;
+import com.example.minutemadeproject.Event;
+import com.example.minutemadeproject.Grade;
+import com.example.minutemadeproject.Instructor;
+import com.example.minutemadeproject.Lesson;
+import com.example.minutemadeproject.Schedule;
+import com.example.minutemadeproject.Student;
+import com.example.minutemadeproject.Tutorial;
+import com.example.minutemadeproject.User;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.stmt.query.IsNotNull;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 

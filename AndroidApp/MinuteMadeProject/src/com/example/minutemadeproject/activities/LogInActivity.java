@@ -1,10 +1,12 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.activities;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-public class LogIn extends Activity {
+import com.example.minutemadeproject.R;
+
+public class LogInActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
