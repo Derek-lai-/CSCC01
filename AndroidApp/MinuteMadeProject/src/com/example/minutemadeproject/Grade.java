@@ -17,5 +17,5 @@ public class Grade {
     public Student student;
 
     @DatabaseField
-    public double grade;
+    public double mark;
 }

@@ -26,6 +26,9 @@ public class Assignment {
     @DatabaseField
     public Date dueDate;
 
+    @DatabaseField
+    public double totalMark;
+
     @ForeignCollectionField
     public ForeignCollection<Grade> grades;
 }
