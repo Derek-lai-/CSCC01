@@ -10,6 +10,9 @@ public class Lesson {
     @DatabaseField(generatedId = true)
 	public int id;
 
+    @DatabaseField
+    public String title;
+
     @DatabaseField(foreign = true)
     public Instructor instructor;
 
@@ -20,7 +23,14 @@ public class Lesson {
         // Needed by OrmLite
     }
 
-	public Lesson(Instructor instructor){
+	public Lesson(Instructor instructor, String title, String topics){
+        this.title = title;
 		this.instructor = instructor;
+        this.topics = topics;
 	}
+
+    @Override
+    public String toString() {
+        return title + " by " + instructor;
+    }
 }
