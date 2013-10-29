@@ -28,12 +28,9 @@ public class Course {
 	public Course(String name){
 		this.name = name;
 	}
-	
-	public void addTut(Tutorial t){
-		this.tutorials.add(t);
-	}
-	
-	public void removeTut(Tutorial t){
-		this.tutorials.remove(t);
-	}
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
