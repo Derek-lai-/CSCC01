@@ -35,4 +35,17 @@ public class Assignment {
     Assignment() {
         // Needed by OrmLite
     }
+
+    public Assignment(String name, Course course, Date postDate, Date dueDate, double totalMark) {
+        this.name = name;
+        this.course = course;
+        this.postDate = postDate;
+        this.dueDate = dueDate;
+        this.totalMark = totalMark;
+    }
+
+    @Override
+    public String toString() {
+        return name + "for " + course.name + "due " + dueDate;
+    }
 }
