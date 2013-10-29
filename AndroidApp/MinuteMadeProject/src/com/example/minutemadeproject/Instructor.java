@@ -27,4 +27,18 @@ public class Instructor extends User{
     Instructor() {
         // Needed by OrmLite
     }
+
+    public Instructor(User user, boolean isTA) {
+        this.user = user;
+        this.isTA = isTA;
+    }
+
+    @Override
+    public String toString() {
+        if (isTA) {
+            return user.name + " - TA";
+        } else {
+            return user.name + " - Professor";
+        }
+    }
 }
