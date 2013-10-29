@@ -22,4 +22,15 @@ public class Grade {
     Grade() {
         // Needed by OrmLite
     }
+
+    public Grade(Assignment assignment, Student student, double mark) {
+        this.assignment = assignment;
+        this.student = student;
+        this.mark = mark;
+    }
+
+    @Override
+    public String toString() {
+        return assignment.name + ": " + mark + "/" + assignment.totalMark + ", " + student.name;
+    }
 }
