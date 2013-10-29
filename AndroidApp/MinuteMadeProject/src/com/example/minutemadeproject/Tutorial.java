@@ -21,7 +21,10 @@ public class Tutorial {
     public Instructor TA;
 
     @DatabaseField
-    public Date timeslot;
+    public Date startTime;
+
+    @DatabaseField
+    public Date endTime;
 
     @ForeignCollectionField
     ForeignCollection<Student> students;
@@ -30,18 +33,15 @@ public class Tutorial {
         // Needed by OrmLite
     }
 
-	public Tutorial(Course course){
+	public Tutorial(Course course, Instructor TA, Date startTime, Date endTime){
 		this.course = course;
+        this.TA = TA;
+        this.startTime = startTime;
+        this.endTime = endTime;
 	}
-	
-	public void addStudent(Student s){
-		this.students.add(s);
-	
-	}
-	public Student getStudent(String Name){
-		Student s = null;
-		
-		return s;
-	}
-	
+
+    @Override
+    public String toString() {
+        return "Tutorial for " + course.name + " (" + startTime + " - " + endTime;
+    }
 }
