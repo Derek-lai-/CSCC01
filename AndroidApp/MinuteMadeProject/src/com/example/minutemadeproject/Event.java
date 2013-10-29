@@ -16,25 +16,23 @@ public class Event {
 	public String description;
 
     @DatabaseField
-	public Date date;
+	public Date startDate;
+
+    @DatabaseField
+    public Date endDate;
 
     Event() {
         // Needed by OrmLite
     }
 
-	public Event(int id, String des, Date d){
-		this.id = id;
-		this.description = des;
-		this.date = d;				
+	public Event(String description, Date startDate, Date endDate){
+		this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
 	}
-	
-	public Event changeDescription(Event e, String des){
-		e.description = des;
-		return e;
-	}
-	
-	public Event changeDate(Event e, Date d){
-		e.date = d;
-		return e;
-	}
+
+    @Override
+    public String toString() {
+        return "(" + startDate + "-" + endDate + ") " + description;
+    }
 }
