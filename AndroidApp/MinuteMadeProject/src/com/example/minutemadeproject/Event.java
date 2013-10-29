@@ -1,19 +1,30 @@
 package com.example.minutemadeproject;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+import com.j256.ormlite.table.DatabaseTable;
+
 import java.util.Date;
 
 
+@DatabaseTable(tableName = "events")
 public class Event {
-	int eventId;
-	String description;
-	Date date = new Date();
+
+    @DatabaseField(generatedId = true)
+	public int id;
+
+    @DatabaseField
+	public String description;
+
+    @DatabaseField
+	public Date date;
 	
 	public Event(int id, String des, Date d){
-		this.eventId = id;
+		this.id = id;
 		this.description = des;
 		this.date = d;				
 	}
 	
-	public Event editEventDescription(Event e, String des){
+	public Event changeDescription(Event e, String des){
 		e.description = des;
 		return e;
 	}

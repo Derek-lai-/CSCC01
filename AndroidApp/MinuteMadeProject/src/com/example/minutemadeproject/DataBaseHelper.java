@@ -2,37 +2,62 @@ package com.example.minutemadeproject;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DataBaseHelper extends SQLiteOpenHelper {
-    public DataBaseHelper(Context context, String name, CursorFactory factory, int version) {
-        super(context, name, factory, version);
+import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
+
+import java.sql.SQLException;
+
+
+public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
+
+    private static final String DATABASE_NAME = "minuteMade.db";
+    private static final int DATABASE_VERSION = 1;
+
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Called when no database exists in disk and the helper class needs
-    // to create a new one.
     @Override
-    public void onCreate(SQLiteDatabase _db) {
-        _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE);
-
+    public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
+        try {
+            Log.i(DatabaseHelper.class.getName(), "onCreate");
+            TableUtils.createTable(connectionSource, Assignment.class);
+            TableUtils.createTable(connectionSource, Course.class);
+            TableUtils.createTable(connectionSource, Event.class);
+            TableUtils.createTable(connectionSource, Instructor.class);
+            TableUtils.createTable(connectionSource, Lesson.class);
+            TableUtils.createTable(connectionSource, Schedule.class);
+            TableUtils.createTable(connectionSource, Student.class);
+            TableUtils.createTable(connectionSource, Tutorial.class);
+            TableUtils.createTable(connectionSource, User.class);
+        } catch (SQLException e) {
+            Log.e(DatabaseHelper.class.getName(), "Can't create database.", e);
+            throw new RuntimeException(e);
+        }
     }
 
-    // Called when there is a database version mismatch meaning that the version
-    // of the database on disk needs to be upgraded to the current version.
     @Override
-    public void onUpgrade(SQLiteDatabase _db, int _oldVersion, int _newVersion) {
-        // Log the version upgrade.
-        Log.w("TaskDBAdapter", "Upgrading from version " + _oldVersion + " to " + _newVersion + ", which will destroy all old data");
+    public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
+        try {
+            Log.i(DatabaseHelper.class.getName(), "onUpgrade");
+            TableUtils.dropTable(connectionSource, Assignment.class, true);
+            TableUtils.dropTable(connectionSource, Course.class, true);
+            TableUtils.dropTable(connectionSource, Event.class, true);
+            TableUtils.dropTable(connectionSource, Instructor.class, true);
+            TableUtils.dropTable(connectionSource, Lesson.class, true);
+            TableUtils.dropTable(connectionSource, Schedule.class, true);
+            TableUtils.dropTable(connectionSource, Student.class, true);
+            TableUtils.dropTable(connectionSource, Tutorial.class, true);
+            TableUtils.dropTable(connectionSource, User.class, true);
 
-        // Upgrade the existing database to conform to the new version. Multiple
-        // previous versions can be handled by comparing _oldVersion and _newVersion
-        // values.
-        // The simplest case is to drop the old table and create a new one.
-        _db.execSQL("DROP TABLE IF EXISTS " + "TEMPLATE");
-        // Create a new one.
-        onCreate(_db);
+            onCreate(db, connectionSource);
+        } catch (SQLException e) {
+            Log.e(DatabaseHelper.class.getName(), "Can't drop database.", e);
+            throw new RuntimeException(e);
+        }
     }
-
 }

@@ -1,13 +1,26 @@
 package com.example.minutemadeproject;
 
-import java.util.ArrayList;
 
+import com.j256.ormlite.dao.ForeignCollection;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+import com.j256.ormlite.table.DatabaseTable;
+
+
+@DatabaseTable(tableName = "schedules")
 public class Schedule {
-	ArrayList<Event> events = new ArrayList<Event>();
-	int instructorId;
-	
-	public Schedule(int id){
-		this.instructorId = id;
+
+    @DatabaseField(generatedId = true)
+    public int id;
+
+    @DatabaseField(foreign = true)
+	public Instructor instructor;
+
+    @ForeignCollectionField
+    ForeignCollection<Event> events;
+
+    public Schedule(Instructor instructor){
+		this.instructor = instructor;
 	}
 	
 	public void addEvent(Event e){

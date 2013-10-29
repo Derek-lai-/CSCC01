@@ -1,14 +1,29 @@
 package com.example.minutemadeproject;
 
-import java.util.ArrayList;
+import com.j256.ormlite.dao.ForeignCollection;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+import com.j256.ormlite.table.DatabaseTable;
+
 import java.util.Date;
 
+
+@DatabaseTable(tableName = "tutorials")
 public class Tutorial {
-	ArrayList<Student> students = new ArrayList<Student>();
-	Date timeslot = new Date();
-	int courseId;
-	
-	public Tutorial(int courseId){
+
+    @DatabaseField(generatedId = true)
+    public int id;
+
+    @DatabaseField
+    public String courseId;
+
+    @DatabaseField
+    public Date timeslot;
+
+    @ForeignCollectionField
+    ForeignCollection<Student> students;
+
+	public Tutorial(String courseId){
 		this.courseId = courseId;
 	}
 	
