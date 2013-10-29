@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.query.IsNotNull;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -15,6 +17,17 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
 
     private static final String DATABASE_NAME = "minuteMade.db";
     private static final int DATABASE_VERSION = 1;
+
+    private Dao<Assignment, Integer> assignmentDao = null;
+    private Dao<Course, Integer> courseDao = null;
+    private Dao<Event, Integer> eventDao = null;
+    private Dao<Grade, Integer> gradeDao = null;
+    private Dao<Instructor, Integer> instructorDao = null;
+    private Dao<Lesson, Integer> lessonDao = null;
+    private Dao<Schedule, Integer> scheduleDao = null;
+    private Dao<Student, Integer> studentDao = null;
+    private Dao<Tutorial, Integer> tutorialDao = null;
+    private Dao<User, Integer> userDao = null;
 
 
     public DatabaseHelper(Context context) {
@@ -28,6 +41,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
             TableUtils.createTable(connectionSource, Assignment.class);
             TableUtils.createTable(connectionSource, Course.class);
             TableUtils.createTable(connectionSource, Event.class);
+            TableUtils.createTable(connectionSource, Grade.class);
             TableUtils.createTable(connectionSource, Instructor.class);
             TableUtils.createTable(connectionSource, Lesson.class);
             TableUtils.createTable(connectionSource, Schedule.class);
@@ -47,6 +61,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
             TableUtils.dropTable(connectionSource, Assignment.class, true);
             TableUtils.dropTable(connectionSource, Course.class, true);
             TableUtils.dropTable(connectionSource, Event.class, true);
+            TableUtils.dropTable(connectionSource, Grade.class, true);
             TableUtils.dropTable(connectionSource, Instructor.class, true);
             TableUtils.dropTable(connectionSource, Lesson.class, true);
             TableUtils.dropTable(connectionSource, Schedule.class, true);
@@ -59,5 +74,90 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
             Log.e(DatabaseHelper.class.getName(), "Can't drop database.", e);
             throw new RuntimeException(e);
         }
+    }
+
+    public Dao<Assignment, Integer> getAssignmentDao() throws SQLException {
+        if (assignmentDao == null) {
+            assignmentDao = getDao(Assignment.class);
+        }
+        return assignmentDao;
+    }
+
+    public Dao<Course, Integer> getCourseDao() throws SQLException {
+        if (courseDao == null) {
+            courseDao = getDao(Course.class);
+        }
+        return courseDao;
+    }
+
+    public Dao<Event, Integer> getEventDao() throws SQLException {
+        if (eventDao == null) {
+            eventDao = getDao(Event.class);
+        }
+        return eventDao;
+    }
+
+    public Dao<Grade, Integer> getGradeDao() throws SQLException {
+        if (gradeDao == null) {
+            gradeDao = getDao(Grade.class);
+        }
+        return gradeDao;
+    }
+
+    public Dao<Instructor, Integer> getInstructorDao() throws SQLException {
+        if (instructorDao == null) {
+            instructorDao = getDao(Instructor.class);
+        }
+        return instructorDao;
+    }
+
+    public Dao<Lesson, Integer> getLessonDao() throws SQLException {
+        if (lessonDao == null) {
+            lessonDao = getDao(Lesson.class);
+        }
+        return lessonDao;
+    }
+
+    public Dao<Schedule, Integer> getScheduleDao() throws SQLException {
+        if (scheduleDao == null) {
+            scheduleDao = getDao(Schedule.class);
+        }
+        return scheduleDao;
+    }
+
+    public Dao<Student, Integer> getStudentDao() throws SQLException {
+        if (studentDao == null) {
+            studentDao = getDao(Student.class);
+        }
+        return studentDao;
+    }
+
+    public Dao<Tutorial, Integer> getTutorialDao() throws SQLException {
+        if (tutorialDao == null) {
+            tutorialDao = getDao(Tutorial.class);
+        }
+        return tutorialDao;
+    }
+
+    public Dao<User, Integer> getUserDao() throws SQLException {
+        if (userDao == null) {
+            userDao = getDao(User.class);
+        }
+        return userDao;
+    }
+
+    @Override
+    public void close() {
+        super.close();
+        assignmentDao = null;
+        courseDao = null;
+        eventDao = null;
+        gradeDao = null;
+        instructorDao = null;
+        lessonDao = null;
+        scheduleDao = null;
+        studentDao = null;
+        tutorialDao = null;
+        userDao = null;
     }
 }
