@@ -14,8 +14,11 @@ public class Tutorial {
     @DatabaseField(generatedId = true)
     public int id;
 
-    @DatabaseField
-    public String courseId;
+    @DatabaseField(foreign = true)
+    public Course course;
+
+    @DatabaseField(foreign = true)
+    public Instructor TA;
 
     @DatabaseField
     public Date timeslot;
@@ -23,8 +26,8 @@ public class Tutorial {
     @ForeignCollectionField
     ForeignCollection<Student> students;
 
-	public Tutorial(String courseId){
-		this.courseId = courseId;
+	public Tutorial(Course course){
+		this.course = course;
 	}
 	
 	public void addStudent(Student s){
