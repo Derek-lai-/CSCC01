@@ -26,12 +26,9 @@ public class Schedule {
     public Schedule(Instructor instructor){
 		this.instructor = instructor;
 	}
-	
-	public void addEvent(Event e){
-		this.events.add(e);
-	}
-	
-	public void deleteEvent(Event e){
-		this.events.remove(e);	
-	}
+
+    @Override
+    public String toString() {
+        return instructor + "'s schedule";
+    }
 }
