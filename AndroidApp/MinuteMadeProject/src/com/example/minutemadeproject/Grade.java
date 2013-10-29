@@ -18,4 +18,8 @@ public class Grade {
 
     @DatabaseField
     public double mark;
+
+    Grade() {
+        // Needed by OrmLite
+    }
 }

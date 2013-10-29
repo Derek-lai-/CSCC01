@@ -23,5 +23,8 @@ public class Instructor extends User{
 
     @ForeignCollectionField
 	ForeignCollection<Course> courses;
-	
+
+    Instructor() {
+        // Needed by OrmLite
+    }
 }

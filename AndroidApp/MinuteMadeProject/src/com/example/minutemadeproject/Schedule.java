@@ -19,6 +19,10 @@ public class Schedule {
     @ForeignCollectionField
     ForeignCollection<Event> events;
 
+    Schedule() {
+        // Needed by OrmLite
+    }
+
     public Schedule(Instructor instructor){
 		this.instructor = instructor;
 	}

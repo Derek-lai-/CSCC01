@@ -16,6 +16,10 @@ public class Student {
     @DatabaseField
 	public String email;
 
+    Student() {
+        // Needed by OrmLite
+    }
+
 	public Student(String name, String email, int number){
 		this.name = name;
 		this.email = email;

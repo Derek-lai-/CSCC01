@@ -16,6 +16,10 @@ public class Lesson {
     @DatabaseField
     public String topics;
 
+    Lesson() {
+        // Needed by OrmLite
+    }
+
 	public Lesson(Instructor instructor){
 		this.instructor = instructor;
 	}

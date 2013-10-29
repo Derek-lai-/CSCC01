@@ -21,7 +21,10 @@ public class Course {
     @ForeignCollectionField
     ForeignCollection<Assignment> assignments;
 
-	
+    Course() {
+        // Needed by OrmLite
+    }
+
 	public Course(String name){
 		this.name = name;
 	}

@@ -17,7 +17,11 @@ public class Event {
 
     @DatabaseField
 	public Date date;
-	
+
+    Event() {
+        // Needed by OrmLite
+    }
+
 	public Event(int id, String des, Date d){
 		this.id = id;
 		this.description = des;

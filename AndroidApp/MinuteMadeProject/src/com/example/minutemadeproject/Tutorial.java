@@ -26,6 +26,10 @@ public class Tutorial {
     @ForeignCollectionField
     ForeignCollection<Student> students;
 
+    Tutorial() {
+        // Needed by OrmLite
+    }
+
 	public Tutorial(Course course){
 		this.course = course;
 	}

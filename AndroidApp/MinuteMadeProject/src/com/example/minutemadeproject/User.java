@@ -21,14 +21,9 @@ public abstract class User {
 
     @DatabaseField
 	private String phone;
-	
-	
-	public void login(String username, String password){
 
-	}
-	
-	public void logout(){
-
-	}
+    User() {
+        // Needed by OrmLite
+    }
 }
 

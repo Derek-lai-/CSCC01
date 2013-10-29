@@ -31,4 +31,8 @@ public class Assignment {
 
     @ForeignCollectionField
     public ForeignCollection<Grade> grades;
+
+    Assignment() {
+        // Needed by OrmLite
+    }
 }
