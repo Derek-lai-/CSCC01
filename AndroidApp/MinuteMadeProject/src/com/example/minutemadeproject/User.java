@@ -25,5 +25,12 @@ public abstract class User {
     User() {
         // Needed by OrmLite
     }
+
+    public User(String username, String name, String email, String phone) {
+        this.username = username;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
 }
 
