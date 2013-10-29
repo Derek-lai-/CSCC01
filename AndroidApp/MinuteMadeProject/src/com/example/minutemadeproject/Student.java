@@ -25,4 +25,9 @@ public class Student {
 		this.email = email;
         this.number = number;
 	}
+
+    @Override
+    public String toString() {
+        return name + " (" + number + ") - " + email;
+    }
 }
