@@ -6,27 +6,32 @@
     android:padding="6dip" >
 
     <TextView
-        android:id="@+id/students_number"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Assignment_title"
+        android:id="@+id/assignment_title"
         android:layout_alignParentTop="true"
-        android:padding="10dip"
-        android:singleLine="true"
-        android:text="Student Number"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_alignParentLeft="true" />
 
     <TextView
-        android:id="@+id/grades"
-        android:layout_width="75dip"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assignment_Description"
+        android:id="@+id/description"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/students_number"
-        android:ellipsize="marquee"
-        android:gravity="right"
-        android:singleLine="true"
-        android:text="Grades"
-        android:textSize="14sp" />
+        android:layout_marginTop="33dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
 
-</RelativeLayout> 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Grades"
+        android:id="@+id/button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="148dp" />
+
+</RelativeLayout>
