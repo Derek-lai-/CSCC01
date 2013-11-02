@@ -21,14 +21,18 @@ public class Event {
     @DatabaseField
     public Date endDate;
 
+    @DatabaseField(foreign = true)
+    public Schedule schedule;
+
     Event() {
         // Needed by OrmLite
     }
 
-	public Event(String description, Date startDate, Date endDate){
+	public Event(String description, Date startDate, Date endDate, Schedule schedule) {
 		this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.schedule = schedule;
 	}
 
     @Override

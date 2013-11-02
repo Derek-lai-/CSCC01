@@ -3,6 +3,8 @@ package com.example.minutemadeproject;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.security.cert.TrustAnchor;
+
 
 @DatabaseTable(tableName = "students")
 public class Student {
@@ -16,14 +18,18 @@ public class Student {
     @DatabaseField
 	public String email;
 
+    @DatabaseField(foreign = true)
+    public Tutorial tutorial;
+
     Student() {
         // Needed by OrmLite
     }
 
-	public Student(String name, String email, int number){
+	public Student(String name, String email, int number, Tutorial tutorial) {
 		this.name = name;
 		this.email = email;
         this.number = number;
+        this.tutorial = tutorial;
 	}
 
     @Override

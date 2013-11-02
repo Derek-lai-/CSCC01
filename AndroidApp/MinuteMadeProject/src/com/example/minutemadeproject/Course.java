@@ -15,6 +15,9 @@ public class Course {
     @DatabaseField
 	public String name;
 
+    @DatabaseField(foreign = true)
+    public Instructor instructor;
+
     @ForeignCollectionField
     ForeignCollection<Tutorial> tutorials;
 
@@ -25,8 +28,9 @@ public class Course {
         // Needed by OrmLite
     }
 
-	public Course(String name){
+	public Course(String name, Instructor instructor){
 		this.name = name;
+        this.instructor = instructor;
 	}
 
     @Override
