@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Assignment Name"
+        android:id="@+id/name"
+        android:layout_gravity="left"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editName"
+        android:layout_below="@+id/name"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="10dp"
+        android:selectAllOnFocus="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Course Code"
+        android:id="@+id/course"
+        android:layout_gravity="left"
+        android:layout_below="@+id/editName"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="10dp"
+        android:textSize="20dp"
+        android:paddingLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tutorial"
+        android:id="@+id/textView"
+        android:textSize="20dp"
+        android:layout_alignBottom="@+id/course"
+        android:layout_alignLeft="@+id/editTutorial" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTutorial"
+        android:selectAllOnFocus="true"
+        android:layout_above="@+id/date"
+        android:layout_toRightOf="@+id/saveButton" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editCode"
+        android:layout_below="@+id/course"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assign Date : Due Date"
+        android:id="@+id/date"
+        android:paddingTop="10dp"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/editCode"
+        android:layout_alignParentLeft="true" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editADate"
+        android:layout_below="@+id/date"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="10dp"
+        android:text="DD:MM:YY"
+        android:textSize="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To"
+        android:id="@+id/textto"
+        android:textSize="15dp"
+        android:textIsSelectable="false"
+        android:layout_alignBaseline="@+id/editADate"
+        android:layout_alignBottom="@+id/editADate"
+        android:layout_toRightOf="@+id/course" />
+
+    <EditText
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editDDate"
+        android:paddingTop="10dp"
+        android:text="DD:MM:YY"
+        android:textSize="10dp"
+        android:layout_below="@+id/date"
+        android:layout_toRightOf="@+id/textto" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editDetails"
+        android:layout_below="@+id/details"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details"
+        android:id="@+id/details"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/editADate"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/saveButton"
+        android:textSize="20dp"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_below="@+id/editDetails"
+        android:layout_alignRight="@+id/date"
+        android:layout_marginTop="29dp" />
+
+</RelativeLayout>
