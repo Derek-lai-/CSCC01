@@ -1,12 +1,22 @@
 package com.example.minutemadeproject;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.support.v4.app.NavUtils;
 
 public class DisplayLessons extends Activity {
+	
+	ListView lv = null;
+	ArrayList<String> items = new ArrayList<String>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +24,24 @@ public class DisplayLessons extends Activity {
 		setContentView(R.layout.activity_display_lessons);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		lv = (ListView) findViewById(R.id.topic);
+		items.add("course 1_tutorial 1_lesson1");
+		items.add("course 1_tutorial 1_lesson2");
+		items.add("course 1_tutorial 2_lesson1");
+		items.add("course 2_tutorial 1_lesson1");
+		ArrayAdapter<String> arrayAdpater = new ArrayAdapter<String>(this, 
+				android.R.layout.simple_list_item_1, items);
+		lv.setAdapter(arrayAdpater);
+		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			
+			@Override
+			public void onItemClick(AdapterView<?> parentAdapter, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				 Intent intent = new Intent(getApplicationContext(), Instructions.class);
+                 startActivity(intent);
+			}
+		});
 	}
 
 	/**
