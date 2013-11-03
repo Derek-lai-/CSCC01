@@ -21,6 +21,9 @@ public class Assignment {
     public String name;
 
     @DatabaseField
+    public String description;
+
+    @DatabaseField
     public Date postDate;
 
     @DatabaseField
@@ -36,9 +39,10 @@ public class Assignment {
         // Needed by OrmLite
     }
 
-    public Assignment(String name, Course course, Date postDate, Date dueDate, double totalMark) {
+    public Assignment(String name, String description, Course course, Date postDate, Date dueDate, double totalMark) {
         this.name = name;
         this.course = course;
+        this.description = description;
         this.postDate = postDate;
         this.dueDate = dueDate;
         this.totalMark = totalMark;
@@ -49,23 +53,4 @@ public class Assignment {
         return name + "for " + course.name + "due " + dueDate;
     }
 
-    List<Map<String, String>> assignmentList = new ArrayList<Map<String,String>>();
-
-	public void initList(){
-        //populate assignmentList temporarily
-        assignmentList.add(createAssignment("assignment", "asgn_1"));
-        assignmentList.add(createAssignment("assignment", "asgn_2"));
-        assignmentList.add(createAssignment("assignment", "asgn_3"));
-        assignmentList.add(createAssignment("assignment", "asgn_4"));
-        assignmentList.add(createAssignment("assignment", "asgn_5"));
-        assignmentList.add(createAssignment("ass", "asgn_9"));
-
-	}
-
-    private HashMap<String, String> createAssignment(String key, String name) {
-        HashMap<String, String> assignment = new HashMap<String, String>();
-        assignment.put(key, name);
-
-        return assignment;
-    }
 }
