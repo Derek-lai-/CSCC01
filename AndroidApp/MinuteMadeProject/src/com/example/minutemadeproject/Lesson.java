@@ -6,57 +6,22 @@ import java.util.ArrayList;
 public class Lesson {
 	int instructorId;
 	// topics contain instructions
-	ArrayList<String> topics = new ArrayList<String>();
+	String topic;
+	String content;
 	
-	public Lesson(int iId){
-		this.instructorId = iId;
+	public Lesson(String otherTopic, String otherContent){
+		this.topic = otherTopic;
+		this.content = otherContent;
 	}
 	
-	//add a topic that a TA want to cover in the tutorial.
-	//return 1 when add success,otherwise return 0;
-	public int addTopic(String topic){
-		//
-		if(this.topics.contains(topic)){
-			return 0;
-		}
-		else{
-			this.topics.add(topic);
-			return 1;
-		}
-	}
-	
-	//remove
-	//return 1 when remove success,otherwise return 0;
-	public int removeTopic(String topic){
-		if(this.topics.contains(topic)){
-			this.topics.remove(topic);
-			return 1;
-		}
-		else{
-			return 0;
-		}
-	}
 	
 	//edit the topic string
-	//return 1 on success, 0 on fail
-	public int editTopic(String topic, String topicOther){
-		if(this.topics.contains(topic)){
-			this.topics.set(this.topics.indexOf(topic), topicOther);
-			return 1;
-		}
-		else{
-			return 0;
-		}
+	public void editTopic(String otherTopic){
+		this.topic = otherTopic;
 	}
 	
-	//add the lesson plan to the database
-	public int update(){
-		return 0;
-	}
-	
-	//get the lesson plan from the database
-	public int getLessonPlan(){
-		return 0;
+	public void editContent(){
+		
 	}
 	
 }
