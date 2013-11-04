@@ -12,42 +12,41 @@ import org.w3c.dom.Comment;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AssignmentHelper {
-
+public class GradeHelper {
     private DatabaseHelper db;
-    Dao<Assignment, Integer> assignmentDao;
+    Dao<Grade, Integer> gradeDao;
 
-    public AssignmentHelper(Context ctx){
+    public void AssignmentRepository(Context ctx){
         try {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getDatabaseHelper(ctx);
-            assignmentDao = db.getAssignmentDao();
+            gradeDao = db.getGradeDao();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public int create(Assignment assignment){
+    public int create(Grade grade){
         try {
-            return assignmentDao.create(assignment);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    public int update(Assignment assignment){
-        try {
-            return assignmentDao.update(assignment);
+            return gradeDao.create(grade);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
     }
 
-    public int delete(Assignment assignment){
+    public int update(Grade grade){
         try {
-            return assignmentDao.delete(assignment);
+            return gradeDao.update(grade);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int delete(Grade grade){
+        try {
+            return gradeDao.delete(grade);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -57,16 +56,7 @@ public class AssignmentHelper {
 
     public List getAll(){
         try {
-            return assignmentDao.queryForAll();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public Assignment getAssignment(int id){
-        try{
-            return assignmentDao.queryForId(id);
+            return gradeDao.queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -5,42 +5,65 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.minutemadeproject.AssignmentHelper;
 import com.example.minutemadeproject.R;
-import com.example.minutemadeproject.activities.AssignmentViewActivity;
 
+import com.example.minutemadeproject.Assignment;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AssignmentListActivity extends Activity{
 
-    private ArrayList assignments;
-    private AssignmentHelper helper;
+    private ArrayList<Assignment> assignments;
+    private List<String> aNames;
+    public AssignmentHelper helper;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.assignmentlist);
-        // get listview part from layout
-        ListView lv = (ListView) findViewById(R.id.item);
-        helper = new AssignmentHelper(this);
-        assignments = (ArrayList)helper.getAll();
+        //fills local variables with items from database
+        getItems();
+        //setsup arary adapter with assignment names from aNames
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.assignmentlist
+                , aNames);
+        //fills layout
+        ListView lv = (ListView) findViewById(R.id.assignmentlist);
+        lv.setAdapter(adapter);
 
-        // adapter accepts parameters
-        SimpleAdapter simpleAdapter = new SimpleAdapter(this, assignments);
-        lv.setAdapter(simpleAdapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
-            public void onItemClick(AdapterView<?> parentAdapter, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //gets name of item clicked
                 String text = ((TextView) view).getText().toString();
+                //creates new intent object pointing to new class to open
                 Intent i = new Intent(getApplicationContext(), AssignmentViewActivity.class);
-                i.putExtra("assignment", text);
+                //retieves index of the assignment name
+                int index = aNames.indexOf(text);
+                //gets the assignment object
+                Assignment a = assignments.get(index);
+                //get assignment database id
+                int aId = a.id;
+                //packages id to pass to next activity
+                i.putExtra("assignment" , aId);
+                //starts new activity
                 startActivity(i);
             }
         });
+    }
 
+    public void getItems(){
+        helper = new AssignmentHelper(this);
+        assignments = (ArrayList)helper.getAll();
+        //gets name of all assignment in list of assignment objects
+        for (Assignment a: assignments){
+            aNames.add(a.name);
+        }
     }
 
 }

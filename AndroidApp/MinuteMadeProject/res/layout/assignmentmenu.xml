@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<RelativeLayout
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -14,29 +14,74 @@
         android:id="@+id/assignment_title"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        />
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Assignment_Description"
-        android:id="@+id/description"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="33dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        />
+        android:text="Course Code"
+        android:id="@+id/coursecode"
+        android:paddingTop="10dp"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/assignment_title"
+        android:layout_alignParentLeft="true" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Grades"
-        android:id="@+id/edit_button"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/assignment_title"
-        android:layout_marginTop="27dp"
-        android:padding="10dp"
-        android:layout_gravity="center_horizontal" />
+        android:text="Tutorial"
+        android:id="@+id/tutorial"
+        android:textSize="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignBottom="@+id/coursecode"
+        android:layout_toRightOf="@+id/assignment_title" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assign Date : Due Date"
+        android:id="@+id/duedate"
+        android:paddingTop="10dp"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/coursecode"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Details"
+        android:id="@+id/details"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/duedate"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:id="@+id/editAssignment"
+        android:textSize="20dp"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_below="@+id/details"
+        android:layout_toLeftOf="@+id/tutorial" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Edit Grades"
+        android:id="@+id/editGrades"
+        android:textSize="20dp"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignTop="@+id/editAssignment"
+        android:layout_toRightOf="@+id/duedate" />
+
+</RelativeLayout>
