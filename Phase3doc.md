@@ -4,7 +4,6 @@ November 5 2013
 
 ## State of the project
 
----
 
 ## Iteration plan
 
@@ -28,6 +27,8 @@ Stories | Tasks | Difficulty (1-5)
 12 | Set up database handling for the Grade class | 3
 12 | Android Layout design for the Assignment Activity | 2
 12 | Implement logic for assigning grades for an Assignment | 4
+
+
 
 ---
 
