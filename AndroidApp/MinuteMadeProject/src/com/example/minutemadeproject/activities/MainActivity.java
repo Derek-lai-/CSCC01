@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.Toast;
 
 import com.example.minutemadeproject.R;
 import com.example.minutemadeproject.db.DatabaseHelper;
@@ -28,7 +29,8 @@ public class MainActivity extends OrmLiteBaseActivity<DatabaseHelper> {
         boolean isDebuggable =  ( 0 != ( getApplicationInfo().flags &= ApplicationInfo.FLAG_DEBUGGABLE ) );
         if (isDebuggable) {
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("currentInstructor", null);
+            editor.remove("currentInstructor");
+            editor.commit();
         }
         String currentInstructor = settings.getString("currentInstructor", null);
         RESULT_CODE = 1;
@@ -46,6 +48,9 @@ public class MainActivity extends OrmLiteBaseActivity<DatabaseHelper> {
             SharedPreferences settings = getSharedPreferences("prefs", 0);
             String currentInstructor = settings.getString("currentInstructor", null);
             Log.i("Current Instructor", currentInstructor);
+            String content = "Hello " + currentInstructor + "!";
+            Toast toast = Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
