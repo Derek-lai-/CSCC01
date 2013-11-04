@@ -30,3 +30,9 @@ Stories | Tasks | Difficulty (1-5)
 12 | Implement logic for assigning grades for an Assignment | 4
 
 ---
+
+##BurnDown chart
+
+####Sprint length: 16days  | Number of tasks selected: 12
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0Aj2RXBREUV-adDM4TG1zc3BLODByeUlPMGNUa1RWZUE&transpose=0&headers=0&range=A1%3AA16&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":null,"minValue":null,"logScale":false,"viewWindow":{"max":null,"min":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"logScale":false,"viewWindow":{"max":null,"min":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"series":{"0":{"color":"#ff0000","targetAxisIndex":1,"lineWidth":4}},"booleanRole":"certainty","title":"Burndown","height":320,"animation":{"duration":500},"legend":"left","width":450,"hAxis":{"useFormatFromData":true,"title":"Sprint (Oct 20 - Nov 5)","minValue":null,"viewWindowMode":null,"viewWindow":null,"maxValue":null},"tooltip":{},"isStacked":false},"state":{},"view":{"columns":[{"calc":"emptyString","type":"string","sourceColumn":0},0]},"isDefaultVisualization":false,"chartType":"AreaChart","chartName":"Chart 1"} </script>
