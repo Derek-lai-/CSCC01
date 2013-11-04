@@ -1,5 +1,9 @@
 package com.example.minutemadeproject;
 
+import java.util.List;
+
+import com.example.minutemadeproject.activities.SignupActivity;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -11,16 +15,16 @@ import android.widget.Toast;
 
 public class HomeActivity extends Activity {
     Button btnSignIn, btnSignUp;
-    LoginDataBaseAdapter loginDataBaseAdapter;
-
+    //LoginDataBaseAdapter loginDataBaseAdapter;
+    InstructorHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        db = new InstructorHelper(getApplicationContext());
         // create a instance of SQLite Database
-        loginDataBaseAdapter = new LoginDataBaseAdapter(this);
-        loginDataBaseAdapter = loginDataBaseAdapter.open();
+       // loginDataBaseAdapter = new LoginDataBaseAdapter(this);
+       // loginDataBaseAdapter = loginDataBaseAdapter.open();
 
         // Get The Refference Of Buttons
         btnSignIn = (Button) findViewById(R.id.buttonSignIN);
@@ -32,7 +36,7 @@ public class HomeActivity extends Activity {
                 // TODO Auto-generated method stub
 
                 /// Create Intent for SignUpActivity  abd Start The Activity
-                Intent intentSignUP = new Intent(getApplicationContext(), SignUPActivity.class);
+                Intent intentSignUP = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(intentSignUP);
             }
         });
@@ -47,7 +51,7 @@ public class HomeActivity extends Activity {
         // get the References of views
         final EditText editTextUserName = (EditText) dialog.findViewById(R.id.editTextUserNameToLogin);
         final EditText editTextPassword = (EditText) dialog.findViewById(R.id.editTextPasswordToLogin);
-
+        final List<Instructor> instructors = db.getAll();
         Button btnSignIn = (Button) dialog.findViewById(R.id.buttonSignIn);
 
         // Set On ClickListener
@@ -57,16 +61,19 @@ public class HomeActivity extends Activity {
                 // get The User name and Password
                 String userName = editTextUserName.getText().toString();
                 String password = editTextPassword.getText().toString();
-
+                final List<Instructor> instructors = db.getAll();
+                String storedPassword="";
+                for(Instructor i: instructors){
+                	if(i.getUsername().equals(userName))
+                		storedPassword = i.getPassword();
+                }
                 // fetch the Password form database for respective user name
-                String storedPassword = loginDataBaseAdapter.getSinlgeEntry(userName);
+                
 
                 // check if the Stored password matches with  Password entered by user
                 if (password.equals(storedPassword)) {
                     //Toast.makeText(HomeActivity.this, "Thank you for logging in " + userName, Toast.LENGTH_LONG).show();
                     //dialog.dismiss();
-                	Instructor usr = new Instructor(userName, "", "", "");
-                	VarHolder.setUser(usr);
                 	Intent intent = new Intent(getApplicationContext(), Mainmenu.class);
                 	startActivity(intent);
                 } else {
@@ -82,6 +89,6 @@ public class HomeActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         // Close The Database
-        loginDataBaseAdapter.close();
+        //loginDataBaseAdapter.close();
     }
 }

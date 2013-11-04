@@ -15,7 +15,7 @@ public class Instructor extends User{
     @DatabaseField
 	public boolean isTA;
 
-    @DatabaseField(foreign = true)
+    //@DatabaseField(foreign = true)
     private User user;
 
     @ForeignCollectionField
@@ -28,17 +28,18 @@ public class Instructor extends User{
         // Needed by OrmLite
     }
 
-    public Instructor(User user, boolean isTA) {
-        this.user = user;
+    public Instructor(String username, String password, String name, String email, String phone, boolean isTA) {
+       super(username, password, name, email, phone);
         this.isTA = isTA;
     }
 
     @Override
     public String toString() {
         if (isTA) {
-            return user.name + " - TA";
+           // return user.name + " - TA";
         } else {
-            return user.name + " - Professor";
+          //  return user.name + " - Professor";
         }
+		return null;
     }
 }

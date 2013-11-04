@@ -30,7 +30,9 @@ public class Mainmenu extends Activity {
 		items.add("Course");
 		items.add("Schedule");
 		welcome = (TextView) findViewById(R.id.welcome);
-		welcome.setText("Welcome " + VarHolder.getUser().username);
+		//welcome.setText("Welcome " + VarHolder.getUser().username);
+		welcome.setText("Welcome");
+		
 		ArrayAdapter<String> arrayAdpater = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
 		lv.setAdapter(arrayAdpater);
