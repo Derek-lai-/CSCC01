@@ -11,13 +11,12 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Assignment_title"
-        android:id="@+id/assignment_title"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
+        android:id="@+id/assignmentTitle"
         android:paddingTop="10dp"
-        android:paddingLeft="10dp" />
+        android:paddingLeft="10dp"
+        android:editable="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,7 +26,8 @@
         android:paddingTop="10dp"
         android:textSize="20dp"
         android:paddingLeft="10dp"
-        android:layout_below="@+id/assignment_title"
+        android:editable="true"
+        android:layout_below="@+id/tutorial"
         android:layout_alignParentLeft="true" />
 
     <TextView
@@ -37,8 +37,11 @@
         android:id="@+id/tutorial"
         android:textSize="20dp"
         android:layout_gravity="center_horizontal"
-        android:layout_alignBottom="@+id/coursecode"
-        android:layout_toRightOf="@+id/assignment_title" />
+        android:editable="true"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/assignmentTitle"
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,6 +51,7 @@
         android:paddingTop="10dp"
         android:textSize="20dp"
         android:paddingLeft="10dp"
+        android:editable="true"
         android:layout_below="@+id/coursecode"
         android:layout_alignParentLeft="true" />
 
@@ -65,13 +69,14 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Edit"
+        android:text="Edit Paper"
         android:id="@+id/editAssignment"
         android:textSize="20dp"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="false"
-        android:layout_below="@+id/details"
-        android:layout_toLeftOf="@+id/tutorial" />
+        android:layout_alignBaseline="@+id/editGrades"
+        android:layout_alignBottom="@+id/editGrades"
+        android:layout_alignRight="@+id/assignmentTitle" />
 
     <Button
         android:layout_width="150dp"
@@ -81,7 +86,8 @@
         android:textSize="20dp"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="false"
-        android:layout_alignTop="@+id/editAssignment"
-        android:layout_toRightOf="@+id/duedate" />
+        android:layout_below="@+id/details"
+        android:layout_toRightOf="@+id/duedate"
+        android:layout_marginTop="36dp" />
 
 </RelativeLayout>

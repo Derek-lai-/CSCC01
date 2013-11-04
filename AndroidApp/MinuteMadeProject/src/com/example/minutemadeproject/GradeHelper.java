@@ -16,7 +16,7 @@ public class GradeHelper {
     private DatabaseHelper db;
     Dao<Grade, Integer> gradeDao;
 
-    public void AssignmentRepository(Context ctx){
+    public void GradeHelper(Context ctx){
         try {
             DatabaseManager dbManager = new DatabaseManager();
             db = dbManager.getDatabaseHelper(ctx);
@@ -53,10 +53,18 @@ public class GradeHelper {
         return 0;
     }
 
-
     public List getAll(){
         try {
             return gradeDao.queryForAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Grade getGrade(int id){
+        try{
+            return gradeDao.queryForId(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }

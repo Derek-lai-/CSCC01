@@ -28,7 +28,7 @@ public class AssignmentListActivity extends Activity{
         setContentView(R.layout.assignmentlist);
         //fills local variables with items from database
         getItems();
-        //setsup arary adapter with assignment names from aNames
+        //sets up array adapter with assignment names from aNames
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.assignmentlist
                 , aNames);
         //fills layout
