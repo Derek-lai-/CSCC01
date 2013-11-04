@@ -42,7 +42,7 @@ public class SignupActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(editTextConfirmPassword.equals(editTextPassword)){
+				if(editTextConfirmPassword.getText().toString().equals(editTextPassword.getText().toString())){
 					selected = (RadioButton) findViewById(userType.getCheckedRadioButtonId());
 					if(selected.getText().toString().equals("Teaching Assistant")){
 						instructor = new Instructor(editTextUserName.getText().toString(),

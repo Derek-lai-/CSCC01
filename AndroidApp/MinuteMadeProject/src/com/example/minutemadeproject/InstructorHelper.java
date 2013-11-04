@@ -14,14 +14,14 @@ public class InstructorHelper {
 	Dao<Instructor, Integer> instructorDao;
 
 	public InstructorHelper(Context ctx) {
+		try {
 			DatabaseManager dbManager = new DatabaseManager();
 			db = dbManager.getDatabaseHelper(ctx);
-			try {
-				instructorDao = db.getInstructorDao();
-			} catch (java.sql.SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			instructorDao = db.getInstructorDao();
+		} catch (java.sql.SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public int create(Instructor instructor) {
