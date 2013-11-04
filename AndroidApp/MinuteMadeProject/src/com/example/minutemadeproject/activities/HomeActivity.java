@@ -1,8 +1,12 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.activities;
 
 import java.util.List;
 
-import com.example.minutemadeproject.activities.SignupActivity;
+import com.example.minutemadeproject.Instructor;
+import com.example.minutemadeproject.InstructorHelper;
+import com.example.minutemadeproject.R;
+import com.example.minutemadeproject.R.id;
+import com.example.minutemadeproject.R.layout;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -50,8 +54,7 @@ public class HomeActivity extends Activity {
 
         // get the References of views
         final EditText editTextUserName = (EditText) dialog.findViewById(R.id.editTextUserNameToLogin);
-        final EditText editTextPassword = (EditText) dialog.findViewById(R.id.editTextPasswordToLogin);
-        final List<Instructor> instructors = db.getAll();
+        final EditText editTextPassword = (EditText) dialog.findViewById(R.id.editTextPasswordToLogin);        
         Button btnSignIn = (Button) dialog.findViewById(R.id.buttonSignIn);
 
         // Set On ClickListener
@@ -74,7 +77,7 @@ public class HomeActivity extends Activity {
                 if (password.equals(storedPassword)) {
                     //Toast.makeText(HomeActivity.this, "Thank you for logging in " + userName, Toast.LENGTH_LONG).show();
                     //dialog.dismiss();
-                	Intent intent = new Intent(getApplicationContext(), Mainmenu.class);
+                	Intent intent = new Intent(getApplicationContext(), MainmenuActivity.class);
                 	startActivity(intent);
                 } else {
                     Toast.makeText(HomeActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();

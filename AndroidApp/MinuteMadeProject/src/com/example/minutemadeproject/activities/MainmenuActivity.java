@@ -1,6 +1,11 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.activities;
 
 import java.util.ArrayList;
+
+import com.example.minutemadeproject.R;
+import com.example.minutemadeproject.R.id;
+import com.example.minutemadeproject.R.layout;
+import com.example.minutemadeproject.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -11,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Mainmenu extends Activity {
+public class MainmenuActivity extends Activity {
 
 	private enum MenuItem {
 		Lesson, Course, Schedule;
