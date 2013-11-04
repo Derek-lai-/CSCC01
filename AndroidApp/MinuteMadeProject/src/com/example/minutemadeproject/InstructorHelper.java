@@ -13,8 +13,7 @@ public class InstructorHelper {
 	private DatabaseHelper db;
 	Dao<Instructor, Integer> instructorDao;
 
-	public InstructorHelper(Context ctx){
-		try{
+	public InstructorHelper(Context ctx) {
 			DatabaseManager dbManager = new DatabaseManager();
 			db = dbManager.getDatabaseHelper(ctx);
 			try {
@@ -22,78 +21,58 @@ public class InstructorHelper {
 			} catch (java.sql.SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
-		}
-		catch(SQLException e){
-			e.printStackTrace();
-		}
-	
+			}
 	}
 
 	public int create(Instructor instructor) {
 		try {
-			try {
-				return instructorDao.create(instructor);
-			} catch (java.sql.SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (SQLException e) {
+			return instructorDao.create(instructor);
+		} catch (java.sql.SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return 0;
 	}
 
 	public int update(Instructor instructor) {
+
 		try {
-			try {
-				return instructorDao.update(instructor);
-			} catch (java.sql.SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (SQLException e) {
+			return instructorDao.update(instructor);
+		} catch (java.sql.SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		return 0;
 	}
 
 	public int delete(Instructor instructor) {
+
 		try {
-			try {
-				return instructorDao.delete(instructor);
-			} catch (java.sql.SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (SQLException e) {
+			return instructorDao.delete(instructor);
+		} catch (java.sql.SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return 0;
 	}
 
 	public List getAll() {
+
 		try {
-			try {
-				return instructorDao.queryForAll();
-			} catch (java.sql.SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (SQLException e) {
+			return instructorDao.queryForAll();
+		} catch (java.sql.SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public Instructor getInstructor(int id) {
+
 		try {
-			try {
-				return instructorDao.queryForId(id);
-			} catch (java.sql.SQLException e) {
-				e.printStackTrace();
-			}
-		} catch (SQLException e) {
+			return instructorDao.queryForId(id);
+		} catch (java.sql.SQLException e) {
 			e.printStackTrace();
 		}
 		return null;

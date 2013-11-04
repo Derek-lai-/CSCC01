@@ -36,10 +36,9 @@ public class Instructor extends User{
     @Override
     public String toString() {
         if (isTA) {
-           // return user.name + " - TA";
+           return this.getName() + " - TA";
         } else {
-          //  return user.name + " - Professor";
+           return this.getName() + " - Professor";
         }
-		return null;
     }
 }
