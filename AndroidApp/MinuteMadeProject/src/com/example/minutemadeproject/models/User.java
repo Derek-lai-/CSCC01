@@ -1,10 +1,9 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.models;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 
-@DatabaseTable(tableName = "users")
 public abstract class User {
 
     @DatabaseField(generatedId = true)

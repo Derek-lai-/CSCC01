@@ -1,4 +1,4 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.models;
 
 
 import com.j256.ormlite.dao.ForeignCollection;

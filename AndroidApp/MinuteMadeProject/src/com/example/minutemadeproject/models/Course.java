@@ -1,4 +1,4 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.models;
 
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
@@ -6,39 +6,35 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 
-@DatabaseTable(tableName = "instructors")
-public class Instructor extends User{
+@DatabaseTable(tableName = "courses")
+public class Course {
 
     @DatabaseField(generatedId = true)
     public int id;
 
     @DatabaseField
-	public boolean isTA;
+	public String name;
 
     @DatabaseField(foreign = true)
-    private User user;
+    public Instructor instructor;
 
     @ForeignCollectionField
     ForeignCollection<Tutorial> tutorials;
 
     @ForeignCollectionField
-	ForeignCollection<Course> courses;
+    ForeignCollection<Assignment> assignments;
 
-    Instructor() {
+    Course() {
         // Needed by OrmLite
     }
 
-    public Instructor(User user, boolean isTA) {
-        this.user = user;
-        this.isTA = isTA;
-    }
+	public Course(String name, Instructor instructor){
+		this.name = name;
+        this.instructor = instructor;
+	}
 
     @Override
     public String toString() {
-        if (isTA) {
-            return user.name + " - TA";
-        } else {
-            return user.name + " - Professor";
-        }
+        return name;
     }
 }
