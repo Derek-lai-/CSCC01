@@ -1,47 +1,20 @@
 package com.example.minutemadeproject;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.support.v4.app.NavUtils;
 
-public class DisplayLessons extends Activity {
-	
-	ListView lv = null;
-	ArrayList<String> items = new ArrayList<String>();
+public class AddLesson extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_display_lessons);
+		setContentView(R.layout.activity_add_lesson);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		lv = (ListView) findViewById(R.id.topic);
-		items.add("course 1_tutorial 1_lesson1");
-		items.add("course 1_tutorial 1_lesson2");
-		items.add("course 1_tutorial 2_lesson1");
-		items.add("course 2_tutorial 1_lesson1");
-		ArrayAdapter<String> arrayAdpater = new ArrayAdapter<String>(this, 
-				android.R.layout.simple_list_item_1, items);
-		lv.setAdapter(arrayAdpater);
-		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			
-			@Override
-			public void onItemClick(AdapterView<?> parentAdapter, View view, int position,
-					long id) {
-				// TODO Auto-generated method stub
-				 Intent intent = new Intent(getApplicationContext(), Instructions.class);
-                 startActivity(intent);
-			}
-		});
 	}
 
 	/**
@@ -56,7 +29,7 @@ public class DisplayLessons extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.display_lessons, menu);
+		getMenuInflater().inflate(R.menu.add_lesson, menu);
 		return true;
 	}
 
@@ -77,9 +50,8 @@ public class DisplayLessons extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void addLesson(View V){
-		Intent intent = new Intent(getApplicationContext(), AddLesson.class);
-        startActivityForResult(intent, 1);
+	public void submit(View V){
+		finish();
 	}
 
 }

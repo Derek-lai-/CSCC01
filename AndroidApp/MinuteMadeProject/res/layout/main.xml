@@ -16,4 +16,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Sign Up" />
+    <Button
+            android:id="@+id/buttonDisplayLessonPlan"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Display Lesson Plan" 
+    		android:onClick="displayLessonPlan"/>
 </LinearLayout>

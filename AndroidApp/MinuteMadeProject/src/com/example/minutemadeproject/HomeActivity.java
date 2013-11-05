@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class HomeActivity extends Activity {
-    Button btnSignIn, btnSignUp;
+    Button btnSignIn, btnSignUp, btnDisplayLessonPlan;
     LoginDataBaseAdapter loginDataBaseAdapter;
 
     @Override
@@ -25,6 +25,7 @@ public class HomeActivity extends Activity {
         // Get The Refference Of Buttons
         btnSignIn = (Button) findViewById(R.id.buttonSignIN);
         btnSignUp = (Button) findViewById(R.id.buttonSignUP);
+        btnDisplayLessonPlan = (Button) findViewById(R.id.buttonDisplayLessonPlan);
 
         // Set OnClick Listener on SignUp button
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +74,13 @@ public class HomeActivity extends Activity {
 
         dialog.show();
     }
-
+    
+    public void displayLessonPlan(View V) {
+                    /// Create Intent for SignUpActivity  abd Start The Activity
+                    Intent intent = new Intent(getApplicationContext(), DisplayLessons.class);
+                    startActivity(intent);
+    }
+    
     @Override
     protected void onDestroy() {
         super.onDestroy();
