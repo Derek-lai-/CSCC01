@@ -3,6 +3,7 @@ package com.example.minutemadeproject;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
 
 public class Instructions extends Activity {
 
@@ -22,6 +23,14 @@ public class Instructions extends Activity {
 	
 	private void setupActionBar() {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+	}
+	
+	public void save(View V){
+		finish();
+	}
+	
+	public void remove(View V){
+		finish();
 	}
 
 }

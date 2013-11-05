@@ -24,20 +24,4 @@
 
     </ListView>
 
-    <Button
-        android:id="@+id/remove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/add"
-        android:layout_toRightOf="@+id/add"
-        android:text="Remove" />
-
-    <Button
-        android:id="@+id/edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/topic"
-        android:layout_toRightOf="@+id/remove"
-        android:text="Edit" />
-
 </RelativeLayout>
