@@ -4,10 +4,7 @@ import android.content.Context;
 
 import com.example.minutemadeproject.db.DatabaseHelper;
 import com.example.minutemadeproject.db.DatabaseManager;
-import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
-
-import org.w3c.dom.Comment;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -55,7 +52,7 @@ public class AssignmentHelper {
     }
 
 
-    public List getAll(){
+    public List<Assignment> getAll(){
         try {
             return assignmentDao.queryForAll();
         } catch (SQLException e) {

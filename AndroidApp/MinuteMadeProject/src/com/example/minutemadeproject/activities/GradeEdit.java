@@ -1,5 +1,5 @@
 package com.example.minutemadeproject.activities;
 
+public class GradeEdit {
 
-public class AssignmentEditActivity {
 }

@@ -1,45 +1,67 @@
 package com.example.minutemadeproject.activities;
 
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.example.minutemadeproject.AssignmentHelper;
 import com.example.minutemadeproject.R;
+import com.example.minutemadeproject.Student;
+import com.example.minutemadeproject.StudentHelper;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class AssignmentStudentListActivity {
+public class AssignmentStudentListActivity extends Activity{
 
-    private ArrayList students;
-    private AssignmentHelper helper;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    private List<Student> students;
+    private List<String> names;
+    private List<Integer> studentId;
+    private StudentHelper helper;
+    
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.studentlist);
-        // get listview part from layout
-        ListView lv = (ListView) findViewById(R.id.students_number);
-        helper = new AssignmentHelper(this);
-        students = (ArrayList)helper.getAll();
+        setContentView(R.layout.assignmentstudent);
+        
+        getItems();
+        
+        ListView lv = (ListView) findViewById(R.id.assignmentstudent);
 
-        // adapter accepts parameters
-        SimpleAdapter simpleAdapter = new SimpleAdapter(this, students);
-        lv.setAdapter(simpleAdapter);
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this, R.layout.assignmentlist, studentId);
+        lv.setAdapter(adapter);
+        
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parentAdapter, View view, int position, long id) {
+            	//gets name of item clicked
                 String text = ((TextView) view).getText().toString();
-                Intent i = new Intent(getApplicationContext(), AssignmentViewActivity.class);
-                i.putExtra("assignment", text);
+                //creates new intent object pointing to new class to open
+                Intent i = new Intent(getApplicationContext(), GradeEdit.class);
+                //Retrieves index of the student name
+                int index = names.indexOf(text);
+                //gets a student object
+                Student s = students.get(index);
+                //get assignment database id
+                int studentId = s.number;
+                //packages id to pass to next activity
+                i.putExtra("student" , studentId);
+                //starts new activity
                 startActivity(i);
             }
         });
 
+    }
+    public void getItems(){
+        helper = new StudentHelper(this);
+        students = helper.getAll();
+        //gets name of all assignment in list of assignment objects
+        for (Student s: students){
+            studentId.add(s.number);
+            names.add(s.name);
+        }
     }
 }
 
