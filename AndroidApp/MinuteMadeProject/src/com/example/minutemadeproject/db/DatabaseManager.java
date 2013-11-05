@@ -10,7 +10,7 @@ public class DatabaseManager {
     private DatabaseHelper databaseHelper = null;
 
     // Checks and returns a DatabaseHelper if it exists, else returns a fresh one.
-    public DatabaseHelper getDatabaseHelper(Context context) {
+    public DatabaseHelper getHelper(Context context) {
         if (databaseHelper == null) {
             databaseHelper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
         }
