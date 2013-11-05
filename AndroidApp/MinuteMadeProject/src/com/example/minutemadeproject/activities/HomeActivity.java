@@ -77,7 +77,7 @@ public class HomeActivity extends Activity {
                 // check if the Stored password matches with  Password entered by user
                 if (password.equals(storedPassword)) {
                     //Toast.makeText(HomeActivity.this, "Thank you for logging in " + userName, Toast.LENGTH_LONG).show();
-                    //dialog.dismiss();
+                    dialog.dismiss();
                 	Intent intent = new Intent(getApplicationContext(), MainmenuActivity.class);
                 	startActivity(intent);
                 } else {

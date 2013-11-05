@@ -57,6 +57,7 @@ public class SignupActivity extends Activity {
 								editTextPhone.getText().toString(), true);
 					}
 					dbHelper.create(instructor);
+					finish();
 				} else {
 					editTextPassword.setText("");
 					editTextConfirmPassword.setText("");
