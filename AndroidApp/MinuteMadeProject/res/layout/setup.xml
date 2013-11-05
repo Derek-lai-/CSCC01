@@ -5,62 +5,58 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Username"
+        android:hint="Username"
         android:ems="10"
-        android:id="@+id/editTextUser"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/editTextUser" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editTextPassword"
-        android:layout_gravity="center_horizontal"
-        android:text="Password" />
+        android:hint="Password" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="Name"
         android:ems="10"
-        android:id="@+id/editTextName"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/editTextName" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/editTextEmail"
-        android:layout_gravity="center_horizontal"
-        android:text="Email" />
+        android:hint="Email" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
         android:id="@+id/editTextPhone"
-        android:layout_gravity="center_horizontal"
-        android:text="Phone" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="What are you?"
-        android:id="@+id/textViewInstructor"
-        android:layout_gravity="center_horizontal" />
+        android:hint="Phone"
+        android:layout_marginBottom="20dp" />
 
     <RadioGroup
         android:id="@+id/radioGroupInstructor"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="What are you?"
+            android:id="@+id/textViewInstructor"
+            android:layout_gravity="center_horizontal" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -78,11 +74,11 @@
             android:id="@+id/radioButtonProf"
             android:layout_gravity="center_horizontal"
             android:checked="false"
-            android:onClick="onRadioButtonClicked"/>
+            android:onClick="onRadioButtonClicked" />
     </RadioGroup>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
         android:id="@+id/buttonConfirmSetup"
