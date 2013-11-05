@@ -1,6 +1,7 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.helpers;
 
 import android.content.Context;
+import com.example.minutemadeproject.models.Student;
 
 import com.example.minutemadeproject.db.DatabaseHelper;
 import com.example.minutemadeproject.db.DatabaseManager;
@@ -9,68 +10,68 @@ import com.j256.ormlite.dao.Dao;
 import java.sql.SQLException;
 import java.util.List;
 
-public class GradeHelper {
+public class StudentHelper {
     private DatabaseHelper db;
-    Dao<Grade, Integer> gradeDao;
+    Dao<Student, Integer> studentDao;
 
-    public GradeHelper(Context ctx){
+    public StudentHelper(Context ctx){
         try {
             DatabaseManager dbManager = new DatabaseManager();
-            db = dbManager.getDatabaseHelper(ctx);
-            gradeDao = db.getGradeDao();
+            db = dbManager.getHelper(ctx);
+            studentDao = db.getStudentDao();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public Dao<Grade, Integer> getGradeDao(){
+    public Dao<Student,Integer> getGradeDao(){
         try {
-            return db.getGradeDao();
+            return db.getStudentDao();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public int create(Grade grade){
+    public int create(Student student){
         try {
-            return gradeDao.create(grade);
+            return studentDao.create(student);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
     }
 
-    public int update(Grade grade){
+    public int update(Student student){
         try {
-            return gradeDao.update(grade);
+            return studentDao.update(student);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
     }
 
-    public int delete(Grade grade){
+    public int delete(Student student){
         try {
-            return gradeDao.delete(grade);
+            return studentDao.delete(student);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
     }
 
-    public List<Grade> getAll(){
+    public List<Student> getAll(){
         try {
-            return gradeDao.queryForAll();
+            return studentDao.queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public Grade getGrade(int id){
+    public Student getStudent(int id){
         try{
-            return gradeDao.queryForId(id);
+            return studentDao.queryForId(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }

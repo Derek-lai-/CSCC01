@@ -1,10 +1,11 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.helpers;
 
 import android.content.Context;
 
 import com.example.minutemadeproject.db.DatabaseHelper;
 import com.example.minutemadeproject.db.DatabaseManager;
 import com.j256.ormlite.dao.Dao;
+import com.example.minutemadeproject.models.Assignment;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -17,7 +18,7 @@ public class AssignmentHelper {
     public AssignmentHelper(Context ctx){
         try {
             DatabaseManager dbManager = new DatabaseManager();
-            db = dbManager.getDatabaseHelper(ctx);
+            db = dbManager.getHelper(ctx);
             assignmentDao = db.getAssignmentDao();
         } catch (SQLException e) {
             e.printStackTrace();

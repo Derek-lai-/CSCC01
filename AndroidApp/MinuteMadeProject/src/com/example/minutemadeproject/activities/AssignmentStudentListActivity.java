@@ -10,8 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.minutemadeproject.R;
-import com.example.minutemadeproject.Student;
-import com.example.minutemadeproject.StudentHelper;
+import com.example.minutemadeproject.helpers.StudentHelper;
+import com.example.minutemadeproject.models.Student;
 
 import java.util.List;
 

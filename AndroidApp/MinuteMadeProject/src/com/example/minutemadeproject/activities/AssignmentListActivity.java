@@ -9,10 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.minutemadeproject.AssignmentHelper;
 import com.example.minutemadeproject.R;
 
-import com.example.minutemadeproject.Assignment;
+import com.example.minutemadeproject.helpers.AssignmentHelper;
+import com.example.minutemadeproject.models.Assignment;
+
 import java.util.List;
 
 public class AssignmentListActivity extends Activity{
@@ -20,18 +21,22 @@ public class AssignmentListActivity extends Activity{
     private List<Assignment> assignments;
     private List<String> aNames;
     public AssignmentHelper helper;
+    private Integer courseId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.assignmentlist);
+        
+        Bundle a = getIntent().getExtras();
+        courseId = a.getInt("courseId");
+        
         //fills local variables with items from database
         getItems();
         //sets up array adapter with assignment names from aNames
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.assignmentlist
-                , aNames);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.assignmentlist, aNames);
         //fills layout
-        ListView lv = (ListView) findViewById(R.id.assignmentlist);
+        ListView lv = (ListView)findViewById(R.id.assignmentlist);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -47,9 +52,9 @@ public class AssignmentListActivity extends Activity{
                 //gets the assignment object
                 Assignment a = assignments.get(index);
                 //get assignment database id
-                int aId = a.id;
+                int pass[] = {courseId, a.id};
                 //packages id to pass to next activity
-                i.putExtra("assignment" , aId);
+                i.putExtra("assignment" , pass);
                 //starts new activity
                 startActivity(i);
             }
