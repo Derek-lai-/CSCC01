@@ -4,18 +4,16 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <Button
+            android:id="@+id/buttonSignIN"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:onClick="signIn"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Courses"
-        android:id="@+id/buttonCourse"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tutorials"
-        android:id="@+id/buttonTutorial"
-        android:layout_gravity="center_horizontal" />
+            android:id="@+id/buttonSignUP"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up" />
 </LinearLayout>
