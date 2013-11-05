@@ -62,7 +62,8 @@ public class AssignmentViewActivity extends Activity{
     View.OnClickListener grade = new View.OnClickListener() {
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), AssignmentStudentListActivity.class);
-            i.putExtra("course", gradeHelper.getGradeDao(), 1);
+            String id = (String)assignment.grades
+            i.putExtra("course", gradeHelper.getGradeDao());
             startActivity(i);
         }
     };

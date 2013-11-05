@@ -13,12 +13,11 @@ import com.example.minutemadeproject.AssignmentHelper;
 import com.example.minutemadeproject.R;
 
 import com.example.minutemadeproject.Assignment;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AssignmentListActivity extends Activity{
 
-    private ArrayList<Assignment> assignments;
+    private List<Assignment> assignments;
     private List<String> aNames;
     public AssignmentHelper helper;
 
@@ -43,7 +42,7 @@ public class AssignmentListActivity extends Activity{
                 String text = ((TextView) view).getText().toString();
                 //creates new intent object pointing to new class to open
                 Intent i = new Intent(getApplicationContext(), AssignmentViewActivity.class);
-                //retieves index of the assignment name
+                //Retrieves index of the assignment name
                 int index = aNames.indexOf(text);
                 //gets the assignment object
                 Assignment a = assignments.get(index);
@@ -57,9 +56,10 @@ public class AssignmentListActivity extends Activity{
         });
     }
 
-    public void getItems(){
+
+	public void getItems(){
         helper = new AssignmentHelper(this);
-        assignments = (ArrayList)helper.getAll();
+        assignments = helper.getAll();
         //gets name of all assignment in list of assignment objects
         for (Assignment a: assignments){
             aNames.add(a.name);

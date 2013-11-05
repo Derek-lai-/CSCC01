@@ -26,9 +26,9 @@
         android:paddingTop="10dp"
         android:textSize="20dp"
         android:paddingLeft="10dp"
-        android:editable="true"
         android:layout_below="@+id/tutorial"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:editable="true"  />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,27 +67,26 @@
         android:layout_alignParentLeft="true" />
 
     <Button
+        android:id="@+id/editGrades"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Edit Paper"
-        android:id="@+id/editAssignment"
-        android:textSize="20dp"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="false"
-        android:layout_alignBaseline="@+id/editGrades"
-        android:layout_alignBottom="@+id/editGrades"
-        android:layout_alignRight="@+id/assignmentTitle" />
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/assignmentTitle"
+        android:text="Edit Grades"
+        android:textSize="20dp" />
 
     <Button
+        android:id="@+id/editAssignment"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Edit Grades"
-        android:id="@+id/editGrades"
-        android:textSize="20dp"
+        android:layout_alignBaseline="@+id/editGrades"
+        android:layout_alignBottom="@+id/editGrades"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="false"
-        android:layout_below="@+id/details"
-        android:layout_toRightOf="@+id/duedate"
-        android:layout_marginTop="36dp" />
+        android:layout_alignRight="@+id/assignmentTitle"
+        android:text="Edit Paper"
+        android:textSize="20dp" />
 
 </RelativeLayout>
