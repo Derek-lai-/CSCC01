@@ -35,6 +35,7 @@ public class Event {
         this.schedule = schedule;
 	}
 
+
     @Override
     public String toString() {
         return "(" + startDate + "-" + endDate + ") " + description;

@@ -5,8 +5,6 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
-import java.util.Date;
-
 
 @DatabaseTable(tableName = "tutorials")
 public class Tutorial {
@@ -21,10 +19,13 @@ public class Tutorial {
     public Instructor TA;
 
     @DatabaseField
-    public Date startTime;
+    public int day;
 
     @DatabaseField
-    public Date endTime;
+    public int startTime;
+
+    @DatabaseField
+    public int endTime;
 
     @ForeignCollectionField
     ForeignCollection<Student> students;
@@ -33,12 +34,39 @@ public class Tutorial {
         // Needed by OrmLite
     }
 
-	public Tutorial(Course course, Instructor TA, Date startTime, Date endTime){
+	public Tutorial(Course course, Instructor TA, int day, int startTime, int endTime) {
 		this.course = course;
         this.TA = TA;
+        this.day = day;
         this.startTime = startTime;
         this.endTime = endTime;
 	}
+
+    public String getDay() {
+
+        //String we will return
+        String dayString = "";
+
+        //Switch to convert days from int to string formats
+        switch(this.day) {
+            case 0: dayString = "Monday";
+                break;
+            case 1: dayString = "Tuesday";
+                break;
+            case 2: dayString = "Wednesday";
+                break;
+            case 3: dayString = "Thursday";
+                break;
+            case 4: dayString = "Friday";
+                break;
+            case 5: dayString = "Saturday";
+                break;
+            case 6: dayString = "Sunday";
+                break;
+        }
+
+        return dayString;
+    }
 
     @Override
     public String toString() {
