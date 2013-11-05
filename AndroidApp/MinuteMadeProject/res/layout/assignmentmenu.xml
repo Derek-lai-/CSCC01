@@ -67,17 +67,6 @@
         android:layout_alignParentLeft="true" />
 
     <Button
-        android:id="@+id/editGrades"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="false"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/assignmentTitle"
-        android:text="Edit Grades"
-        android:textSize="20dp" />
-
-    <Button
         android:id="@+id/editAssignment"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -88,5 +77,28 @@
         android:layout_alignRight="@+id/assignmentTitle"
         android:text="Edit Paper"
         android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/editGrades"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/editAssignment"
+        android:paddingLeft="10dp"
+        android:text="Edit Grades"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/mark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/details"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="10dp"
+        android:text="Mark"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
