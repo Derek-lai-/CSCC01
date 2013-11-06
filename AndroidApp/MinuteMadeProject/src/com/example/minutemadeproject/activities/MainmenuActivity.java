@@ -2,6 +2,11 @@ package com.example.minutemadeproject.activities;
 
 import java.util.ArrayList;
 
+import com.example.minutemadeproject.R;
+import com.example.minutemadeproject.R.id;
+import com.example.minutemadeproject.R.layout;
+import com.example.minutemadeproject.R.menu;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -11,9 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.minutemadeproject.R;
-
-public class MainMenuActivity extends Activity {
+public class MainmenuActivity extends Activity {
 
 	private enum MenuItem {
 		Lesson, Course, Schedule;
@@ -32,7 +35,9 @@ public class MainMenuActivity extends Activity {
 		items.add("Course");
 		items.add("Schedule");
 		welcome = (TextView) findViewById(R.id.welcome);
-		// welcome.setText("Welcome " + VarHolder.getUser().username);
+		//welcome.setText("Welcome " + VarHolder.getUser().username);
+		welcome.setText("Welcome");
+		
 		ArrayAdapter<String> arrayAdpater = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
 		lv.setAdapter(arrayAdpater);
