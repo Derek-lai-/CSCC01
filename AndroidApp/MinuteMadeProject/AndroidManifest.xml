@@ -22,8 +22,7 @@
             </intent-filter>
         </activity>
          
-       	 	<activity android:name=".activities.AssignmentListActivity" />
-        	<activity android:name=".activities.AssignmentViewActivity" />
+
         
     </application>
 </manifest>

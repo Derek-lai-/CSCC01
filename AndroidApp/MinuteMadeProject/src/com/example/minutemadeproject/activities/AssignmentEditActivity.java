@@ -4,6 +4,7 @@ package com.example.minutemadeproject.activities;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -12,6 +13,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.example.minutemadeproject.R;
 import com.example.minutemadeproject.helpers.AssignmentHelper;
 import com.example.minutemadeproject.helpers.CourseHelper;
@@ -30,7 +33,7 @@ public class AssignmentEditActivity extends Activity{
     private Date newDue = null;
     private Date newAssign = null;
     private String newDetails = null;
-    private double newMark = (Double) null;
+    private double newMark;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -43,9 +46,9 @@ public class AssignmentEditActivity extends Activity{
         }
         CourseHelper chelper = new CourseHelper(this);
         course = chelper.get(extra[0]);
-        
+        helper = new AssignmentHelper(this);
+
         if (assignment != null){
-        	helper = new AssignmentHelper(this);
         	assignment = helper.getAssignment(assignmentId);
         }
         
@@ -89,13 +92,16 @@ public class AssignmentEditActivity extends Activity{
 					newAssign = formatter.parse(adate);
 					newDue = formatter.parse(ddate);
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
     					
-    			assignment = new Assignment(newTitle, newTutorial, newDetails, course,newAssign, newDue, newMark);
+    			assignment = new Assignment(newTitle, newTutorial, null, null, newAssign, newDue, newMark);
     			helper.create(assignment);
-    			startActivity(i);
+                List<Assignment> list = helper.getAll();
+                Assignment ass = list.get(list.size() -1);
+                Toast toast = Toast.makeText(getApplicationContext(), ass.name, Toast.LENGTH_LONG);
+                toast.show();
+                finish();
     	    }
         }); 
     }
