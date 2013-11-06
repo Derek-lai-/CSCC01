@@ -1,4 +1,4 @@
-package com.example.minutemadeproject;
+package com.example.minutemadeproject.activities;
 
 
 import android.os.Bundle;
@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.support.v4.app.NavUtils;
 
-public class AddLesson extends Activity {
+import com.example.minutemadeproject.R;
+
+public class AddLessonActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

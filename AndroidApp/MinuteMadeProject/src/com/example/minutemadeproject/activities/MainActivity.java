@@ -45,15 +45,6 @@ public class MainActivity extends OrmLiteBaseActivity<DatabaseHelper> {
         }
 
         setContentView(R.layout.main);
-        View courseButton = this.findViewById(R.id.buttonCourse);
-
-        courseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

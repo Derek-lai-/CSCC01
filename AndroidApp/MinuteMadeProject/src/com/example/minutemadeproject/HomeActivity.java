@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.minutemadeproject.activities.SignupActivity;
+
 public class HomeActivity extends Activity {
     Button btnSignIn, btnSignUp, btnDisplayLessonPlan;
     LoginDataBaseAdapter loginDataBaseAdapter;
@@ -33,7 +35,7 @@ public class HomeActivity extends Activity {
                 // TODO Auto-generated method stub
 
                 /// Create Intent for SignUpActivity  abd Start The Activity
-                Intent intentSignUP = new Intent(getApplicationContext(), SignUPActivity.class);
+                Intent intentSignUP = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(intentSignUP);
             }
         });

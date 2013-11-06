@@ -8,8 +8,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Courses"
-        android:id="@+id/buttonCourse"
+        android:text="Sign In"
+        android:id="@+id/buttonSignIN"
         android:layout_gravity="center_horizontal" />
 
     <Button

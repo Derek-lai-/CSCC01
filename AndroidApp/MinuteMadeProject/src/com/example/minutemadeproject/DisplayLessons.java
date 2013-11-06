@@ -1,7 +1,5 @@
 package com.example.minutemadeproject;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +9,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.support.v4.app.NavUtils;
+import android.support
+
+import com.example.minutemadeproject.activities.AddLessonActivity;
+import com.example.minutemadeproject.models.Lesson;
 
 public class DisplayLessons extends Activity {
 	
@@ -27,8 +28,8 @@ public class DisplayLessons extends Activity {
 		
 		//to be replaced after
 		lessons = new LessonBank();
-		Lesson lesson1 = new Lesson("cscc01 tutorial week 1", "do nothing");
-		Lesson lesson2 = new Lesson("cscc01 tutorial week 2", "do nothing");
+		Lesson lesson1 = new Lesson(null, "cscc01 tutorial week 1", "do nothing");
+		Lesson lesson2 = new Lesson(null, "cscc01 tutorial week 2", "do nothing");
 		lessons.addLesson(lesson1);
 		lessons.addLesson(lesson2);
 		
@@ -83,7 +84,7 @@ public class DisplayLessons extends Activity {
 	}
 	
 	public void addLesson(View V){
-		Intent intent = new Intent(getApplicationContext(), AddLesson.class);
+		Intent intent = new Intent(getApplicationContext(), AddLessonActivity.class);
         startActivityForResult(intent, 1);
 	}
 	
@@ -93,7 +94,7 @@ public class DisplayLessons extends Activity {
                 // A contact was picked.  Here we will just display it
                 // to the user.
             	String[] result=data.getStringArrayExtra("lesson");
-            	Lesson lesson = new Lesson(result[0], result[1]);
+            	Lesson lesson = new Lesson(null, result[0], result[1]);
             	lessons.addLesson(lesson);
             }
             

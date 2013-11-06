@@ -1,5 +1,7 @@
 package com.example.minutemadeproject;
 
+import com.example.minutemadeproject.models.Lesson;
+
 import java.util.ArrayList;
 
 public class LessonBank {
@@ -13,7 +15,7 @@ public class LessonBank {
 	
 	public void addLesson(Lesson otherLesson){
 		lessons.add(otherLesson);
-		topics.add(otherLesson.topic);
+		topics.add(otherLesson.topics);
 	}
 	
 	public void removeLesson(Lesson otherLesson){

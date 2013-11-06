@@ -36,7 +36,7 @@
             android:label="@string/title_activity_instructions" >
         </activity>
         <activity
-            android:name="com.example.minutemadeproject.AddLesson"
+            android:name=".activities.AddLessonActivity"
             android:label="@string/title_activity_add_lesson"
             android:parentActivityName="com.example.minutemadeproject.DisplayLessons" >
             <meta-data

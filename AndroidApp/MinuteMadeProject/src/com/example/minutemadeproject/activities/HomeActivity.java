@@ -4,8 +4,6 @@ import java.util.List;
 
 
 import com.example.minutemadeproject.R;
-import com.example.minutemadeproject.R.id;
-import com.example.minutemadeproject.R.layout;
 import com.example.minutemadeproject.helpers.InstructorHelper;
 import com.example.minutemadeproject.models.Instructor;
 
@@ -31,7 +29,7 @@ public class HomeActivity extends Activity {
        // loginDataBaseAdapter = new LoginDataBaseAdapter(this);
        // loginDataBaseAdapter = loginDataBaseAdapter.open();
 
-        // Get The Refference Of Buttons
+        // Get The Reference Of Buttons
         btnSignIn = (Button) findViewById(R.id.buttonSignIN);
         btnSignUp = (Button) findViewById(R.id.buttonSignUP);
 

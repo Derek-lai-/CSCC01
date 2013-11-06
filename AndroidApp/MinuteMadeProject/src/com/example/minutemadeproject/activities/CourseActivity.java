@@ -31,7 +31,7 @@ public class CourseActivity extends OrmLiteBaseListActivity<DatabaseHelper> {
         List<Course> courses = courseHelper.getAll();
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.list_line1, courses);
+        ArrayAdapter<Course> adapter = new ArrayAdapter<Course>(this, R.layout.list_item, R.id.list_line1, courses);
 
         listView.setAdapter(adapter);
     }
