@@ -16,7 +16,7 @@ import android.support.v4.app.NavUtils;
 public class DisplayLessons extends Activity {
 	
 	ListView lv = null;
-	ArrayList<String> items = new ArrayList<String>();
+	LessonBank lessons = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +24,18 @@ public class DisplayLessons extends Activity {
 		setContentView(R.layout.activity_display_lessons);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		//to be replaced after
+		lessons = new LessonBank();
+		Lesson lesson1 = new Lesson("cscc01 tutorial week 1", "do nothing");
+		Lesson lesson2 = new Lesson("cscc01 tutorial week 2", "do nothing");
+		lessons.addLesson(lesson1);
+		lessons.addLesson(lesson2);
+		
+		
 		lv = (ListView) findViewById(R.id.topic);
-		items.add("course 1_tutorial 1_lesson1");
-		items.add("course 1_tutorial 1_lesson2");
-		items.add("course 1_tutorial 2_lesson1");
-		items.add("course 2_tutorial 1_lesson1");
 		ArrayAdapter<String> arrayAdpater = new ArrayAdapter<String>(this, 
-				android.R.layout.simple_list_item_1, items);
+				android.R.layout.simple_list_item_1, lessons.getTopics());
 		lv.setAdapter(arrayAdpater);
 		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			
@@ -81,5 +86,32 @@ public class DisplayLessons extends Activity {
 		Intent intent = new Intent(getApplicationContext(), AddLesson.class);
         startActivityForResult(intent, 1);
 	}
+	
+	protected void onActivityResult(int requestCode, int resultCode,
+            Intent data) {
+            if (resultCode == RESULT_OK) {
+                // A contact was picked.  Here we will just display it
+                // to the user.
+            	String[] result=data.getStringArrayExtra("lesson");
+            	Lesson lesson = new Lesson(result[0], result[1]);
+            	lessons.addLesson(lesson);
+            }
+            
+            lv = (ListView) findViewById(R.id.topic);
+    		ArrayAdapter<String> arrayAdpater = new ArrayAdapter<String>(this, 
+    				android.R.layout.simple_list_item_1, lessons.getTopics());
+    		lv.setAdapter(arrayAdpater);
+    		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    			
+    			@Override
+    			public void onItemClick(AdapterView<?> parentAdapter, View view, int position,
+    					long id) {
+    				// TODO Auto-generated method stub
+    				 Intent intent = new Intent(getApplicationContext(), Instructions.class);
+                     startActivity(intent);
+    			}
+    		});
+    }
+	
 
 }
