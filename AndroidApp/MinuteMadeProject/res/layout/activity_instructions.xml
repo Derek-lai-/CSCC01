@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Instructions" >
+
+    <TextView
+        android:id="@+id/topicContentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/contentEdit"
+        android:layout_below="@+id/topicText"
+        android:layout_marginTop="70dp"
+        android:paddingLeft="10dp"
+        android:text="Content"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/contentEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/topicEdit"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:lines="7"
+        android:maxLines="100" />
+
+    <Button
+        android:id="@+id/removeTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/contentEdit"
+        android:layout_below="@+id/contentEdit"
+        android:layout_marginTop="19dp"
+        android:onClick="remove"
+        android:text="Remove" />
+
+    <EditText
+        android:id="@+id/topicEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/topicText"
+        android:layout_below="@+id/topicText"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/topicText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="22dp"
+        android:paddingLeft="10dp"
+        android:text="Topic"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/removeTopic"
+        android:layout_alignBottom="@+id/removeTopic"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/removeTopic"
+        android:text="Save"
+        android:onClick="save" />
+
+</RelativeLayout>
