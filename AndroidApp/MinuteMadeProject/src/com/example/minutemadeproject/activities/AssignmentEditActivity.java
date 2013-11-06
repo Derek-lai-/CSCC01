@@ -39,28 +39,36 @@ public class AssignmentEditActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.assignmentcreate);
 
-        Bundle a = getIntent().getExtras();
+        //pulls extra info from previous activity
+        final Bundle a = getIntent().getExtras();
+
+        //checks of you are editting a existing assignment
         if (a != null){
-            extra = a.getIntArray("assignment");
+            extra = a.getIntArray("id");
             assignmentId = extra[1];
         }
+
+        //create courseHelper
         CourseHelper chelper = new CourseHelper(this);
+        //sets course object with courseId from pervious activity
         course = chelper.get(extra[0]);
         helper = new AssignmentHelper(this);
 
+        //gets ID of assignment if passed from previous activity
         if (assignment != null){
         	assignment = helper.getAssignment(assignmentId);
         }
-        
+
+        //sets editText buttons on layout
         final EditText title = (EditText) findViewById(R.id.editName);
     	final EditText tutorial = (EditText) findViewById(R.id.editTutorial);
     	final EditText assign = (EditText) findViewById(R.id.editADate);
     	final EditText due = (EditText) findViewById(R.id.editDDate);
     	final EditText details = (EditText) findViewById(R.id.editDetails);
     	final EditText marks = (EditText) findViewById(R.id.editMark);
-        
-        if (assignment != null){
 
+        //fills in pre existing data if an assignment already exist
+        if (assignment != null){
             tutorial.setText(assignment.tutorial);
             assign.setText(assignment.postDate.toString());
             due.setText(assignment.dueDate.toString());
@@ -69,7 +77,8 @@ public class AssignmentEditActivity extends Activity{
         	String m = String.valueOf(assignment.totalMark);
         	marks.setText(m);
         }
-        
+
+        //define save button
         Button saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
         	
@@ -77,16 +86,19 @@ public class AssignmentEditActivity extends Activity{
 			@Override
     		public void onClick(View v) {
     			Intent i = new Intent(getApplicationContext(), AssignmentViewActivity.class);
-    			
+
+                //set SimpleDateFormatter, pases string and sets as a date object
     			SimpleDateFormat formatter = new SimpleDateFormat("MMM/dd/yyyy");
-    			
+
+                //gets the string text from the editable text and sets variables to them
     			newTitle = title.getText().toString();
     			newTutorial = tutorial.getText().toString();
     			newDetails = details.getText().toString();
     			String tempmark = marks.getText().toString();
     			String ddate = due.getText().toString();
     			String adate = assign.getText().toString();
-    			
+
+                //attempt parsing and some of the variables
     			try {
     				newMark = (Double.parseDouble(tempmark));	
 					newAssign = formatter.parse(adate);
@@ -94,9 +106,23 @@ public class AssignmentEditActivity extends Activity{
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-    					
-    			assignment = new Assignment(newTitle, newTutorial, null, null, newAssign, newDue, newMark);
-    			helper.create(assignment);
+
+                //checks for existing assingment, if exist, update database
+                if (a != null){
+                    assignment.name = newTitle;
+                    assignment.tutorial = newTutorial;
+                    assignment.dueDate = newDue;
+                    assignment.postDate = newAssign;
+                    assignment.totalMark = newMark;
+                    helper.update(assignment);
+                // if previous assingment does not exist, create new assignment object and put
+                    //into database
+                } else {
+    			    assignment = new Assignment(newTitle, newTutorial, null, null, newAssign, newDue, newMark);
+    			    helper.create(assignment);
+                }
+
+                //testing, get last item and put as a Tost
                 List<Assignment> list = helper.getAll();
                 Assignment ass = list.get(list.size() -1);
                 Toast toast = Toast.makeText(getApplicationContext(), ass.name, Toast.LENGTH_LONG);
