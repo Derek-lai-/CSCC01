@@ -27,8 +27,10 @@ public class AssignmentListActivity extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.assignmentlist);
-        
+
+        //gets extra info from Course activity
         Bundle a = getIntent().getExtras();
+        //sets info to Courseid
         courseId = a.getInt("courseId");
         
         //fills local variables with items from database
