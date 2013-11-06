@@ -1,10 +1,13 @@
 package com.example.minutemadeproject;
 
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.support.v4.app.NavUtils;
 
 public class AddLesson extends Activity {
@@ -51,6 +54,14 @@ public class AddLesson extends Activity {
 	}
 	
 	public void submit(View V){
+		Intent intent = new Intent();
+		EditText topic = (EditText) findViewById(R.id.topicAdd);
+    	String topicName = topic.getText().toString();
+    	EditText content = (EditText) findViewById(R.id.topicContent);
+    	String contentName = content.getText().toString();
+    	String[] toSend = {topicName, contentName};
+	    intent.putExtra("lesson", toSend);
+	    setResult(RESULT_OK, intent);
 		finish();
 	}
 
