@@ -21,6 +21,12 @@ public class Assignment {
     public String name;
 
     @DatabaseField
+    public String tutorial;
+
+    @DatabaseField
+    public String description;
+
+    @DatabaseField
     public Date postDate;
 
     @DatabaseField
@@ -36,9 +42,11 @@ public class Assignment {
         // Needed by OrmLite
     }
 
-    public Assignment(String name, Course course, Date postDate, Date dueDate, double totalMark) {
+    public Assignment(String name, String tutorial, String description, Course course, Date postDate, Date dueDate, double totalMark) {
         this.name = name;
         this.course = course;
+        this.tutorial = tutorial;
+        this.description = description;
         this.postDate = postDate;
         this.dueDate = dueDate;
         this.totalMark = totalMark;
@@ -48,4 +56,5 @@ public class Assignment {
     public String toString() {
         return name + "for " + course.name + "due " + dueDate;
     }
+
 }
