@@ -5,6 +5,11 @@ November 5 2013
 ## State of the project
 
 
+At present, prospects for the success of our project remain high. Despite
+being met with some obstacles team morale remains high and our
+confidence going forward is unwavering.
+
+
 ## Iteration plan
 
 Previous velocity: 1
