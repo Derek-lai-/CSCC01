@@ -51,6 +51,14 @@ public class CourseHelper {
         return 0;
     }
 
+    public List<Course> findMatch(String field, String value){
+        try{
+            return courseDao.queryForEq(field, value);
+        } catch (SQLExcecption e) {
+            e.printStackTrace();
+        }
+    }
+
     public Course get(int id) {
         try {
             return courseDao.queryForId(id);

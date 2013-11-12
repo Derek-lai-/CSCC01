@@ -51,6 +51,14 @@ public class TutorialHelper {
         return 0;
     }
 
+    public List<Tutorial> findMatch(String field, String value){
+        try{
+            return tutorialDao.queryForEq(field, value);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Tutorial get(int id) {
         try {
             return tutorialDao.queryForId(id);

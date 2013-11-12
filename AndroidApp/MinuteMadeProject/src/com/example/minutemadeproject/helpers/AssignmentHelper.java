@@ -52,6 +52,13 @@ public class AssignmentHelper {
         return 0;
     }
 
+    public List<Assignment> findMatch(String field, String value){
+        try{
+            return assignmentDao.queryForEq(field, value);
+        } catch (SQLExcecption e) {
+            e.printStackTrace();
+        }
+    }
 
     public List<Assignment> getAll(){
         try {

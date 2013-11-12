@@ -21,6 +21,9 @@ public class Tutorial {
     public Instructor TA;
 
     @DatabaseField
+    public String section;
+
+    @DatabaseField
     public Date startTime;
 
     @DatabaseField
@@ -33,15 +36,16 @@ public class Tutorial {
         // Needed by OrmLite
     }
 
-	public Tutorial(Course course, Instructor TA, Date startTime, Date endTime){
+	public Tutorial(Course course, Instructor TA, Date startTime, Date endTime, String section){
 		this.course = course;
         this.TA = TA;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.section = section;
 	}
 
     @Override
     public String toString() {
-        return "Tutorial for " + course.name + " (" + startTime + " - " + endTime;
+        return "Tutorial for " + course.name + " (" + startTime + " - " + endTime + " Section " + section;
     }
 }
