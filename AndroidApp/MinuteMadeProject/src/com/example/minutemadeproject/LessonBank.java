@@ -15,7 +15,7 @@ public class LessonBank {
 	
 	public void addLesson(Lesson otherLesson){
 		lessons.add(otherLesson);
-		topics.add(otherLesson.topics);
+		topics.add(otherLesson.topic);
 	}
 	
 	public void removeLesson(Lesson otherLesson){

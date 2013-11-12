@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.support
+import android.support.v4.app.NavUtils;
 
 import com.example.minutemadeproject.activities.AddLessonActivity;
 import com.example.minutemadeproject.models.Lesson;
@@ -28,8 +28,8 @@ public class DisplayLessons extends Activity {
 		
 		//to be replaced after
 		lessons = new LessonBank();
-		Lesson lesson1 = new Lesson(null, "cscc01 tutorial week 1", "do nothing");
-		Lesson lesson2 = new Lesson(null, "cscc01 tutorial week 2", "do nothing");
+		Lesson lesson1 = new Lesson("cscc01 tutorial week 1", "do nothing");
+		Lesson lesson2 = new Lesson("cscc01 tutorial week 2", "do nothing");
 		lessons.addLesson(lesson1);
 		lessons.addLesson(lesson2);
 		

@@ -13,8 +13,9 @@
         android:icon="@drawable/icon_david"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
         <activity
-            android:name="com.example.minutemadeproject.activities.HomeActivity"
+            android:name="com.example.minutemadeproject.activities.MainmenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity android:name="com.example.minutemadeproject.SignUPActivity" />
+        
         <activity
             android:name="com.example.minutemadeproject.DisplayLessons"
             android:label="@string/title_activity_display_lessons"
@@ -31,10 +34,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.minutemadeproject.HomeActivity" />
         </activity>
+        
         <activity
             android:name="com.example.minutemadeproject.Instructions"
             android:label="@string/title_activity_instructions" >
         </activity>
+        
         <activity
             android:name=".activities.AddLessonActivity"
             android:label="@string/title_activity_add_lesson"
@@ -43,5 +48,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.minutemadeproject.DisplayLessons" />
         </activity>
+        
     </application>
 </manifest>

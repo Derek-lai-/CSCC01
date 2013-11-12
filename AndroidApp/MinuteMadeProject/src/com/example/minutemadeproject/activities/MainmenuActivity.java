@@ -2,6 +2,7 @@ package com.example.minutemadeproject.activities;
 
 import java.util.ArrayList;
 
+import com.example.minutemadeproject.DisplayLessons;
 import com.example.minutemadeproject.R;
 import com.example.minutemadeproject.R.id;
 import com.example.minutemadeproject.R.layout;
@@ -9,6 +10,7 @@ import com.example.minutemadeproject.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -51,7 +53,8 @@ public class MainmenuActivity extends Activity {
 				MenuItem i = MenuItem.valueOf(clickedItem.getText() + "");
 				switch (i) {
 				case Lesson: {
-					// Launch Lesson
+					Intent intent = new Intent(getApplicationContext(), DisplayLessons.class);
+                    startActivity(intent);
 					break;
 				}
 				case Course: {
