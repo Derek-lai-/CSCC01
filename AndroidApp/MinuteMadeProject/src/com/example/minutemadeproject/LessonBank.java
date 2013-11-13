@@ -29,4 +29,29 @@ public class LessonBank {
 	public ArrayList<String> getTopics(){
 		return this.topics;
 	}
+	
+	public void edit(String topicToEdit, String contentToEdit){
+		for(Lesson item:lessons){
+			if(item.topic.contentEquals(topicToEdit)){
+				item.content = contentToEdit;
+			}
+		}
+		
+		for(String item:topics){
+			if(item.contentEquals(topicToEdit)){
+				item = topicToEdit;
+			}
+		}
+	}
+	
+	public void edit(int position, String topicToEdit, String contentToEdit){
+		lessons.get(position).topic = topicToEdit;
+		lessons.get(position).content = contentToEdit;
+		topics.set(position, topicToEdit);
+	}
+	
+	public void remove(int position){
+		lessons.remove(position);
+		topics.remove(position);
+	}
 }

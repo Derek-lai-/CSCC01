@@ -45,7 +45,35 @@ public class DisplayLessons extends Activity {
 					long id) {
 				// TODO Auto-generated method stub
 				 Intent intent = new Intent(getApplicationContext(), Instructions.class);
-                 startActivity(intent);
+				 String[] toSend = {lessons.getLessons().get(position).topic, 
+						 lessons.getLessons().get(position).content, Integer.toString(position)};
+				 //String[] toSend = {"topic","content"};
+				 intent.putExtra("lesson", toSend);
+                 startActivityForResult(intent, 1);
+			}
+		});
+	}
+	
+	@Override
+	public void onResume() {
+	    super.onResume();  // Always call the superclass method first
+
+	    lv = (ListView) findViewById(R.id.topic);
+		ArrayAdapter<String> arrayAdpater = new ArrayAdapter<String>(this, 
+				android.R.layout.simple_list_item_1, lessons.getTopics());
+		lv.setAdapter(arrayAdpater);
+		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			
+			@Override
+			public void onItemClick(AdapterView<?> parentAdapter, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getApplicationContext(), Instructions.class);
+				 String[] toSend = {lessons.getLessons().get(position).topic, 
+						 lessons.getLessons().get(position).content, Integer.toString(position)};
+				 //String[] toSend = {"topic","content"};
+				 intent.putExtra("lesson", toSend);
+                startActivityForResult(intent, 1);
 			}
 		});
 	}
@@ -88,30 +116,20 @@ public class DisplayLessons extends Activity {
         startActivityForResult(intent, 1);
 	}
 	
-	protected void onActivityResult(int requestCode, int resultCode,
-            Intent data) {
-            if (resultCode == RESULT_OK) {
-                // A contact was picked.  Here we will just display it
-                // to the user.
-            	String[] result=data.getStringArrayExtra("lesson");
-            	Lesson lesson = new Lesson(null, result[0], result[1]);
-            	lessons.addLesson(lesson);
-            }
+	protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+		String[] result=data.getStringArrayExtra("lesson");
+        if (resultCode == RESULT_OK) {
+            // A contact was picked.  Here we will just display it
+            // to the user.
+        	Lesson lesson = new Lesson(result[0], result[1]);
+            this.lessons.addLesson(lesson);
+        }else if(resultCode == 10){//save
+            this.lessons.edit(Integer.parseInt(result[2]), result[0], result[1]);
+        }else if(resultCode == 11){//remove
+            this.lessons.remove(Integer.parseInt(result[2]));
+        }
             
-            lv = (ListView) findViewById(R.id.topic);
-    		ArrayAdapter<String> arrayAdpater = new ArrayAdapter<String>(this, 
-    				android.R.layout.simple_list_item_1, lessons.getTopics());
-    		lv.setAdapter(arrayAdpater);
-    		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    			
-    			@Override
-    			public void onItemClick(AdapterView<?> parentAdapter, View view, int position,
-    					long id) {
-    				// TODO Auto-generated method stub
-    				 Intent intent = new Intent(getApplicationContext(), Instructions.class);
-                     startActivity(intent);
-    			}
-    		});
+            
     }
 	
 
