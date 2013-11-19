@@ -1,6 +1,7 @@
 package com.example.minutemadeproject.helpers;
 
 import android.content.Context;
+
 import com.example.minutemadeproject.models.Student;
 
 import com.example.minutemadeproject.db.DatabaseHelper;
@@ -63,6 +64,15 @@ public class StudentHelper {
     public List<Student> getAll(){
         try {
             return studentDao.queryForAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Student> findMatch(String field, String value){
+        try{
+            return studentDao.queryForEq(field, value);
         } catch (SQLException e) {
             e.printStackTrace();
         }

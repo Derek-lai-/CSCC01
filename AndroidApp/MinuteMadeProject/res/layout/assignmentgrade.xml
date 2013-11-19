@@ -1,32 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TableLayout
+<LinearLayout
+    android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:stretchColumns="2"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TableRow
-    android:id="@+id/studentrow"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_weight="1">
-
-    <TextView
-        android:id="@+id/studentname"
-        android:layout_weight="1"
-        android:text="Student Number" >
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/studentgrade"
-        android:layout_weight="1"
-        android:text="Grade" >
-
-    </TextView>
-    </TableRow>
-
-</TableLayout>
-
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridView" />
+</LinearLayout>
