@@ -8,6 +8,7 @@ import com.example.minutemadeproject.models.Assignment;
 import com.example.minutemadeproject.models.Course;
 import com.example.minutemadeproject.models.Event;
 import com.example.minutemadeproject.models.Grade;
+import com.example.minutemadeproject.models.Group;
 import com.example.minutemadeproject.models.Instructor;
 import com.example.minutemadeproject.models.Lesson;
 import com.example.minutemadeproject.models.Schedule;
@@ -37,7 +38,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     private Dao<Student, Integer> studentDao = null;
     private Dao<Tutorial, Integer> tutorialDao = null;
     private Dao<User, Integer> userDao = null;
-
+    private Dao<Group, Integer> groupDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -57,6 +58,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
             TableUtils.createTable(connectionSource, Student.class);
             TableUtils.createTable(connectionSource, Tutorial.class);
             TableUtils.createTable(connectionSource, User.class);
+            TableUtils.createTable(connectionSource, Group.class);
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database.", e);
             throw new RuntimeException(e);
@@ -77,6 +79,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
             TableUtils.dropTable(connectionSource, Student.class, true);
             TableUtils.dropTable(connectionSource, Tutorial.class, true);
             TableUtils.dropTable(connectionSource, User.class, true);
+            TableUtils.dropTable(connectionSource, Group.class, true);
 
             onCreate(db, connectionSource);
         } catch (SQLException e) {
@@ -155,6 +158,13 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         return userDao;
     }
 
+    public Dao<Group, Integer> getGroupDao() throws SQLException {
+        if (groupDao == null) {
+        	groupDao = getDao(Group.class);
+        }
+        return groupDao;
+    }
+    
     @Override
     public void close() {
         super.close();
@@ -168,5 +178,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         studentDao = null;
         tutorialDao = null;
         userDao = null;
+        groupDao = null;
     }
 }
