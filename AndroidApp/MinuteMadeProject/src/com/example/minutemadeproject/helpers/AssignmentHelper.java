@@ -28,10 +28,10 @@ public class AssignmentHelper {
     public int getId(Assignment assignment){
         try {
             return assignmentDao.extractId(assignment);
-        } else (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return 0;
     }
 
 
@@ -60,15 +60,6 @@ public class AssignmentHelper {
             e.printStackTrace();
         }
         return 0;
-    }
-
-    public List<Assignment> findMatch(String field, String value){
-        try{
-            return assignmentDao.queryForEq(field, value);
-        } catch (SQLExcecption e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public List<Assignment> getAll(){

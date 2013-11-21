@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 import com.example.minutemadeproject.R;
@@ -48,16 +50,16 @@ public class AssignmentMenu extends Activity {
         courseAdapt.setDropDownViewResource(R.layout.assignmentcreate);
         courseSpinner.setAdapter(courseAdapt);
 
-        courseSpinner.setOnItemSelectedListener(new onItemCourseSelected());
-        assignmentSpinner.setOnItemSelectedListener(new onAssignmentSelected());
-        tutorialSpinner.setOnItemSelectedListener(new onTutorialSelected());
+        courseSpinner.setOnItemSelectedListener(onItemCourseSelected());
+        assignmentSpinner.setOnItemSelectedListener(onAssignmentSelected());
+        tutorialSpinner.setOnItemSelectedListener(onTutorialSelected());
 
         Button editGradeButton = (Button) findViewById(R.id.grades);
-        Button editAssignemtnButton = (Button) findViewById(R.id.editAssignment);
+        Button editAssignmentButton = (Button) findViewById(R.id.editAssignment);
         Button createAssignmentButton = (Button) findViewById(R.id.createassignment);
 
         editGradeButton.setOnClickListener(editGradeButton);
-        editAssignmentButton.setOnClickListener(editAssignemtnButton);
+        editAssignmentButton.setOnClickListener(editAssignmentButton);
         createAssignmentButton.setOnClickListener(createAssignment);
 
     }
@@ -74,7 +76,7 @@ public class AssignmentMenu extends Activity {
         Spinner tutorialSpinner = (Spinner) findViewById(R.id.tutorialSpinner);
 
         ArrayAdapter<String> assignmentAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, curAssignments);
-        ArrayAdapter<String> tutorialAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, curTutorial);
+        ArrayAdapter<String> tutorialAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, curTutorials);
 
         assignmentAdapt.setDropDownViewResource(R.layout.assignmentcreate);
         tutorialAdapt.setDropDownViewResource(R.layout.assignmentcreate);
@@ -83,29 +85,29 @@ public class AssignmentMenu extends Activity {
         tutorialSpinner.setAdapter(tutorialAdapt);
     }
 
-    public onAssignmentSelected(AdapterView<?> parent, View view, int post, long id){
+    public void onAssignmentSelected(AdapterView<?> parent, View view, int post, long id){
         pickAssignment = curAssignments.get(post);
 
         TextView assign = (TextView) findViewById(R.id.assigned);
         TextView due = (TextView) findViewById(R.id.due);
-        TextView mark =  (TextVew) findViewById(R.id.marks);
+        TextView mark =  (TextView) findViewById(R.id.marks);
         TextView details = (TextView) findViewById(R.id.details);
 
-        assign.setText(pickAssignment.postDate);
-        due.setText(pickAssignment.dueDate);
-        mark.setText(pickAssignment.totalMark);
+        assign.setText((CharSequence) pickAssignment.postDate);
+        due.setText((CharSequence) pickAssignment.dueDate);
+        mark.setText((int) pickAssignment.totalMark);
         details.setText(pickAssignment.description);
     }
 
-    public onTutorialSelected(AdapterView<?> parent, View view, int post, long id){
-        pickTutorial = curTutorial.get(post);
+    public void onTutorialSelected(AdapterView<?> parent, View view, int post, long id){
+        pickTutorial = curTutorials.get(post);
     }
 
     View.OnClickListener editGrade = new View.OnClickListener() {
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), GradeEdit.class);
             int id = AssignmentHelper.getId(pickAssignment);
-            i.putExtra("assignment", id)
+            i.putExtra("assignment", id);
             startActivity(i);
         }
     }
@@ -113,9 +115,9 @@ public class AssignmentMenu extends Activity {
     View.OnClickListener editAssignment = new View.OnClickListener() {
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), AssignmentEditActivity.class);
-            List id[1] = new List;
-            id[0] = AssignmentHelper.getId(pickAssignment);
-            i.putExtra("id", id);
+            int id = AssignmentHelper.getId(pickAssignment);
+            i.putExtra("intent", 1);
+            i.putExtra("assignmentId", id);
             startActivity(i);
         }
     }
@@ -123,10 +125,11 @@ public class AssignmentMenu extends Activity {
     View.OnClickListener createAssignment = new View.OnClickListener(){
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), AssignmentEditActivity.class);
-            List id[2] = new List;
-            id[0] = curCourse.name;
-            id[1] = pickTutorial.section;
-            i.putExtra("id", id);
+            int courseName = curCourse.id;
+            String tutorialSection = pickTutorial.section;
+            i.putExtra("intent", 0);
+            i.putExtra("courseName", courseName);
+            i.putExtra("tutorialSection", tutorialSection);
             startActivity(i);
         }
     }
