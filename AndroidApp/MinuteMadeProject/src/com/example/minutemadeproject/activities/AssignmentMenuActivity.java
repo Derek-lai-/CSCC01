@@ -21,7 +21,7 @@ import com.example.minutemadeproject.models.Course;
 import com.example.minutemadeproject.helpers.TutorialHelper;
 import com.example.minutemadeproject.models.Tutorial;
 
-public class AssignmentMenu extends Activity {
+public class AssignmentMenuActivity extends Activity {
 
     AssignmentHelper assignmentHelper;
     CourseHelper courseHelper;
@@ -83,6 +83,8 @@ public class AssignmentMenu extends Activity {
 
         assignmentSpinner.setAdapter(assignmentAdapt);
         tutorialSpinner.setAdapter(tutorialAdapt);
+
+        //adapter.notifyDataSetChanged()
     }
 
     public void onAssignmentSelected(AdapterView<?> parent, View view, int post, long id){
