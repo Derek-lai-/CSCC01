@@ -36,7 +36,7 @@ public class GradeEdit extends Activity{
         ArrayAdapter<Grade> adapter = new ArrayAdapter<Grade>(this, R.layout.asssignmentgrade, gradeList);
 
         TableView tv = (TableView)findViewById(R.id.assignmentgrade);
-        lv.setAdapter(adapter;)
+        lv.setAdapter(adapter);
 
 
     }

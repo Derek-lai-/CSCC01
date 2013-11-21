@@ -105,34 +105,32 @@ public class AssignmentMenuActivity extends Activity {
         pickTutorial = curTutorials.get(post);
     }
 
-    View.OnClickListener editGrade = new View.OnClickListener() {
-        public void onClick(View v) {
-            Intent i = new Intent(getApplicationContext(), GradeEdit.class);
-            int id = AssignmentHelper.getId(pickAssignment);
-            i.putExtra("assignment", id);
-            startActivity(i);
-        }
-    }
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.editGradeButton:
+                Intent i = new Intent(getApplicationContext(), GradeEdit.class);
+                int id = AssignmentHelper.getId(pickAssignment);
+                i.putExtra("assignment", id);
+                startActivity(i);
+                break;
 
-    View.OnClickListener editAssignment = new View.OnClickListener() {
-        public void onClick(View v) {
-            Intent i = new Intent(getApplicationContext(), AssignmentEditActivity.class);
-            int id = AssignmentHelper.getId(pickAssignment);
-            i.putExtra("intent", 1);
-            i.putExtra("assignmentId", id);
-            startActivity(i);
-        }
-    }
+            case R.id.editAssignmentButton:
+                Intent i = new Intent(getApplicationContext(), AssignmentEditActivity.class);
+                int id = AssignmentHelper.getId(pickAssignment);
+                i.putExtra("intent", 1);
+                i.putExtra("assignmentId", id);
+                startActivity(i);
+                break;
 
-    View.OnClickListener createAssignment = new View.OnClickListener(){
-        public void onClick(View v) {
-            Intent i = new Intent(getApplicationContext(), AssignmentEditActivity.class);
-            int courseName = curCourse.id;
-            String tutorialSection = pickTutorial.section;
-            i.putExtra("intent", 0);
-            i.putExtra("courseName", courseName);
-            i.putExtra("tutorialSection", tutorialSection);
-            startActivity(i);
+            case R.id.createAssignmentButton:
+                Intent i = new Intent(getApplicationContext(), AssignmentEditActivity.class);
+                int courseName = curCourse.id;
+                String tutorialSection = pickTutorial.section;
+                i.putExtra("intent", 0);
+                i.putExtra("courseName", courseName);
+                i.putExtra("tutorialSection", tutorialSection);
+                startActivity(i);
+                break;
         }
     }
 }
