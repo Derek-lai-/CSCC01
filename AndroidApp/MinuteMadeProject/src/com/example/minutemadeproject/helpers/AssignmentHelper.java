@@ -25,6 +25,15 @@ public class AssignmentHelper {
         }
     }
 
+    public int getId(Assignment assignment){
+        try {
+            return assignmentDao.extractId(assignment);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public int create(Assignment assignment){
         try {
             return assignmentDao.create(assignment);

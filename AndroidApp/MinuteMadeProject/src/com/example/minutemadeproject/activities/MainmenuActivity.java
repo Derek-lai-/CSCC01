@@ -21,7 +21,7 @@ import android.widget.TextView;
 public class MainmenuActivity extends Activity {
 
 	private enum MenuItem {
-		Lesson, Course, Schedule;
+		Lesson, Course, Schedule, Assignment;
 	}
 
 	ArrayList<String> items = new ArrayList<String>();
@@ -36,6 +36,7 @@ public class MainmenuActivity extends Activity {
 		items.add("Lesson");
 		items.add("Course");
 		items.add("Schedule");
+        items.add("Assignment");
 		welcome = (TextView) findViewById(R.id.welcome);
 		//welcome.setText("Welcome " + VarHolder.getUser().username);
 		welcome.setText("Welcome");
@@ -65,6 +66,11 @@ public class MainmenuActivity extends Activity {
 					// Launch Lesson
 					break;
 				}
+                case Assignment: {
+                    Intent intent = new Intent(getApplicationContext(), AssignmentMenuActivity.class);
+                    startActivity(intent);
+                    break;
+                }
 				}
 
 			}
