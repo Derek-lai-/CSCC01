@@ -9,6 +9,7 @@ import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class AssignmentMenuActivity extends Activity {
         tutorialHelper = new TutorialHelper(this);
 
         courses = courseHelper.getAll();
-
+        ArrayList<String> listName = nameList(courses);
         curTutorials = new ArrayList<Tutorial>();
         curAssignments = new ArrayList<Assignment>();
 
@@ -51,7 +52,9 @@ public class AssignmentMenuActivity extends Activity {
         Spinner assignmentSpinner = (Spinner) findViewById(R.id.assignmentSpinner);
         Spinner tutorialSpinner = (Spinner) findViewById(R.id.tutorialSpinner);
 
-        ArrayAdapter<String> courseAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, courses);
+        ArrayAdapter<String> courseAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, listName);
+        Toast toast = Toast.makeText(getApplicationContext(), courses.get(10).name, Toast.LENGTH_LONG);
+        toast.show();
         final ArrayAdapter<String> tutorialAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, curTutorials);
         final ArrayAdapter<String> assignmentAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, curAssignments);
 
@@ -152,5 +155,13 @@ public class AssignmentMenuActivity extends Activity {
             }
         });
 
+    }
+
+    public ArrayList<String> nameList(List<Course> l){
+        ArrayList<String> nameTest = new ArrayList<String>();
+        for (Course x : l){
+            nameTest.add(x.name);
+        }
+        return nameTest;
     }
 }

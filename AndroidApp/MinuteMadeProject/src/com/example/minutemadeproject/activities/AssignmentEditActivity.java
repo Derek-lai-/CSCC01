@@ -80,10 +80,9 @@ public class AssignmentEditActivity extends Activity{
     		@SuppressLint("SimpleDateFormat")
 			@Override
     		public void onClick(View v) {
-    			Intent i = new Intent(getApplicationContext(), AssignmentViewActivity.class);
 
                 //set SimpleDateFormatter, pases string and sets as a date object
-    			SimpleDateFormat formatter = new SimpleDateFormat("MMM/dd/yyyy");
+    			SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
 
                 //gets the string text from the editable text and sets variables to them
     			newTitle = title.getText().toString();
@@ -116,13 +115,10 @@ public class AssignmentEditActivity extends Activity{
     			    assignment = new Assignment(newTitle, newTutorial, null, null, newAssign, newDue, newMark);
     			    helper.create(assignment);
                 }
-
-                //testing, get last item and put as a Tost
-                List<Assignment> list = helper.getAll();
-                Assignment ass = list.get(list.size() -1);
-                Toast toast = Toast.makeText(getApplicationContext(), ass.name, Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), assignment.name + " saved", Toast.LENGTH_LONG);
                 toast.show();
                 finish();
+
     	    }
         }); 
     }

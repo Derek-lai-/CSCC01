@@ -41,18 +41,18 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/course"
-        android:layout_alignLeft="@+id/editTutorial"
         android:text="Tutorial"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_alignBottom="@+id/course"
+        android:layout_alignRight="@+id/date"/>
 
     <EditText
         android:id="@+id/editTutorial"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/date"
-        android:layout_toRightOf="@+id/saveButton"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"/>
 
     <EditText
         android:id="@+id/editCode"
@@ -81,7 +81,7 @@
         android:ems="10"
         android:inputType="date"
         android:paddingTop="10dp"
-        android:text="MMM/DD/YY"
+        android:text="MM/DD/YYYY"
         android:textSize="10dp" />
 
     <TextView
@@ -104,29 +104,19 @@
         android:ems="10"
         android:inputType="date"
         android:paddingTop="10dp"
-        android:text="MMM/DD/YY"
+        android:text="MMM/DD/YYYY"
         android:textSize="10dp" />
-
-    <EditText
-        android:id="@+id/editDetails"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editdetails"
-        android:ems="10"
-        android:inputType="textMultiLine" />
 
     <TextView
         android:id="@+id/details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editADate"
-        android:layout_marginTop="72dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:text="Details"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_below="@+id/editMark"
+        android:layout_alignParentLeft="true"/>
 
     <TextView
         android:id="@+id/mark"
@@ -143,13 +133,23 @@
         android:id="@+id/editMark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mark"
-        android:layout_toLeftOf="@+id/saveButton"
         android:ems="10"
-        android:paddingLeft="10dp" >
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/mark"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/mark">
 
-        <requestFocus />
     </EditText>
+
+    <EditText
+        android:id="@+id/editDetails"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/details"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:id="@+id/saveButton"
@@ -157,10 +157,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="false"
-        android:layout_below="@+id/details"
-        android:layout_marginTop="26dp"
-        android:layout_toRightOf="@+id/details"
         android:text="Save"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_below="@+id/editDetails"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="12dp"/>
 
 </RelativeLayout>
