@@ -24,10 +24,11 @@ import com.example.minutemadeproject.models.Course;
 public class AssignmentEditActivity extends Activity{
 
     public AssignmentHelper helper;
+    CourseHelper courseHelper;
     int assignmentId;
-    int[] extra;
     Course course = null;
     Assignment assignment = null;
+    private Bundle bundle;
     private String newTitle = null;
     private String newTutorial = null;
     private Date newDue = null;
@@ -39,24 +40,18 @@ public class AssignmentEditActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.assignmentcreate);
 
-        //pulls extra info from previous activity
-        final Bundle a = getIntent().getExtras();
-
-        //checks of you are editting a existing assignment
-        if (a != null){
-            extra = a.getIntArray("id");
-            assignmentId = extra[1];
-        }
-
-        //create courseHelper
-        CourseHelper chelper = new CourseHelper(this);
-        //sets course object with courseId from pervious activity
-        course = chelper.get(extra[0]);
+        CourseHelper courseHelper = new CourseHelper(this);
         helper = new AssignmentHelper(this);
 
-        //gets ID of assignment if passed from previous activity
-        if (assignment != null){
-        	assignment = helper.getAssignment(assignmentId);
+        //pulls extra info from previous activity
+        bundle = getIntent().getExtras();
+
+        //checks of you are editting a existing assignment
+        if (bundle.getString("intent").equals(1)){
+            assignmentId = bundle.getInt("assignmentId");
+            assignment = helper.getAssignment(assignmentId);
+        } else {
+            course = courseHelper.get(bundle.getInt("courseName"));
         }
 
         //sets editText buttons on layout
@@ -94,21 +89,21 @@ public class AssignmentEditActivity extends Activity{
     			newTitle = title.getText().toString();
     			newTutorial = tutorial.getText().toString();
     			newDetails = details.getText().toString();
-    			String tempmark = marks.getText().toString();
-    			String ddate = due.getText().toString();
-    			String adate = assign.getText().toString();
+    			String tempMark = marks.getText().toString();
+    			String dDate = due.getText().toString();
+    			String aDate = assign.getText().toString();
 
                 //attempt parsing and some of the variables
     			try {
-    				newMark = (Double.parseDouble(tempmark));	
-					newAssign = formatter.parse(adate);
-					newDue = formatter.parse(ddate);
+    				newMark = (Double.parseDouble(tempMark));
+					newAssign = formatter.parse(aDate);
+					newDue = formatter.parse(dDate);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
 
                 //checks for existing assingment, if exist, update database
-                if (a != null){
+                if (bundle.getString("intent").equals(1)){
                     assignment.name = newTitle;
                     assignment.tutorial = newTutorial;
                     assignment.dueDate = newDue;
