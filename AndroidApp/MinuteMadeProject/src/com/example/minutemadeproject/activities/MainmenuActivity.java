@@ -71,17 +71,11 @@ public class MainmenuActivity extends Activity {
                     }
                     case Assignment: {
                         courses = courseHelper.getAll();
-                        if (courses.size() < 2){
+                        if (courses.size() < 1){
                             Toast toast = Toast.makeText(getApplicationContext(), "No courses yet," +
                                     " please make a new course", Toast.LENGTH_LONG);
                             toast.show();
                         } else {
-                            Course test351 = courses.get(1);
-                            Toast toast = Toast.makeText(getApplicationContext(), "No courses yet," +
-                                    " please make a new course", Toast.LENGTH_LONG);
-                            toast.show();
-                            Toast toast2 = Toast.makeText(getApplicationContext(),test351.name, Toast.LENGTH_LONG);
-                            toast2.show();
                             Intent intent = new Intent(getApplicationContext(), AssignmentMenuActivity.class);
                             startActivity(intent);
                         }

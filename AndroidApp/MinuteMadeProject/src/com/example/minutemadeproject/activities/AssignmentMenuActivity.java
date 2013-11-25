@@ -28,12 +28,14 @@ public class AssignmentMenuActivity extends Activity {
     AssignmentHelper assignmentHelper;
     CourseHelper courseHelper;
     TutorialHelper tutorialHelper;
-    private List<Course> courses;
-    private Course curCourse;
-    private Assignment pickAssignment;
-    private Tutorial pickTutorial;
-    private List<Tutorial> curTutorials;
-    private List<Assignment> curAssignments;
+    List<Course> courses;
+    Course curCourse;
+    Assignment pickAssignment;
+    Tutorial pickTutorial;
+    List<Tutorial> curTutorials;
+    List<Assignment> curAssignments;
+    ArrayAdapter<String> tutorialAdapt;
+    ArrayAdapter<String> assignmentAdapt;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -44,34 +46,35 @@ public class AssignmentMenuActivity extends Activity {
         tutorialHelper = new TutorialHelper(this);
 
         courses = courseHelper.getAll();
-        ArrayList<String> listName = nameList(courses);
         curTutorials = new ArrayList<Tutorial>();
         curAssignments = new ArrayList<Assignment>();
 
-        Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
-        Spinner assignmentSpinner = (Spinner) findViewById(R.id.assignmentSpinner);
-        Spinner tutorialSpinner = (Spinner) findViewById(R.id.tutorialSpinner);
+        final Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
+        final Spinner assignmentSpinner = (Spinner) findViewById(R.id.assignmentSpinner);
+        final Spinner tutorialSpinner = (Spinner) findViewById(R.id.tutorialSpinner);
 
-        ArrayAdapter<String> courseAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, listName);
-        Toast toast = Toast.makeText(getApplicationContext(), courses.get(10).name, Toast.LENGTH_LONG);
-        toast.show();
-        final ArrayAdapter<String> tutorialAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, curTutorials);
-        final ArrayAdapter<String> assignmentAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, curAssignments);
+        ArrayAdapter<String> courseAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, courses);
 
         courseAdapt.setDropDownViewResource(R.layout.assignmentcreate);
         assignmentAdapt.setDropDownViewResource(R.layout.assignmentcreate);
         tutorialAdapt.setDropDownViewResource(R.layout.assignmentcreate);
 
         courseSpinner.setAdapter(courseAdapt);
-        //assignmentSpinner.setAdapter(assignmentAdapt);
-        //tutorialSpinner.setAdapter(tutorialAdapt);
+        assignmentSpinner.setAdapter(null);
+        tutorialSpinner.setAdapter(null);
 
         courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
                 curCourse = courses.get(i);
-                curTutorials = new ArrayList(curCourse.tutorials);
-                curAssignments = new ArrayList(curCourse.assignments);
+
+                if (tutorialAdapt.getCount() == 0){
+                    tutorialAdapt = new ArrayAdapter(getContex(), R.layout.assignmentcreate, curTutorials);
+                    assignmentAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, curAssignments);
+                } else {
+                    curTutorials = new ArrayList(curCourse.tutorials);
+                    curAssignments = new ArrayList(curCourse.assignments);
+                }
 
                 tutorialAdapt.notifyDataSetChanged();
                 assignmentAdapt.notifyDataSetChanged();
@@ -85,8 +88,8 @@ public class AssignmentMenuActivity extends Activity {
 
         assignmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
-            public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
-                pickTutorial = curTutorials.get(i);
+            public void onItemSelected(AdapterView adapter, View v, int j, long lng) {
+                pickTutorial = curTutorials.get(j);
             }
 
             @Override
@@ -98,8 +101,8 @@ public class AssignmentMenuActivity extends Activity {
         tutorialSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
-            public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
-                pickAssignment = curAssignments.get(i);
+            public void onItemSelected(AdapterView adapter, View v, int k, long lng) {
+                pickAssignment = curAssignments.get(k);
 
                 TextView assign = (TextView) findViewById(R.id.assigned);
                 TextView due = (TextView) findViewById(R.id.due);
@@ -155,13 +158,5 @@ public class AssignmentMenuActivity extends Activity {
             }
         });
 
-    }
-
-    public ArrayList<String> nameList(List<Course> l){
-        ArrayList<String> nameTest = new ArrayList<String>();
-        for (Course x : l){
-            nameTest.add(x.name);
-        }
-        return nameTest;
     }
 }
