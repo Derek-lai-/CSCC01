@@ -6,7 +6,10 @@ import java.util.List;
 import com.example.minutemadeproject.DisplayLessons;
 import com.example.minutemadeproject.R;
 import com.example.minutemadeproject.helpers.CourseHelper;
+import com.example.minutemadeproject.helpers.TutorialHelper;
 import com.example.minutemadeproject.models.Course;
+import com.example.minutemadeproject.models.Instructor;
+import com.example.minutemadeproject.models.Tutorial;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -22,9 +25,10 @@ import android.widget.Toast;
 public class MainmenuActivity extends Activity {
 
     private enum MenuItem {
-        Lesson, Course, Schedule, Assignment;
+        Lesson, Course, Schedule, Assignment, addTutorial, addCourse;
     }
     private List<Course> courses;
+    private List<Tutorial> tutorials;
 
     ArrayList<String> items = new ArrayList<String>();
     ListView lv = null;
@@ -35,11 +39,14 @@ public class MainmenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
         final CourseHelper courseHelper = new CourseHelper(this);
+        final TutorialHelper tutorialHelper = new TutorialHelper(this);
         lv = (ListView) findViewById(R.id.list);
         items.add("Lesson");
         items.add("Course");
         items.add("Schedule");
         items.add("Assignment");
+        items.add("addTutorial");
+        items.add("addCourse");
         welcome = (TextView) findViewById(R.id.welcome);
         //welcome.setText("Welcome " + VarHolder.getUser().username);
         welcome.setText("Welcome");
@@ -62,11 +69,18 @@ public class MainmenuActivity extends Activity {
                         break;
                     }
                     case Course: {
-                        // Launch Lesson
+
                         break;
                     }
                     case Schedule: {
-                        //Launch Schedule
+                        tutorials = tutorialHelper.getAll();
+                        Toast toasty = Toast.makeText(getApplicationContext(), "Tutorial " +
+                                tutorials, Toast.LENGTH_LONG);
+                        toasty.show();
+                        courses = courseHelper.getAll();
+                        Toast toast = Toast.makeText(getApplicationContext(), "Course " +
+                                courses, Toast.LENGTH_LONG);
+                        toast.show();
                        break;
                     }
                     case Assignment: {
@@ -79,6 +93,27 @@ public class MainmenuActivity extends Activity {
                             Intent intent = new Intent(getApplicationContext(), AssignmentMenuActivity.class);
                             startActivity(intent);
                         }
+                        break;
+                    }
+                    case addTutorial: {
+                        Instructor instructor2 = new Instructor("username1", "name1", "password", "email", "phone", true);
+                        Course course2 = new Course("Course 2", instructor2);
+                        Tutorial tutorial = new Tutorial(course2, instructor2, 2, 10, 12, "Sec 1");
+                        tutorialHelper.create(tutorial);
+                        tutorials = tutorialHelper.getAll();
+                        Toast toasty = Toast.makeText(getApplicationContext(), "Tutorial" +
+                                " created - " + tutorials, Toast.LENGTH_LONG);
+                        toasty.show();
+                        break;
+                    }
+                    case addCourse: {
+                        Instructor instructor = new Instructor("username", "name", "password", "email", "phone", false);
+                        Course course = new Course("Course 1", instructor);
+                        courseHelper.delete(course);
+                        courses = courseHelper.getAll();
+                        Toast toasty = Toast.makeText(getApplicationContext(), "Course" +
+                                " created - " + courses, Toast.LENGTH_LONG);
+                        toasty.show();
                         break;
                     }
                 }

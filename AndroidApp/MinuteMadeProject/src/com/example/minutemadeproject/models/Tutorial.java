@@ -74,6 +74,6 @@ public class Tutorial {
 
     @Override
     public String toString() {
-        return "Tutorial for " + course.name + " (" + startTime + " - " + endTime;
+        return "Tutorial for " + course.name + " (" + startTime + " - " + endTime + ")";
     }
 }

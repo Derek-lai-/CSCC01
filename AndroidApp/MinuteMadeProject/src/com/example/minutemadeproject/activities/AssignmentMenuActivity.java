@@ -34,8 +34,6 @@ public class AssignmentMenuActivity extends Activity {
     Tutorial pickTutorial;
     List<Tutorial> curTutorials;
     List<Assignment> curAssignments;
-    ArrayAdapter<String> tutorialAdapt;
-    ArrayAdapter<String> assignmentAdapt;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -54,6 +52,8 @@ public class AssignmentMenuActivity extends Activity {
         final Spinner tutorialSpinner = (Spinner) findViewById(R.id.tutorialSpinner);
 
         ArrayAdapter<String> courseAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, courses);
+        ArrayAdapter<String> tutorialAdapt = new ArrayAdapter(getApplicationContext(), R.layout.assignmentcreate, curTutorials);
+        ArrayAdapter<String> assignmentAdapt = new ArrayAdapter(getApplicationContext(), R.layout.assignmentcreate, curAssignments);
 
         courseAdapt.setDropDownViewResource(R.layout.assignmentcreate);
         assignmentAdapt.setDropDownViewResource(R.layout.assignmentcreate);
@@ -68,13 +68,11 @@ public class AssignmentMenuActivity extends Activity {
             public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
                 curCourse = courses.get(i);
 
-                if (tutorialAdapt.getCount() == 0){
-                    tutorialAdapt = new ArrayAdapter(getContex(), R.layout.assignmentcreate, curTutorials);
-                    assignmentAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, curAssignments);
-                } else {
-                    curTutorials = new ArrayList(curCourse.tutorials);
-                    curAssignments = new ArrayList(curCourse.assignments);
-                }
+                ArrayAdapter<String> tutorialAdapt = new ArrayAdapter(getApplicationContext(), R.layout.assignmentcreate, curTutorials);
+                ArrayAdapter<String> assignmentAdapt = new ArrayAdapter(getApplicationContext(), R.layout.assignmentcreate, curAssignments);
+
+                curTutorials = new ArrayList(curCourse.tutorials);
+                curAssignments = new ArrayList(curCourse.assignments);
 
                 tutorialAdapt.notifyDataSetChanged();
                 assignmentAdapt.notifyDataSetChanged();
