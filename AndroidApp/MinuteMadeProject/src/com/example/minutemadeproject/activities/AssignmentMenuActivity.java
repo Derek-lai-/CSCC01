@@ -40,7 +40,10 @@ public class AssignmentMenuActivity extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.assignmentpicker);
-
+    }
+    
+    public void onResume(){
+    	super.onResume();
         assignmentHelper = new AssignmentHelper(this);
         courseHelper = new CourseHelper(this);
         tutorialHelper = new TutorialHelper(this);
@@ -78,6 +81,16 @@ public class AssignmentMenuActivity extends Activity {
                 
                 assignmentSpinner.setAdapter(assignmentAdapt);
                 tutorialSpinner.setAdapter(tutorialAdapt);
+                
+                TextView assign = (TextView) findViewById(R.id.assigned);
+                TextView due = (TextView) findViewById(R.id.due);
+                TextView mark =  (TextView) findViewById(R.id.marks);
+                TextView details = (TextView) findViewById(R.id.details);
+
+                assign.setText("Posted ");
+                due.setText("Due: ");
+                mark.setText("Total Marks:");
+                details.setText("Details");
             }
 
             @Override

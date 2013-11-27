@@ -23,18 +23,18 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/assignmentSpinner"
+            android:id="@+id/tutorialSpinner"
             android:layout_column="1" />
     </TableRow>
 
     <TableRow
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent" >
 
         <Spinner
+            android:id="@+id/assignmentSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tutorialSpinner"
             android:layout_column="1" />
     </TableRow>
 

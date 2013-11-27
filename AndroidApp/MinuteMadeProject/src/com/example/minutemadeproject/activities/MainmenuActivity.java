@@ -114,7 +114,7 @@ public class MainmenuActivity extends Activity {
                     case addTutorial: {
                         instructors = instructorHelper.getAll();
                         courses = courseHelper.getAll();
-                        Tutorial tutorial = new Tutorial(courses.get(0), instructors.get(0), 2, 10, 12, "Sec 1");
+                        Tutorial tutorial = new Tutorial(courses.get(0), instructors.get(0), 2, 1, 3, "Sec 2");
                         tutorialHelper.create(tutorial);
                         tutorials = tutorialHelper.getAll();
                         Toast toasty = Toast.makeText(getApplicationContext(), "Tutorial" +
@@ -126,7 +126,7 @@ public class MainmenuActivity extends Activity {
                     }
                     case addCourse: {
                         Instructor instructor = new Instructor("username", "name", "password", "email", "phone", false);
-                        Course course = new Course("Course1", instructor);
+                        Course course = new Course("Course2", instructor);
                         courseHelper.create(course);
                         instructorHelper.create(instructor);
                         courses = courseHelper.getAll();

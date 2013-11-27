@@ -3,6 +3,7 @@ package com.example.minutemadeproject.activities;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class AssignmentEditActivity extends Activity{
     CourseHelper courseHelper;
     int assignmentId;
     Course course = null;
+    String tut = null;
     Assignment assignment = null;
     private Bundle bundle;
     private String newTitle = null;
@@ -52,6 +54,7 @@ public class AssignmentEditActivity extends Activity{
             assignment = helper.getAssignment(assignmentId);
         } else {
             course = courseHelper.get(bundle.getInt("courseName"));
+            tut = bundle.getString("tutorialSection");
         }
 
         //sets editText buttons on layout
@@ -61,9 +64,11 @@ public class AssignmentEditActivity extends Activity{
     	final EditText due = (EditText) findViewById(R.id.editDDate);
     	final EditText details = (EditText) findViewById(R.id.editDetails);
     	final EditText marks = (EditText) findViewById(R.id.editMark);
+    	final EditText code = (EditText) findViewById(R.id.editCode);
 
         //fills in pre existing data if an assignment already exist
         if (assignment != null){
+        	code.setText(assignment.course.name);
             tutorial.setText(assignment.tutorial);
             assign.setText(assignment.postDate.toString());
             due.setText(assignment.dueDate.toString());
@@ -71,7 +76,11 @@ public class AssignmentEditActivity extends Activity{
         	title.setText(assignment.name);
         	String m = String.valueOf(assignment.totalMark);
         	marks.setText(m);
+        } else {
+        	tutorial.setText(tut);
+        	code.setText(course.name);
         }
+        
 
         //define save button
         Button saveButton = (Button) findViewById(R.id.saveButton);
@@ -108,11 +117,12 @@ public class AssignmentEditActivity extends Activity{
                     assignment.dueDate = newDue;
                     assignment.postDate = newAssign;
                     assignment.totalMark = newMark;
+                    assignment.description = newDetails;
                     helper.update(assignment);
                 // if previous assingment does not exist, create new assignment object and put
                     //into database
                 } else {
-    			    assignment = new Assignment(newTitle, newTutorial, null, null, newAssign, newDue, newMark);
+    			    assignment = new Assignment(newTitle, newTutorial, newDetails, course, newAssign, newDue, newMark);
     			    helper.create(assignment);
                 }
                 Toast toast = Toast.makeText(getApplicationContext(), assignment.name + " saved", Toast.LENGTH_LONG);
