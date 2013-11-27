@@ -23,12 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity android:name="com.example.minutemadeproject.activities.CourseActivity" />
         <activity android:name="com.example.minutemadeproject.activities.CourseCreateActivity" />
         <activity android:name="com.example.minutemadeproject.activities.CourseEditActivity" />
         <activity android:name="com.example.minutemadeproject.activities.TutorialCreateActivity" />
-
         <activity
             android:name="com.example.minutemadeproject.DisplayLessons"
             android:label="@string/title_activity_display_lessons"
@@ -51,6 +49,34 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.minutemadeproject.DisplayLessons" />
         </activity>
+
+        <activity
+            android:name=".activities.AssignmentMenuActivity"
+            android:label="Assignments"
+            android:parentActivityName="com.example.minutemadeproject.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.minutemadeproject.HomeActivity"/>
+        </activity>
+
+        <activity
+                android:name=".activities.AssignmentEditActivity"
+                android:label="Add/Edit Assignment"
+                android:parentActivityName="com.example.minutemadeproject.AssignmentMenuActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.example.minutemadeproject.AssignmentMenuActivity"/>
+        </activity>
+
+        <activity
+            android:name=".activities.GradesActivity"
+            android:label="Add/Edit Assignment"
+            android:parentActivityName="com.example.minutemadeproject.AssignmentMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.minutemadeproject.AssignmentMenuActivity"/>
+        </activity>
+
         
     </application>
 </manifest>

@@ -39,7 +39,7 @@ public class AssignmentStudentListActivity extends Activity{
             	//gets name of item clicked
                 String text = ((TextView) view).getText().toString();
                 //creates new intent object pointing to new class to open
-                Intent i = new Intent(getApplicationContext(), GradeEdit.class);
+                Intent i = new Intent(getApplicationContext(), GradesActivity.class);
                 //Retrieves index of the student name
                 int index = names.indexOf(text);
                 //gets a student object
