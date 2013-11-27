@@ -29,7 +29,7 @@ import android.widget.Toast;
 public class MainmenuActivity extends Activity {
 
     private enum MenuItem {
-        Lesson, Course, Schedule, Assignment, addTutorial, addCourse;
+        Lesson, Course, Schedule, Assignment;
     }
     private List<Course> courses;
     private List<Tutorial> tutorials;
@@ -77,21 +77,11 @@ public class MainmenuActivity extends Activity {
                         break;
                     }
                     case Course: {
-                        Course test = courses.get(0);
-                        ArrayList<Assignment> curAssignments = new ArrayList<Assignment>(test.assignments);
-                        Toast toasty = Toast.makeText(getApplicationContext(), curAssignments + "", Toast.LENGTH_LONG);
-                        toasty.show();
+                        
                         break;
                     }
                     case Schedule: {
-                        tutorials = tutorialHelper.getAll();
-                        Toast toasty = Toast.makeText(getApplicationContext(), "Tutorial " +
-                                tutorials.get(0)+ "," + tutorials.get(0).course.instructor, Toast.LENGTH_LONG);
-                        toasty.show();
-                        courses = courseHelper.getAll();
-                        Toast toast = Toast.makeText(getApplicationContext(), "Course " +
-                                courses, Toast.LENGTH_LONG);
-                        toast.show();
+                     
                        break;
                     }
                     case Assignment: {
@@ -111,30 +101,7 @@ public class MainmenuActivity extends Activity {
                         }
                         break;
                     }
-                    case addTutorial: {
-                        instructors = instructorHelper.getAll();
-                        courses = courseHelper.getAll();
-                        Tutorial tutorial = new Tutorial(courses.get(0), instructors.get(0), 2, 1, 3, "Sec 2");
-                        tutorialHelper.create(tutorial);
-                        tutorials = tutorialHelper.getAll();
-                        Toast toasty = Toast.makeText(getApplicationContext(), "Tutorial" +
-                                " created - " + tutorials, Toast.LENGTH_LONG);
-                        toasty.show();
-                        Toast toast = Toast.makeText(getApplicationContext(), tutorials.get(0).course.name, Toast.LENGTH_LONG);
-                        toast.show();
-                        break;
-                    }
-                    case addCourse: {
-                        Instructor instructor = new Instructor("username", "name", "password", "email", "phone", false);
-                        Course course = new Course("Course2", instructor);
-                        courseHelper.create(course);
-                        instructorHelper.create(instructor);
-                        courses = courseHelper.getAll();
-                        Toast toasty = Toast.makeText(getApplicationContext(), "Course" +
-                                " created - " + courses, Toast.LENGTH_LONG);
-                        toasty.show();
-                        break;
-                    }
+                 
                 }
 
             }
