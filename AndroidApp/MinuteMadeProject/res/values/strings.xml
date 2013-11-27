@@ -8,5 +8,7 @@
     <string name="title_activity_display_lessons">Lessons</string>
     <string name="title_activity_instructions">Instructions</string>
     <string name="title_activity_add_lesson">Add Lesson</string>
+    <string name="title_activity_grades">GradesActivity</string>
+    <string name="grade">Grade</string>
 
 </resources>
