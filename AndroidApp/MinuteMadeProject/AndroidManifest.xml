@@ -66,6 +66,14 @@
                     android:value="com.example.minutemadeproject.AssignmentMenuActivity"/>
         </activity>
 
+        <activity
+            android:name=".activities.GradesActivity"
+            android:label="Add/Edit Assignment"
+            android:parentActivityName="com.example.minutemadeproject.AssignmentMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.minutemadeproject.AssignmentMenuActivity"/>
+        </activity>
 
         
     </application>

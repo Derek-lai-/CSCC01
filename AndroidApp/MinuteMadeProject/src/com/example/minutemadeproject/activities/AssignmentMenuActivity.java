@@ -142,7 +142,7 @@ public class AssignmentMenuActivity extends Activity {
 
         editGradeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), GradeEdit.class);
+                Intent i = new Intent(getApplicationContext(), GradesActivity.class);
                 int id = assignmentHelper.getId(pickAssignment);
                 i.putExtra("assignmentId", id);
                 i.putExtra("courseId", curCourse.id);
