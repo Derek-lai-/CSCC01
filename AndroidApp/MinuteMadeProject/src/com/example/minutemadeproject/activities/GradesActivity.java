@@ -56,14 +56,14 @@ public class GradesActivity extends Activity {
 		//set nameField to be not editable
 		nameField.setKeyListener(null);
 		
-		int assignmentId = 0, courseId = 0, tutorialId = 0;
-		Bundle bundle = getIntent().getExtras();
+		int assignmentId = 1, courseId = 1, tutorialId = 1;
+		/*Bundle bundle = getIntent().getExtras();
 		if(bundle != null){
 			assignmentId = bundle.getInt("assignmentId");
 			courseId = bundle.getInt("courseId");
 			tutorialId = bundle.getInt("tutorialId");
 		}
-		
+		*/
 		assignment = assignmentHelper.getAssignment(assignmentId);
 		
 		students = studentHelper.getAll();
@@ -109,6 +109,9 @@ public class GradesActivity extends Activity {
 					if(grade != null){
 						Grade g = new Grade(assignment, curStudent, Double.parseDouble(grade));
 						gradeHelper.create(g);
+						nameField.setText("");
+						stuGrade.setText("");
+						Toast.makeText(getApplicationContext(), "Grades Successfully Entered.", Toast.LENGTH_SHORT);
 					}
 					else{						
 						Toast.makeText(getApplicationContext(), "Please enter a grade", Toast.LENGTH_SHORT);
