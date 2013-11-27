@@ -30,15 +30,19 @@
         <activity
             android:name="com.example.minutemadeproject.DisplayLessons"
             android:label="@string/title_activity_display_lessons"
-            android:parentActivityName="com.example.minutemadeproject.HomeActivity" >
+            android:parentActivityName="com.example.minutemadeproject.MainmenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.minutemadeproject.HomeActivity" />
+                android:value="com.example.minutemadeproject.MainmenuActivity" />
         </activity>
         
         <activity
             android:name="com.example.minutemadeproject.Instructions"
-            android:label="@string/title_activity_instructions" >
+            android:label="@string/title_activity_instructions" 
+            android:parentActivityName="com.example.minutemadeproject.DisplayLessons" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.minutemadeproject.DisplayLessons" />
         </activity>
         
         <activity
