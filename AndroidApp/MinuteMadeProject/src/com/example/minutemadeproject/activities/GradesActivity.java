@@ -56,14 +56,14 @@ public class GradesActivity extends Activity {
 		//set nameField to be not editable
 		nameField.setKeyListener(null);
 		
-		int assignmentId = 1, courseId = 1, tutorialId = 1;
-		/*Bundle bundle = getIntent().getExtras();
+		int assignmentId = 0, courseId = 0, tutorialId = 0;
+		Bundle bundle = getIntent().getExtras();
 		if(bundle != null){
 			assignmentId = bundle.getInt("assignmentId");
 			courseId = bundle.getInt("courseId");
 			tutorialId = bundle.getInt("tutorialId");
 		}
-		*/
+		
 		assignment = assignmentHelper.getAssignment(assignmentId);
 		
 		students = studentHelper.getAll();
