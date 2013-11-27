@@ -12,9 +12,6 @@ public class Instructor extends User{
     @DatabaseField
 	public boolean isTA;
 
-    @DatabaseField(foreign = true)
-    private User user;
-
     @ForeignCollectionField
     ForeignCollection<Tutorial> tutorials;
 

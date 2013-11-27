@@ -22,6 +22,9 @@ public class Tutorial {
     public int day;
 
     @DatabaseField
+    public String section;
+
+    @DatabaseField
     public int startTime;
 
     @DatabaseField
@@ -34,12 +37,13 @@ public class Tutorial {
         // Needed by OrmLite
     }
 
-	public Tutorial(Course course, Instructor TA, int day, int startTime, int endTime) {
+	public Tutorial(Course course, Instructor TA, int day, int startTime, int endTime, String section) {
 		this.course = course;
         this.TA = TA;
         this.day = day;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.section = section;
 	}
 
     public String getDay() {
@@ -70,6 +74,6 @@ public class Tutorial {
 
     @Override
     public String toString() {
-        return "Tutorial for " + course.name + " (" + startTime + " - " + endTime;
+        return this.section;
     }
 }

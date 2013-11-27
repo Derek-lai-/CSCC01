@@ -68,4 +68,14 @@ public class InstructorHelper {
         }
         return null;
     }
+
+    public Instructor getByUser(String username) {
+        try {
+            List<Instructor> matching = instructorDao.queryForEq("username", username);
+            return matching.get(0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

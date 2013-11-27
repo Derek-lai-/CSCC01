@@ -60,7 +60,7 @@ public class CourseHelper {
         return null;
     }
 
-    public List getAll() {
+    public List<Course> getAll() {
         try {
             return courseDao.queryForAll();
         } catch (SQLException e) {

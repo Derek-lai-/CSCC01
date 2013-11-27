@@ -19,10 +19,10 @@ public class Course {
     public Instructor instructor;
 
     @ForeignCollectionField
-    ForeignCollection<Tutorial> tutorials;
+    public ForeignCollection<Tutorial> tutorials;
 
     @ForeignCollectionField
-    ForeignCollection<Assignment> assignments;
+    public ForeignCollection<Assignment> assignments;
 
     Course() {
         // Needed by OrmLite
