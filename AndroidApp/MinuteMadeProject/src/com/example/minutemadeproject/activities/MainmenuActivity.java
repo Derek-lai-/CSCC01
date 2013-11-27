@@ -50,6 +50,16 @@ public class MainmenuActivity extends Activity {
 
         ArrayAdapter<String> arrayAdpater = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, items);
+
+        lv = (ListView) findViewById(R.id.list);
+        items.add("Lesson");
+        items.add("Course");
+        items.add("Schedule");
+        items.add("Assignment");
+        welcome = (TextView) findViewById(R.id.welcome);
+        //welcome.setText("Welcome " + VarHolder.getUser().username);
+        welcome.setText("Welcome");
+
         lv.setAdapter(arrayAdpater);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -92,17 +102,6 @@ public class MainmenuActivity extends Activity {
                     }
                  
                 }
-                lv = (ListView) findViewById(R.id.list);
-                items.add("Lesson");
-                items.add("Course");
-                items.add("Schedule");
-                items.add("Assignment");
-                items.add("addTutorial");
-                items.add("addCourse");
-                welcome = (TextView) findViewById(R.id.welcome);
-                //welcome.setText("Welcome " + VarHolder.getUser().username);
-                welcome.setText("Welcome");
-
             }
         });
     }
