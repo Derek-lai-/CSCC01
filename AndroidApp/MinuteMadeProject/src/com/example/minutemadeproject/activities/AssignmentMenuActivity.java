@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import com.example.minutemadeproject.R;
 
@@ -22,6 +23,7 @@ import com.example.minutemadeproject.models.Course;
 import com.example.minutemadeproject.helpers.TutorialHelper;
 import com.example.minutemadeproject.models.Instructor;
 import com.example.minutemadeproject.models.Tutorial;
+import com.j256.ormlite.dao.ForeignCollection;
 
 public class AssignmentMenuActivity extends Activity {
 
@@ -32,8 +34,8 @@ public class AssignmentMenuActivity extends Activity {
     Course curCourse;
     Assignment pickAssignment;
     Tutorial pickTutorial;
-    List<Tutorial> curTutorials;
-    List<Assignment> curAssignments;
+    ArrayList<Tutorial> curTutorials;
+    ArrayList<Assignment> curAssignments;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -44,54 +46,38 @@ public class AssignmentMenuActivity extends Activity {
         tutorialHelper = new TutorialHelper(this);
 
         courses = courseHelper.getAll();
-        curTutorials = new ArrayList<Tutorial>();
-        curAssignments = new ArrayList<Assignment>();
 
         final Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
         final Spinner assignmentSpinner = (Spinner) findViewById(R.id.assignmentSpinner);
         final Spinner tutorialSpinner = (Spinner) findViewById(R.id.tutorialSpinner);
 
-        Toast toasty = Toast.makeText(getApplicationContext(), "1", Toast.LENGTH_LONG);
-        toasty.show();
-
         ArrayList<String> courseName = turnString(courses);
-        ArrayList<String> tutorialName = turnString1(curTutorials);
-        ArrayList<String> assignmentName = turnString2(curAssignments);
-
-        Toast toast = Toast.makeText(getApplicationContext(), "2", Toast.LENGTH_LONG);
-        toast.show();
 
         ArrayAdapter<String> courseAdapt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, courseName);
-        ArrayAdapter<String> tutorialAdapt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tutorialName);
-        ArrayAdapter<String> assignmentAdapt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, assignmentName);
-
-        Toast toast1 = Toast.makeText(getApplicationContext(), "3", Toast.LENGTH_LONG);
-        toast1.show();
 
         courseAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        assignmentAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        tutorialAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        Toast toasts = Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_LONG);
-        toasts.show();
 
         courseSpinner.setAdapter(courseAdapt);
-        assignmentSpinner.setAdapter(null);
-        tutorialSpinner.setAdapter(null);
 
         courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
                 curCourse = courses.get(i);
+                
+                curAssignments = new ArrayList<Assignment>(curCourse.assignments);
+                curTutorials = new ArrayList<Tutorial>(curCourse.tutorials);
+                
+                ArrayList<String> tName = turnString1(curTutorials);
+                ArrayList<String> aName = turnString2(curAssignments);
 
-                ArrayAdapter<String> tutorialAdapt = new ArrayAdapter(getApplicationContext(), R.layout.assignmentcreate, curTutorials);
-                ArrayAdapter<String> assignmentAdapt = new ArrayAdapter(getApplicationContext(), R.layout.assignmentcreate, curAssignments);
-
-                curTutorials = new ArrayList(curCourse.tutorials);
-                curAssignments = new ArrayList(curCourse.assignments);
-
-                tutorialAdapt.notifyDataSetChanged();
-                assignmentAdapt.notifyDataSetChanged();
+                ArrayAdapter<String> tutorialAdapt = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, tName);
+                ArrayAdapter<String> assignmentAdapt = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, aName);
+                
+                assignmentAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                tutorialAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                
+                assignmentSpinner.setAdapter(assignmentAdapt);
+                tutorialSpinner.setAdapter(tutorialAdapt);
             }
 
             @Override
@@ -103,7 +89,19 @@ public class AssignmentMenuActivity extends Activity {
         assignmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView adapter, View v, int j, long lng) {
-                pickTutorial = curTutorials.get(j);
+                pickAssignment = curAssignments.get(j);
+
+                TextView assign = (TextView) findViewById(R.id.assigned);
+                TextView due = (TextView) findViewById(R.id.due);
+                TextView mark =  (TextView) findViewById(R.id.marks);
+                TextView details = (TextView) findViewById(R.id.details);
+
+                assign.setText("Posted "+ pickAssignment.postDate);
+                due.setText("Due: " + pickAssignment.dueDate);
+                mark.setText("Total Marks:" + (int) pickAssignment.totalMark);
+                details.setText(pickAssignment.description);
+                
+                
             }
 
             @Override
@@ -116,17 +114,7 @@ public class AssignmentMenuActivity extends Activity {
 
             @Override
             public void onItemSelected(AdapterView adapter, View v, int k, long lng) {
-                pickAssignment = curAssignments.get(k);
-
-                TextView assign = (TextView) findViewById(R.id.assigned);
-                TextView due = (TextView) findViewById(R.id.due);
-                TextView mark =  (TextView) findViewById(R.id.marks);
-                TextView details = (TextView) findViewById(R.id.details);
-
-                assign.setText("Posted "+ pickAssignment.postDate);
-                due.setText("Due: " + pickAssignment.dueDate);
-                mark.setText("Total Marks:" + (int) pickAssignment.totalMark);
-                details.setText(pickAssignment.description);
+            	pickTutorial = curTutorials.get(k);
             }
 
             @Override
@@ -183,6 +171,7 @@ public class AssignmentMenuActivity extends Activity {
         }
         return arrayName;
     }
+    
     public ArrayList<String> turnString1(List<Tutorial> list){
         ArrayList<String> arrayName = new ArrayList<String>();
         for (Tutorial t: list) {
@@ -190,6 +179,7 @@ public class AssignmentMenuActivity extends Activity {
         }
         return arrayName;
     }
+    
     public ArrayList<String> turnString2(List<Assignment> list){
         ArrayList<String> arrayName = new ArrayList<String>();
         for (Assignment a: list) {

@@ -47,7 +47,7 @@ public class AssignmentEditActivity extends Activity{
         bundle = getIntent().getExtras();
 
         //checks of you are editting a existing assignment
-        if (bundle.getString("intent").equals(1)){
+        if (bundle.getInt("intent") == 1){
             assignmentId = bundle.getInt("assignmentId");
             assignment = helper.getAssignment(assignmentId);
         } else {
@@ -102,7 +102,7 @@ public class AssignmentEditActivity extends Activity{
 				}
 
                 //checks for existing assingment, if exist, update database
-                if (bundle.getString("intent").equals(1)){
+                if (bundle.getInt("intent") == 1){
                     assignment.name = newTitle;
                     assignment.tutorial = newTutorial;
                     assignment.dueDate = newDue;

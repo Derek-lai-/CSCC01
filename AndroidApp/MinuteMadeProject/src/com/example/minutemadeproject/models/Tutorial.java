@@ -74,6 +74,6 @@ public class Tutorial {
 
     @Override
     public String toString() {
-        return "Tutorial for " + this.course + " (" + this.startTime + " - " + this.endTime + ")";
+        return "Tutorial for " + this.course.name + " (" + this.startTime + " - " + this.endTime + ")";
     }
 }

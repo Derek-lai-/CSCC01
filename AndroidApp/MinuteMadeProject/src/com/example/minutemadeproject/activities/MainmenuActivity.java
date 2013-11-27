@@ -1,6 +1,7 @@
 package com.example.minutemadeproject.activities;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.example.minutemadeproject.DisplayLessons;
@@ -8,9 +9,11 @@ import com.example.minutemadeproject.R;
 import com.example.minutemadeproject.helpers.CourseHelper;
 import com.example.minutemadeproject.helpers.InstructorHelper;
 import com.example.minutemadeproject.helpers.TutorialHelper;
+import com.example.minutemadeproject.models.Assignment;
 import com.example.minutemadeproject.models.Course;
 import com.example.minutemadeproject.models.Instructor;
 import com.example.minutemadeproject.models.Tutorial;
+import com.j256.ormlite.dao.ForeignCollection;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -74,7 +77,10 @@ public class MainmenuActivity extends Activity {
                         break;
                     }
                     case Course: {
-
+                        Course test = courses.get(0);
+                        ArrayList<Assignment> curAssignments = new ArrayList<Assignment>(test.assignments);
+                        Toast toasty = Toast.makeText(getApplicationContext(), curAssignments + "", Toast.LENGTH_LONG);
+                        toasty.show();
                         break;
                     }
                     case Schedule: {
@@ -99,6 +105,7 @@ public class MainmenuActivity extends Activity {
                             Toast toasty = Toast.makeText(getApplicationContext(), "No Tutorials," +
                                     " Please add a tutorial to a course", Toast.LENGTH_LONG);
                             toasty.show();
+                        } else {
                             Intent intent = new Intent(getApplicationContext(), AssignmentMenuActivity.class);
                             startActivity(intent);
                         }

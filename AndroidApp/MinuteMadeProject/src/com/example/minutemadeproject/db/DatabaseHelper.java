@@ -25,7 +25,7 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
 
     private static final String DATABASE_NAME = "minuteMade.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private Dao<Assignment, Integer> assignmentDao = null;
     private Dao<Course, Integer> courseDao = null;
