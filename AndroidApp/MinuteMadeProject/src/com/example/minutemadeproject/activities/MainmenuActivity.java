@@ -63,7 +63,8 @@ public class MainmenuActivity extends Activity {
 					break;
 				}
 				case Schedule: {
-					// Launch Lesson
+					Intent intent = new Intent(getApplicationContext(), ScheduleActivity.class);
+                    startActivity(intent);
 					break;
 				}
                 case Assignment: {

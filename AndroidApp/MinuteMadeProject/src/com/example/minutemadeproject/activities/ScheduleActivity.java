@@ -1,9 +1,14 @@
 package com.example.minutemadeproject.activities;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+
 import android.app.Activity;
 
 import com.example.minutemadeproject.R;
+import com.example.minutemadeproject.helpers.CourseHelper;
+import com.example.minutemadeproject.models.Course;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +26,7 @@ public class ScheduleActivity extends Activity{
 		Lesson, Course, Schedule;
 	}
 
+    public CourseHelper ch;
 	ArrayList<String> upcoming_items = new ArrayList<String>();
 	ListView lv = null;
 	TextView welcome = null;
@@ -31,8 +37,15 @@ public class ScheduleActivity extends Activity{
         //Intent intent = getIntent();
 		setContentView(R.layout.schedule);
 		lv = (ListView) findViewById(R.id.lvUpcoming);
-		upcoming_items.add("Schedule");
-		welcome = (TextView) findViewById(R.id.welcome);
+        ch = new CourseHelper(this);
+	    List courseList	= ch.getAll();
+        for (Object li : courseList) {
+            upcoming_items.add(li.toString());
+        }
+        upcoming_items.add("END -- Schedule");
+		welcome = (TextView) findViewById(R.id.tvUpcoming);
+
+
 		//welcome.setText("Welcome " + VarHolder.getUser().username);
 		welcome.setText("Welcome");
 

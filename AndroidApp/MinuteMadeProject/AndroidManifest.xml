@@ -24,8 +24,19 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="com.example.minutemadeproject.SignUPActivity" />
-        
+        <activity android:name="com.example.minutemadeproject.SignUPActivity"></activity>
+
+        <activity
+            android:name="com.example.minutemadeproject.activities.ScheduleActivity"
+            android:label="@string/Upcoming"
+            android:parentActivityName="com.example.minutemadeproject.activities.MainmenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.minutemadeproject.activities.MainmenuActivity" />
+        </activity>
+
+
+
         <activity
             android:name="com.example.minutemadeproject.DisplayLessons"
             android:label="@string/title_activity_display_lessons"
