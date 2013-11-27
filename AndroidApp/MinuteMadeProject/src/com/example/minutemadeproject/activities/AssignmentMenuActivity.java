@@ -51,17 +51,29 @@ public class AssignmentMenuActivity extends Activity {
         final Spinner assignmentSpinner = (Spinner) findViewById(R.id.assignmentSpinner);
         final Spinner tutorialSpinner = (Spinner) findViewById(R.id.tutorialSpinner);
 
+        Toast toasty = Toast.makeText(getApplicationContext(), "1", Toast.LENGTH_LONG);
+        toasty.show();
+
         ArrayList<String> courseName = turnString(courses);
         ArrayList<String> tutorialName = turnString1(curTutorials);
         ArrayList<String> assignmentName = turnString2(curAssignments);
 
-        ArrayAdapter<String> courseAdapt = new ArrayAdapter<String>(this, R.layout.simple_spinner_dropdown_item, courseName);
-        ArrayAdapter<String> tutorialAdapt = new ArrayAdapter<String>(this, R.layout.simple_spinner_dropdown_item, tutorialName);
-        ArrayAdapter<String> assignmentAdapt = new ArrayAdapter<String>(this, R.layout.simple_spinner_dropdown_item, assignmentName);
+        Toast toast = Toast.makeText(getApplicationContext(), "2", Toast.LENGTH_LONG);
+        toast.show();
+
+        ArrayAdapter<String> courseAdapt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, courseName);
+        ArrayAdapter<String> tutorialAdapt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tutorialName);
+        ArrayAdapter<String> assignmentAdapt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, assignmentName);
+
+        Toast toast1 = Toast.makeText(getApplicationContext(), "3", Toast.LENGTH_LONG);
+        toast1.show();
 
         courseAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         assignmentAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         tutorialAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        Toast toasts = Toast.makeText(getApplicationContext(), "4", Toast.LENGTH_LONG);
+        toasts.show();
 
         courseSpinner.setAdapter(courseAdapt);
         assignmentSpinner.setAdapter(null);
@@ -111,9 +123,9 @@ public class AssignmentMenuActivity extends Activity {
                 TextView mark =  (TextView) findViewById(R.id.marks);
                 TextView details = (TextView) findViewById(R.id.details);
 
-                assign.setText((CharSequence) pickAssignment.postDate);
-                due.setText((CharSequence) pickAssignment.dueDate);
-                mark.setText((int) pickAssignment.totalMark);
+                assign.setText("Posted "+ pickAssignment.postDate);
+                due.setText("Due: " + pickAssignment.dueDate);
+                mark.setText("Total Marks:" + (int) pickAssignment.totalMark);
                 details.setText(pickAssignment.description);
             }
 

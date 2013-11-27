@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.minutemadeproject.DisplayLessons;
 import com.example.minutemadeproject.R;
 import com.example.minutemadeproject.helpers.CourseHelper;
+import com.example.minutemadeproject.helpers.InstructorHelper;
 import com.example.minutemadeproject.helpers.TutorialHelper;
 import com.example.minutemadeproject.models.Course;
 import com.example.minutemadeproject.models.Instructor;
@@ -29,6 +30,7 @@ public class MainmenuActivity extends Activity {
     }
     private List<Course> courses;
     private List<Tutorial> tutorials;
+    private List<Instructor> instructors;
 
     ArrayList<String> items = new ArrayList<String>();
     ListView lv = null;
@@ -38,8 +40,11 @@ public class MainmenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+
         final CourseHelper courseHelper = new CourseHelper(this);
         final TutorialHelper tutorialHelper = new TutorialHelper(this);
+        final InstructorHelper instructorHelper = new InstructorHelper(this);
+
         lv = (ListView) findViewById(R.id.list);
         items.add("Lesson");
         items.add("Course");
@@ -75,7 +80,7 @@ public class MainmenuActivity extends Activity {
                     case Schedule: {
                         tutorials = tutorialHelper.getAll();
                         Toast toasty = Toast.makeText(getApplicationContext(), "Tutorial " +
-                                tutorials, Toast.LENGTH_LONG);
+                                tutorials.get(0)+ "," + tutorials.get(0).course.instructor, Toast.LENGTH_LONG);
                         toasty.show();
                         courses = courseHelper.getAll();
                         Toast toast = Toast.makeText(getApplicationContext(), "Course " +
@@ -96,20 +101,23 @@ public class MainmenuActivity extends Activity {
                         break;
                     }
                     case addTutorial: {
-                        Instructor instructor2 = new Instructor("username1", "name1", "password", "email", "phone", true);
-                        Course course2 = new Course("Course 1", instructor2);
-                        Tutorial tutorial = new Tutorial(course2, instructor2, 2, 10, 12, "Sec 1");
+                        instructors = instructorHelper.getAll();
+                        courses = courseHelper.getAll();
+                        Tutorial tutorial = new Tutorial(courses.get(0), instructors.get(0), 2, 10, 12, "Sec 1");
                         tutorialHelper.create(tutorial);
                         tutorials = tutorialHelper.getAll();
                         Toast toasty = Toast.makeText(getApplicationContext(), "Tutorial" +
                                 " created - " + tutorials, Toast.LENGTH_LONG);
                         toasty.show();
+                        Toast toast = Toast.makeText(getApplicationContext(), tutorials.get(0).course.name, Toast.LENGTH_LONG);
+                        toast.show();
                         break;
                     }
                     case addCourse: {
                         Instructor instructor = new Instructor("username", "name", "password", "email", "phone", false);
-                        Course course = new Course("Course 1", instructor);
+                        Course course = new Course("Course1", instructor);
                         courseHelper.create(course);
+                        instructorHelper.create(instructor);
                         courses = courseHelper.getAll();
                         Toast toasty = Toast.makeText(getApplicationContext(), "Course" +
                                 " created - " + courses, Toast.LENGTH_LONG);
