@@ -51,13 +51,17 @@ public class AssignmentMenuActivity extends Activity {
         final Spinner assignmentSpinner = (Spinner) findViewById(R.id.assignmentSpinner);
         final Spinner tutorialSpinner = (Spinner) findViewById(R.id.tutorialSpinner);
 
-        ArrayAdapter<String> courseAdapt = new ArrayAdapter(this, R.layout.assignmentcreate, courses);
-        ArrayAdapter<String> tutorialAdapt = new ArrayAdapter(getApplicationContext(), R.layout.assignmentcreate, curTutorials);
-        ArrayAdapter<String> assignmentAdapt = new ArrayAdapter(getApplicationContext(), R.layout.assignmentcreate, curAssignments);
+        ArrayList<String> courseName = turnString(courses);
+        ArrayList<String> tutorialName = turnString1(curTutorials);
+        ArrayList<String> assignmentName = turnString2(curAssignments);
 
-        courseAdapt.setDropDownViewResource(R.layout.assignmentcreate);
-        assignmentAdapt.setDropDownViewResource(R.layout.assignmentcreate);
-        tutorialAdapt.setDropDownViewResource(R.layout.assignmentcreate);
+        ArrayAdapter<String> courseAdapt = new ArrayAdapter<String>(this, R.layout.simple_spinner_dropdown_item, courseName);
+        ArrayAdapter<String> tutorialAdapt = new ArrayAdapter<String>(this, R.layout.simple_spinner_dropdown_item, tutorialName);
+        ArrayAdapter<String> assignmentAdapt = new ArrayAdapter<String>(this, R.layout.simple_spinner_dropdown_item, assignmentName);
+
+        courseAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        assignmentAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        tutorialAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         courseSpinner.setAdapter(courseAdapt);
         assignmentSpinner.setAdapter(null);
@@ -127,7 +131,9 @@ public class AssignmentMenuActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), GradeEdit.class);
                 int id = assignmentHelper.getId(pickAssignment);
-                i.putExtra("assignment", id);
+                i.putExtra("assignmentId", id);
+                i.putExtra("courseId", curCourse.id);
+                i.putExtra("tutorialId", pickTutorial.id);
                 startActivity(i);
             }
         });
@@ -156,5 +162,27 @@ public class AssignmentMenuActivity extends Activity {
             }
         });
 
+    }
+
+    public ArrayList<String> turnString(List<Course> list){
+        ArrayList<String> arrayName = new ArrayList<String>();
+        for (Course c: list) {
+            arrayName.add(c.name);
+        }
+        return arrayName;
+    }
+    public ArrayList<String> turnString1(List<Tutorial> list){
+        ArrayList<String> arrayName = new ArrayList<String>();
+        for (Tutorial t: list) {
+            arrayName.add(t.section);
+        }
+        return arrayName;
+    }
+    public ArrayList<String> turnString2(List<Assignment> list){
+        ArrayList<String> arrayName = new ArrayList<String>();
+        for (Assignment a: list) {
+            arrayName.add(a.name);
+        }
+        return arrayName;
     }
 }

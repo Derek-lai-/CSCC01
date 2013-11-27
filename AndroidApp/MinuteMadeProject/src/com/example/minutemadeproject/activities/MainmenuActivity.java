@@ -97,7 +97,7 @@ public class MainmenuActivity extends Activity {
                     }
                     case addTutorial: {
                         Instructor instructor2 = new Instructor("username1", "name1", "password", "email", "phone", true);
-                        Course course2 = new Course("Course 2", instructor2);
+                        Course course2 = new Course("Course 1", instructor2);
                         Tutorial tutorial = new Tutorial(course2, instructor2, 2, 10, 12, "Sec 1");
                         tutorialHelper.create(tutorial);
                         tutorials = tutorialHelper.getAll();
@@ -109,7 +109,7 @@ public class MainmenuActivity extends Activity {
                     case addCourse: {
                         Instructor instructor = new Instructor("username", "name", "password", "email", "phone", false);
                         Course course = new Course("Course 1", instructor);
-                        courseHelper.delete(course);
+                        courseHelper.create(course);
                         courses = courseHelper.getAll();
                         Toast toasty = Toast.makeText(getApplicationContext(), "Course" +
                                 " created - " + courses, Toast.LENGTH_LONG);

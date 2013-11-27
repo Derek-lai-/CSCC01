@@ -60,7 +60,7 @@ public class TutorialHelper {
         return null;
     }
 
-    public List getAll() {
+    public List<Tutorial> getAll() {
         try {
             return tutorialDao.queryForAll();
         } catch (SQLException e) {
