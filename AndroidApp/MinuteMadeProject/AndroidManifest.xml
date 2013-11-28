@@ -80,6 +80,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.minutemadeproject.AssignmentMenuActivity"/>
         </activity>
+        
+         <activity
+            android:name=".activities.EmailActivity"
+            android:label="Send Email"
+            android:parentActivityName="com.example.minutemadeproject.MainmenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.minutemadeproject.MainmenuActivity"/>
+        </activity>
 
         
     </application>

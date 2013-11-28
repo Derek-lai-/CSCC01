@@ -29,7 +29,7 @@ import android.widget.Toast;
 public class MainmenuActivity extends Activity {
 
     private enum MenuItem {
-        Lesson, Course, Schedule, Assignment;
+        Lesson, Course, Schedule, Assignment, Email;
     }
     private List<Course> courses;
     private List<Tutorial> tutorials;
@@ -56,6 +56,7 @@ public class MainmenuActivity extends Activity {
         items.add("Course");
         items.add("Schedule");
         items.add("Assignment");
+        items.add("Email");
         welcome = (TextView) findViewById(R.id.welcome);
         //welcome.setText("Welcome " + VarHolder.getUser().username);
         welcome.setText("Welcome");
@@ -99,6 +100,10 @@ public class MainmenuActivity extends Activity {
                             startActivity(intent);
                         }
                         break;
+                    }
+                    case Email: {
+                        Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
+                        startActivity(intent);
                     }
                  
                 }
