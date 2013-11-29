@@ -17,6 +17,7 @@ import com.j256.ormlite.dao.ForeignCollection;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -29,7 +30,7 @@ import android.widget.Toast;
 public class MainmenuActivity extends Activity {
 
     private enum MenuItem {
-        Lesson, Course, Schedule, Assignment, Email;
+        Lesson, Course, Schedule, Assignment, Email, test;
     }
     private List<Course> courses;
     private List<Tutorial> tutorials;
@@ -57,6 +58,7 @@ public class MainmenuActivity extends Activity {
         items.add("Schedule");
         items.add("Assignment");
         items.add("Email");
+        items.add("test");
         welcome = (TextView) findViewById(R.id.welcome);
         //welcome.setText("Welcome " + VarHolder.getUser().username);
         welcome.setText("Welcome");
@@ -107,6 +109,10 @@ public class MainmenuActivity extends Activity {
                         Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
                         startActivity(intent);
                     }
+                    case test:{
+                    	Notify n = new Notify(getApplicationContext(), 10, 10, 1);
+                    	n.startAlarm();
+                    }                    	
                  
                 }
             }

@@ -12,31 +12,33 @@ import android.support.v4.app.NotificationCompat;
 import com.example.minutemadeproject.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Derek on 11/29/13.
  */
-public class Notify extends IntentService{
-    String name;
-    ArrayList<String> dates;
-    Integer hour, minute;
-    String time;
-
-    public Notify(){
-        super("Notify");
+public class Notify {
+    private Context context;
+    private PendingIntent pIntent;
+    private Integer hour, minute, day;
+    
+    
+    public Notify(Context context, Integer hour, Integer minute, Integer day){
+    	this.hour = hour;
+    	this.minute = minute;
+    	this.day = day;
+    	this.context = context;
     }
 
-    protected void onHandleIntent(Intent intent) {
-        NotificationManager nManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this);
-        nBuilder.setSmallIcon(R.drawable.icon_david);
-        nBuilder.setContentTitle(name);
-        nBuilder.setContentText("MinuteMadeProject " + time + " " + dates);
-        Intent rIntent = new Intent(this, MainmenuActivity.class);
-        PendingIntent pIntent = PendingIntent.getActivity(this, 0, rIntent, 0);
-        nBuilder.setContentIntent(pIntent);
-        nManager.notify(0, nBuilder.build());
+    public void startAlarm(){
+    	Calendar c = Calendar.getInstance();
+    	c.add(Calendar.SECOND, 5);
+    	pIntent = PendingIntent.getService(context, 0, new Intent(context, AlarmReciever.class), PendingIntent.FLAG_UPDATE_CURRENT);
+        long firstTime = c.getTimeInMillis();
+        AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pIntent);
     }
+   
 }
 
 

@@ -35,6 +35,8 @@ public class NotificationCreateActivity extends Activity{
     String name, time;
     ArrayList<String> dates = new ArrayList<String>();
     Boolean mon = false,tues = false,wed = false,thurs = false,fri = false,sat = false,sun = false;
+    Integer day;
+    AlarmReciever arm;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -44,10 +46,7 @@ public class NotificationCreateActivity extends Activity{
         clock = (TextView) findViewById(R.id.clock);
         Button saveNote = (Button) findViewById(R.id.saveButton);
 
-        final AlarmManager alarmManager = (AlarmManager) this.getSystemService(this.ALARM_SERVICE);
-        final Calendar c = Calendar.getInstance();
-        Intent intent = new Intent(this, Notify.class);
-        final PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
+        final Context cont = getApplicationContext();
 
         saveNote.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -56,16 +55,10 @@ public class NotificationCreateActivity extends Activity{
                 }
                 name = editName.getText().toString();
                 findDate();
-                c.set(Calendar.HOUR_OF_DAY, hour);
-                c.set(Calendar.MINUTE, minute);
-                c.set(Calendar.DAY_OF_WEEK, 6);
-                long when = c.getTimeInMillis();
-
-                alarmManager.set(AlarmManager.RTC, when, pendingIntent);
-
-                Toast toasty = Toast.makeText(getApplicationContext(), "Notification created for," +
-                        dates + " at " + time, Toast.LENGTH_LONG);
+                Notify note = new Notify(cont, hour, minute, day);
+                Toast toasty = Toast.makeText(getApplicationContext(), note + "", Toast.LENGTH_LONG);
                 toasty.show();
+                note.startAlarm();
                 finish();
             }
         });
@@ -139,6 +132,7 @@ public class NotificationCreateActivity extends Activity{
         }
         if(fri){
             dates.add("Friday");
+            day = 6;
         }
         if(sat){
             dates.add("Saturday");
