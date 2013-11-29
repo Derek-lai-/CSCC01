@@ -53,27 +53,38 @@ public class Tutorial {
 
         //Switch to convert days from int to string formats
         switch(this.day) {
-            case 0: dayString = "Monday";
+            case 1:
+                dayString = "Sunday";
                 break;
-            case 1: dayString = "Tuesday";
+            case 2:
+                dayString = "Monday";
                 break;
-            case 2: dayString = "Wednesday";
+            case 3:
+                dayString = "Tuesday";
                 break;
-            case 3: dayString = "Thursday";
+            case 4:
+                dayString = "Wednesday";
                 break;
-            case 4: dayString = "Friday";
+            case 5:
+                dayString = "Thursday";
                 break;
-            case 5: dayString = "Saturday";
+            case 6:
+                dayString = "Friday";
                 break;
-            case 6: dayString = "Sunday";
+            case 7:
+                dayString = "Saturday";
                 break;
         }
-
         return dayString;
+    }
+
+    public String formatTime(int time) {
+        String strTime = Integer.toString(time);
+        return strTime.substring(0, 2) + ":" + strTime.substring(2, 4);
     }
 
     @Override
     public String toString() {
-        return this.section;
+        return this.section + " (" + this.formatTime(this.startTime) + "-" + this.formatTime(this.endTime) + ")";
     }
 }

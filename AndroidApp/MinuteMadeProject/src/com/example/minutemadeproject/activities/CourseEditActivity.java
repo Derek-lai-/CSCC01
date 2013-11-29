@@ -1,13 +1,12 @@
 package com.example.minutemadeproject.activities;
 
 import android.app.ListActivity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,11 +51,22 @@ public class CourseEditActivity extends ListActivity{
             editName.setText(course.name);
 
             ListView listView = getListView();
-            List<Tutorial> tutorials = new ArrayList<Tutorial>(course.tutorials);
+            final List<Tutorial> tutorials = new ArrayList<Tutorial>(course.tutorials);
 
             ArrayAdapter<Tutorial> adapter = new ArrayAdapter<Tutorial>(this, android.R.layout.simple_list_item_1, tutorials);
 
             listView.setAdapter(adapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(view.getContext(), TutorialEditActivity.class);
+                    intent.putExtra("tutID", tutorials.get(i).id);
+                    intent.putExtra("courseID", course.id);
+                    startActivity(intent);
+                }
+            });
+
         } else {
             course = null;
         }
@@ -84,8 +94,8 @@ public class CourseEditActivity extends ListActivity{
                         finish();
                         break;
                     case R.id.addTutorialButton:
-                        Intent intent = new Intent(view.getContext(), TutorialCreateActivity.class);
-                        intent.putExtra("id", course.id);
+                        Intent intent = new Intent(view.getContext(), TutorialEditActivity.class);
+                        intent.putExtra("courseID", course.id);
                         startActivity(intent);
                         break;
                 }
