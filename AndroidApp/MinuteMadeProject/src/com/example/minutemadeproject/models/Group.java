@@ -2,6 +2,7 @@ package com.example.minutemadeproject.models;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
@@ -24,7 +25,7 @@ public class Group {
 		// Needed by OrmLite
 	}
 	
-	public Group(Tutorial t, ArrayList<Student> student){
+	public Group(Tutorial t, List<Student> student){
 		this.tut = t;
 		this.students = (ForeignCollection<Student>) student;	
 	}
