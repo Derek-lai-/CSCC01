@@ -75,7 +75,7 @@ public class InitDB extends Activity {
 						}
 					}
 					groupHelper.create(new Group(tuts.get(0), groupList));
-					
+					mLine = reader.readLine();
 				}
 				Toast.makeText(getApplicationContext(), "Initialized Group", Toast.LENGTH_SHORT);
 				reader.close();
@@ -108,6 +108,7 @@ public class InitDB extends Activity {
 
 					// TODO for david kua, create the course and dump it into the db
 					// DO this in the loop
+					mLine = reader.readLine();
 				}
 				Toast.makeText(getApplicationContext(), "Initialized course", Toast.LENGTH_SHORT);
 				reader.close();
