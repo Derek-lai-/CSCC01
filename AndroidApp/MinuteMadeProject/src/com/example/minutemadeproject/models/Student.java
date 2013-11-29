@@ -22,16 +22,20 @@ public class Student {
     @DatabaseField(foreign = true)
     public Group group;
 
+    @DatabaseField
+    public String utorid;
+    
     Student() {
         // Needed by OrmLite
     }
 
-	public Student(String name, String email, int number, Tutorial tutorial, Group group) {
+	public Student(String name, String email, int number, String utorid, Tutorial tutorial, Group group) {
 		this.name = name;
 		this.email = email;
         this.number = number;
         this.tutorial = tutorial;
         this.group = group;
+        this.utorid = utorid;
 	}
 
     @Override

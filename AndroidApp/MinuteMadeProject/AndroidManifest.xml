@@ -91,7 +91,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.minutemadeproject.MainmenuActivity"/>
         </activity>
-
-        
+        <activity
+            android:name="com.example.minutemadeproject.activities.InitDB"
+            android:label="@string/title_activity_init_db" >
+        </activity>
     </application>
+
 </manifest>
