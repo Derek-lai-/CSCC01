@@ -82,7 +82,9 @@ public class MainmenuActivity extends Activity {
                         break;
                     }
                     case Schedule: {
-                       break;
+                    	Intent intent = new Intent(getApplicationContext(), NotificationCreateActivity.class);
+                        startActivity(intent);
+                        break;
                     }
                     case Assignment: {
                         courses = courseHelper.getAll();

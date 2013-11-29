@@ -89,6 +89,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.minutemadeproject.MainmenuActivity"/>
         </activity>
+        
+         <activity
+            android:name=".activities.NotificationCreateActivity"
+            android:label="Send Email"
+            android:parentActivityName="com.example.minutemadeproject.MainmenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.minutemadeproject.MainmenuActivity"/>
+        </activity>
 
         
     </application>
