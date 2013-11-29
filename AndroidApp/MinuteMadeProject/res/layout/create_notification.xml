@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/TableLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+	
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    	<TextView
+        	android:id="@+id/textView3"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+       		android:text="Enter a Notification Name"
+        	android:textAppearance="?android:attr/textAppearanceMedium" />
+	</TableRow>
+
+	<EditText
+	    android:id="@+id/editName"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:ems="10"
+	    android:hint="Notification Name" >
+
+	</EditText>
+    
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set time for your notification:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:paddingLeft="10dp"
+        android:text="TextClock"
+        android:textSize="25sp" />
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select days you want reminders:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+
+    <RadioGroup
+        android:id="@+id/dateSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp" >
+
+        <CheckBox
+            android:id="@+id/selectMon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Monday" />
+
+        <CheckBox
+            android:id="@+id/selectTues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuesday" />
+
+        <CheckBox
+            android:id="@+id/selectWed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wednesday" />
+
+        <CheckBox
+            android:id="@+id/selectThurs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thursday" />
+
+        <CheckBox
+            android:id="@+id/selectFri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Friday" />
+
+        <CheckBox
+            android:id="@+id/selectSat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saturday" />
+
+        <CheckBox
+            android:id="@+id/selectSun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunday" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save new Notification" />
+
+</TableLayout>

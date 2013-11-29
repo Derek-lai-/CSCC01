@@ -40,7 +40,7 @@ public class AssignmentEditActivity extends Activity{
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.assignmentcreate);
+        setContentView(R.layout.assignment_create);
 
         CourseHelper courseHelper = new CourseHelper(this);
         helper = new AssignmentHelper(this);

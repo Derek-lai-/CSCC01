@@ -24,13 +24,13 @@ public class AssignmentStudentListActivity extends Activity{
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.assignmentstudent);
+        setContentView(R.layout.assignment_student);
         
         getItems();
         
         ListView lv = (ListView) findViewById(R.id.assignmentstudent);
 
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this, R.layout.assignmentlist, studentId);
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this, R.layout.assignment_student, studentId);
         lv.setAdapter(adapter);
         
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

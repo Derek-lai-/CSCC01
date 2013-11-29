@@ -39,7 +39,7 @@ public class AssignmentMenuActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.assignmentpicker);
+        setContentView(R.layout.assignment_picker);
     }
     
     public void onResume(){
