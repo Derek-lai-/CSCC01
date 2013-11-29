@@ -14,7 +14,6 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
-        <receiver android:name="AlarmReceiver"></receiver>
         <service android:name="NotificationService" android:enabled="true" />
         <activity
             android:name="com.example.minutemadeproject.activities.MainmenuActivity"
@@ -100,7 +99,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.minutemadeproject.MainmenuActivity"/>
         </activity>
-
+        
+		<receiver android:name="AlarmReceiver"></receiver>
         
     </application>
 </manifest>

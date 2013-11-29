@@ -32,11 +32,16 @@ public class Notify {
 
     public void startAlarm(){
     	Calendar c = Calendar.getInstance();
+    	c.set(Calendar.DAY_OF_MONTH, day);
+    	c.set(Calendar.HOUR_OF_DAY, hour);
+    	c.set(Calendar.MINUTE, minute);
     	c.add(Calendar.SECOND, 5);
-    	pIntent = PendingIntent.getService(context, 0, new Intent(context, AlarmReciever.class), PendingIntent.FLAG_UPDATE_CURRENT);
-        long firstTime = c.getTimeInMillis();
+    	long when = c.getTimeInMillis();
+    	Intent i = new Intent(context, AlarmReciever.class);
+    	pIntent = PendingIntent.getBroadcast(context, 0, i, 0);
+        
         AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pIntent);
+        am.set(AlarmManager.RTC_WAKEUP, when, pIntent);
     }
    
 }

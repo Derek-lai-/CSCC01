@@ -17,6 +17,8 @@ public class AlarmReciever extends BroadcastReceiver{
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
+		Intent i = new Intent();
+		PendingIntent pendIntent = PendingIntent.getActivity(context, 0, i, 0);
 		NotificationManager mNM;
         mNM = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         AlarmManager am=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
@@ -25,15 +27,15 @@ public class AlarmReciever extends BroadcastReceiver{
         NotificationCompat.Builder noteBuild = new NotificationCompat.Builder(context);
         
         noteBuild.setSmallIcon(R.drawable.icon_david);
-        noteBuild.setContentTitle("testing");
-        noteBuild.setContentText("MinuteMade");
+        noteBuild.setContentTitle("You have a Tutorial!!!");
+        noteBuild.setContentText("Get ready to go to Tutorial");
         noteBuild.setWhen(0);
         
-        PendingIntent pendIntent = PendingIntent.getActivity(context, 0, new Intent(context, CourseActivity.class), 0);
+       
         noteBuild.setContentIntent(pendIntent);
         Notification notification = noteBuild.build();
+        
         mNM.notify(0, notification);
-		
 	}
 
 }

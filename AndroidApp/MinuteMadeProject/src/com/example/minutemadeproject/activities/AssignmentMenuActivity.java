@@ -2,6 +2,7 @@ package com.example.minutemadeproject.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -78,6 +79,9 @@ public class AssignmentMenuActivity extends Activity {
                 
                 assignmentAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 tutorialAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                
+                TextView atv = (TextView) assignmentSpinner.getSelectedView();
+                atv.setTextColor(Color.BLACK);
                 
                 assignmentSpinner.setAdapter(assignmentAdapt);
                 tutorialSpinner.setAdapter(tutorialAdapt);

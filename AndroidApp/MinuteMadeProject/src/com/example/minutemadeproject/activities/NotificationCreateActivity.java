@@ -33,7 +33,7 @@ public class NotificationCreateActivity extends Activity{
     Integer hour, minute;
     TextView clock;
     String name, time;
-    ArrayList<String> dates = new ArrayList<String>();
+    ArrayList<Integer> dates = new ArrayList<Integer>();
     Boolean mon = false,tues = false,wed = false,thurs = false,fri = false,sat = false,sun = false;
     Integer day;
     AlarmReciever arm;
@@ -55,8 +55,14 @@ public class NotificationCreateActivity extends Activity{
                 }
                 name = editName.getText().toString();
                 findDate();
-                Notify note = new Notify(cont, hour, minute, day);
-                Toast toasty = Toast.makeText(getApplicationContext(), note + "", Toast.LENGTH_LONG);
+                for (Integer day: dates){
+                	 Notify note = new Notify(cont, hour, minute, day);
+                     Toast toasty = Toast.makeText(getApplicationContext(), "Notification Created for " + time, Toast.LENGTH_SHORT);
+                     toasty.show();
+                     note.startAlarm();
+                }
+                Notify note = new Notify(cont, 18, 21, 6);
+                Toast toasty = Toast.makeText(getApplicationContext(), "Notification Created for " + time, Toast.LENGTH_LONG);
                 toasty.show();
                 note.startAlarm();
                 finish();
@@ -119,26 +125,25 @@ public class NotificationCreateActivity extends Activity{
     }
     public void findDate(){
         if (mon){
-            dates.add("Monday");
+            dates.add(2);
         }
         if(tues){
-            dates.add("Tuesday");
+            dates.add(3);
         }
         if(wed){
-            dates.add("Wednesday");
+            dates.add(4);
         }
         if(thurs){
-            dates.add("Thursday");
+            dates.add(5);
         }
         if(fri){
-            dates.add("Friday");
-            day = 6;
+            dates.add(6);
         }
         if(sat){
-            dates.add("Saturday");
+            dates.add(7);
         }
         if(sun){
-            dates.add("Sunday");
+            dates.add(1);
         }
     }
 
