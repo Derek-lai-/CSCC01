@@ -94,76 +94,7 @@ public class InitDB extends Activity {
 		}
 	}
 	
-	public void CourseInit(View v){
-		try {
-			BufferedReader reader = new BufferedReader(
-					new InputStreamReader(getAssets().open("course.txt")));
-
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            String currentUser = prefs.getString("CURRENT_USER", null);
-            Instructor instructor = new InstructorHelper(getApplicationContext()).getByUser(currentUser);
-
-            CourseHelper courseHelper = new CourseHelper(getApplicationContext());
-
-			// do reading, usually loop until end of file reading
-			String mLine = reader.readLine();
-			while (mLine != null) {
-				// process line
-				String[] temp = mLine.split(",");
-				// temp[0] is course name
-				// temp[1] is section
-				// temp[2] is day of class
-				// temp[3] is starttime
-				// temp[4] is end time
-				// temp[5] is roomnumber
-
-				// TODO for david kua, create the course and dump it into the db
-				// DO this in the loop
-
-                int day;
-                switch (Days.valueOf(temp[2].toUpperCase())) {
-                    case SUN:
-                        day = 1;
-                        break;
-                    case MON:
-                        day = 2;
-                        break;
-                    case TUE:
-                        day = 3;
-                        break;
-                    case WED:
-                        day = 4;
-                        break;
-                    case THU:
-                        day = 5;
-                        break;
-                    case FRI:
-                        day = 6;
-                        break;
-                    case SAT:
-                        day = 7;
-                        break;
-                    default:
-                        day = 0;
-                        break;
-                }
-
-                int startTime = Time.intifyTime(temp[3]);
-                int endTime = Time.intifyTime(temp[4]);
-
-                Course newCourse = new Course(instructor, temp[0], temp[1], day, startTime, endTime, temp[5]);
-                courseHelper.create(newCourse);
-				mLine = reader.readLine();
-			}
-			Toast.makeText(getApplicationContext(), "Initialized course", Toast.LENGTH_SHORT);
-			reader.close();
-
-		} catch (IOException e) {
-			Toast.makeText(getApplicationContext(), "Couldn't read file", Toast.LENGTH_SHORT);
-		}
-		
-	}
-	/*private class CourseOnClickListener implements OnClickListener {
+	private class CourseOnClickListener implements OnClickListener {
 
 		@Override
 		public void onClick(View v) {
@@ -236,5 +167,5 @@ public class InitDB extends Activity {
 			
 		}
 		
-	}*/
+	}
 }
