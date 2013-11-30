@@ -38,7 +38,7 @@ Stories | Tasks | Difficulty (1-5)
  
 ####UML Sequence Diagrams:
 
- *[Classes]("https://drive.google.com/file/d/0Bz2RXBREUV-aYi1qdTRPeEtuZzA/edit?usp=sharing")*
+ *[Assign Grade]("https://drive.google.com/file/d/0Bz2RXBREUV-aYi1qdTRPeEtuZzA/edit?usp=sharing")*
 
 ####UML Design Patterns:
 
