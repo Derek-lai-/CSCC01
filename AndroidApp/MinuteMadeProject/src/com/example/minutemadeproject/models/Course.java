@@ -18,6 +18,21 @@ public class Course {
     @DatabaseField(foreign = true)
     public Instructor instructor;
 
+    @DatabaseField
+    public String section;
+
+    @DatabaseField
+    public String room;
+
+    @DatabaseField
+    public int day;
+
+    @DatabaseField
+    public int startTime;
+
+    @DatabaseField
+    public int endTime;
+
     @ForeignCollectionField
     public ForeignCollection<Tutorial> tutorials;
 
@@ -28,9 +43,14 @@ public class Course {
         // Needed by OrmLite
     }
 
-	public Course(String name, Instructor instructor){
-		this.name = name;
+	public Course(String name, Instructor instructor, String section, int day, int startTime, int endTime, String room){
         this.instructor = instructor;
+        this.name = name;
+        this.section = section;
+        this.day = day;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.room = room;
 	}
 
     @Override

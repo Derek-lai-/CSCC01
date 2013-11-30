@@ -9,15 +9,22 @@ import com.example.minutemadeproject.R;
 import com.example.minutemadeproject.R.id;
 import com.example.minutemadeproject.R.layout;
 import com.example.minutemadeproject.R.menu;
+import com.example.minutemadeproject.helpers.CourseHelper;
 import com.example.minutemadeproject.helpers.GroupHelper;
+import com.example.minutemadeproject.helpers.InstructorHelper;
 import com.example.minutemadeproject.helpers.StudentHelper;
 import com.example.minutemadeproject.helpers.TutorialHelper;
+import com.example.minutemadeproject.models.Course;
 import com.example.minutemadeproject.models.Group;
+import com.example.minutemadeproject.models.Instructor;
 import com.example.minutemadeproject.models.Student;
 import com.example.minutemadeproject.models.Tutorial;
+import com.example.minutemadeproject.utils.Days;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -94,6 +101,13 @@ public class InitDB extends Activity {
 				BufferedReader reader = new BufferedReader(
 						new InputStreamReader(getAssets().open("course.txt")));
 
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String currentUser = prefs.getString("CURRENT_USER", null);
+                Instructor instructor = new InstructorHelper(getApplicationContext()).getByUser(currentUser);
+
+                CourseHelper courseHelper = new CourseHelper(getApplicationContext());
+                Course newCourse;
+
 				// do reading, usually loop until end of file reading
 				String mLine = reader.readLine();
 				while (mLine != null) {
@@ -108,6 +122,36 @@ public class InitDB extends Activity {
 
 					// TODO for david kua, create the course and dump it into the db
 					// DO this in the loop
+
+                    int day;
+                    switch (Days.valueOf(temp[2].toUpperCase())) {
+                        case SUN:
+                            day = 1;
+                            break;
+                        case MON:
+                            day = 2;
+                            break;
+                        case TUE:
+                            day = 3;
+                            break;
+                        case WED:
+                            day = 4;
+                            break;
+                        case THU:
+                            day = 5;
+                            break;
+                        case FRI:
+                            day = 6;
+                            break;
+                        case SAT:
+                            day = 7;
+                            break;
+                        default:
+                            day = 0;
+                            break;
+                    }
+
+                    newCourse = new Course(instructor, temp[0], temp[1], day, , , temp[5]);
 					mLine = reader.readLine();
 				}
 				Toast.makeText(getApplicationContext(), "Initialized course", Toast.LENGTH_SHORT);
@@ -120,4 +164,5 @@ public class InitDB extends Activity {
 		}
 		
 	}
+
 }
