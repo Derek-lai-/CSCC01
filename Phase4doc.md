@@ -35,13 +35,27 @@ Stories | Tasks | Difficulty (1-5)
 ####UML Diagram:
 
  *[Classes](https://drive.google.com/file/d/0Bz2RXBREUV-aZ2ZxQmF1SVhqdWc/edit?usp=sharing)*
+
+ *[Classes: Lessons](https://drive.google.com/file/d/0Bz2RXBREUV-aY0lnQjhBaFFVa1U/edit?usp=sharing)*
  
 ####UML Sequence Diagrams:
 
  *[Assign Grade](https://drive.google.com/file/d/0Bz2RXBREUV-aYi1qdTRPeEtuZzA/edit?usp=sharing)*
 
+ *[Create Lesson Plan](https://drive.google.com/file/d/0Bz2RXBREUV-aU3J5NzVxRE92ZG8/edit?usp=sharing)*
+ 
+ *[Create Notification] (https://drive.google.com/file/d/0BygYHN45P5B4NGVJdFhRQjdzZjA/edit?usp=sharing)*
+
+
 ####UML Design Patterns:
 
+ *[Singleton Class UML] (https://drive.google.com/file/d/0BygYHN45P5B4cTB6X0lmblRJNWM/edit?usp=sharing)*
+ 
+ *[Singleton Sequence UML] (https://drive.google.com/file/d/0BygYHN45P5B4S096bU1mZkctWU0/edit?usp=sharing)*
+ 
+ *[Observer Sequence UML] (https://drive.google.com/file/d/0BygYHN45P5B4dkozeFpBMVhfaGM/edit?usp=sharing)*
+ 
+ 
 ---
 
 ##Burndown chart

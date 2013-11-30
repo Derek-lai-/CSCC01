@@ -19,6 +19,8 @@ An copy of our Phase 02 document can be found on Google Drive [here](https://doc
 
 A PDF of the written portion of Phase 2
 
+**new!** Our [Phase 4 document](./Phase4doc.md)
+
 ## Starting the App
 
 1. Clone repository using this link - https://github.com/CSCC01/Minute-Made.git
