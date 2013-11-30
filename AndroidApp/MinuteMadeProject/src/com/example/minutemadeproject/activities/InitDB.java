@@ -107,7 +107,6 @@ public class InitDB extends Activity {
                 Instructor instructor = new InstructorHelper(getApplicationContext()).getByUser(currentUser);
 
                 CourseHelper courseHelper = new CourseHelper(getApplicationContext());
-                Course newCourse;
 
 				// do reading, usually loop until end of file reading
 				String mLine = reader.readLine();
@@ -155,7 +154,8 @@ public class InitDB extends Activity {
                     int startTime = Time.intifyTime(temp[3]);
                     int endTime = Time.intifyTime(temp[4]);
 
-                    newCourse = new Course(instructor, temp[0], temp[1], day, startTime, endTime, temp[5]);
+                    Course newCourse = new Course(instructor, temp[0], temp[1], day, startTime, endTime, temp[5]);
+                    courseHelper.create(newCourse);
 					mLine = reader.readLine();
 				}
 				Toast.makeText(getApplicationContext(), "Initialized course", Toast.LENGTH_SHORT);
