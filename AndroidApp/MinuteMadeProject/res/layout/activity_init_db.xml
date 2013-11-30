@@ -33,8 +33,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="105dp"
-        android:text="Course"
-        android:onClick="CourseInit" />
+        android:text="Course" />
 
     <TextView
         android:id="@+id/textView1"
