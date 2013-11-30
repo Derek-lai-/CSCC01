@@ -20,6 +20,7 @@ import com.example.minutemadeproject.models.Instructor;
 import com.example.minutemadeproject.models.Student;
 import com.example.minutemadeproject.models.Tutorial;
 import com.example.minutemadeproject.utils.Days;
+import com.example.minutemadeproject.utils.Time;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -151,7 +152,10 @@ public class InitDB extends Activity {
                             break;
                     }
 
-                    newCourse = new Course(instructor, temp[0], temp[1], day, , , temp[5]);
+                    int startTime = Time.intifyTime(temp[3]);
+                    int endTime = Time.intifyTime(temp[4]);
+
+                    newCourse = new Course(instructor, temp[0], temp[1], day, startTime, endTime, temp[5]);
 					mLine = reader.readLine();
 				}
 				Toast.makeText(getApplicationContext(), "Initialized course", Toast.LENGTH_SHORT);

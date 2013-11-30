@@ -22,6 +22,7 @@ import com.example.minutemadeproject.helpers.InstructorHelper;
 import com.example.minutemadeproject.models.Course;
 import com.example.minutemadeproject.models.Tutorial;
 import com.example.minutemadeproject.models.Instructor;
+import com.example.minutemadeproject.utils.Time;
 
 import java.util.Calendar;
 
@@ -59,8 +60,8 @@ public class TutorialEditActivity extends Activity{
             tutorial = tutorialHelper.get(tutID);
 
             editName.setText(tutorial.section);
-            startTimeView.setText(tutorial.formatTime(tutorial.startTime));
-            endTimeView.setText(tutorial.formatTime(tutorial.endTime));
+            startTimeView.setText(tutorial.startTime());
+            endTimeView.setText(tutorial.endTime());
             daySpinner.setSelection(tutorial.day - 1);
         }
 
@@ -75,7 +76,7 @@ public class TutorialEditActivity extends Activity{
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         int hour = selectedHour;
                         int minute = selectedMinute;
-                        startTimeView.setText(stringifyTime(hour, minute));
+                        startTimeView.setText(Time.stringifyTime(hour, minute));
                     }
                 }, hour, minute, false);
                 tPD.setTitle("Select Start Time");
@@ -94,10 +95,10 @@ public class TutorialEditActivity extends Activity{
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         int hour = selectedHour;
                         int minute = selectedMinute;
-                        endTimeView.setText(stringifyTime(hour, minute));
+                        endTimeView.setText(Time.stringifyTime(hour, minute));
                     }
                 }, hour, minute, false);
-                tPD.setTitle("Select Start Time");
+                tPD.setTitle("Select End Time");
                 tPD.show();
             }
         });
@@ -106,8 +107,8 @@ public class TutorialEditActivity extends Activity{
             @Override
             public void onClick(View view) {
                 String tutorialName = editName.getText().toString();
-                int startTime = intifyTime(startTimeView.getText().toString());
-                int endTime = intifyTime(endTimeView.getText().toString());
+                int startTime = Time.intifyTime(startTimeView.getText().toString());
+                int endTime = Time.intifyTime(endTimeView.getText().toString());
                 int day = daySpinner.getSelectedItemPosition() + 1; // Plus 1 because position begins at 0
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String currentUser = prefs.getString("CURRENT_USER", null);
@@ -125,20 +126,5 @@ public class TutorialEditActivity extends Activity{
                 finish();
             }
         });
-    }
-
-    private String stringifyTime(int hr, int min) {
-        String hour = Integer.toString(hr);
-        String minute = Integer.toString(min);
-
-        if (minute.length() == 1) {
-            minute = "0" + minute;
-        }
-        return hour + ":" + minute;
-    }
-
-    private Integer intifyTime(String time) {
-        String[] parts = time.split(":");
-        return Integer.parseInt(parts[0] + parts[1]);
     }
 }

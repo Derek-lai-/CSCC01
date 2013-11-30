@@ -18,6 +18,63 @@
         android:id="@+id/editCourseName"
         android:hint="Course Name" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editCourseSection"
+        android:hint="Section" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editCourseRoom"
+        android:hint="Room" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick Start Time"
+        android:id="@+id/buttonStartTime"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewStart"
+        android:layout_gravity="center_horizontal"
+        android:hint="00:00" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick End Time"
+        android:id="@+id/buttonEndTime"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewEnd"
+        android:layout_gravity="center_horizontal"
+        android:hint="00:00" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Day of the Week"
+        android:id="@+id/textViewDay"
+        android:layout_gravity="center_horizontal" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerDay"
+        android:layout_gravity="center_horizontal"
+        android:spinnerMode="dialog" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +87,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Tutorials"
-        android:id="@+id/TutorialLabel"
+        android:id="@+id/textView"
         android:layout_gravity="center_horizontal" />
 
     <ListView
