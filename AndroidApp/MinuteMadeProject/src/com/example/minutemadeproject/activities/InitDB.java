@@ -168,5 +168,4 @@ public class InitDB extends Activity {
 		}
 		
 	}
-
 }
