@@ -10,17 +10,13 @@
         android:layout_height="wrap_content"
         android:text="Sign In"
         android:id="@+id/buttonSignIN"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="signIn" />
 
     <Button
             android:id="@+id/buttonSignUP"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Sign Up" />
-    <Button
-            android:id="@+id/buttonDisplayLessonPlan"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Display Lesson Plan" 
-    		android:onClick="displayLessonPlan"/>
+    
 </LinearLayout>

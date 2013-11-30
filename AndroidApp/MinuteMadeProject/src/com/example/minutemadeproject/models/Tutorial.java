@@ -1,5 +1,6 @@
 package com.example.minutemadeproject.models;
 
+import com.example.minutemadeproject.utils.Time;
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
@@ -53,27 +54,41 @@ public class Tutorial {
 
         //Switch to convert days from int to string formats
         switch(this.day) {
-            case 0: dayString = "Monday";
+            case 1:
+                dayString = "Sunday";
                 break;
-            case 1: dayString = "Tuesday";
+            case 2:
+                dayString = "Monday";
                 break;
-            case 2: dayString = "Wednesday";
+            case 3:
+                dayString = "Tuesday";
                 break;
-            case 3: dayString = "Thursday";
+            case 4:
+                dayString = "Wednesday";
                 break;
-            case 4: dayString = "Friday";
+            case 5:
+                dayString = "Thursday";
                 break;
-            case 5: dayString = "Saturday";
+            case 6:
+                dayString = "Friday";
                 break;
-            case 6: dayString = "Sunday";
+            case 7:
+                dayString = "Saturday";
                 break;
         }
-
         return dayString;
+    }
+
+    public String startTime() {
+        return Time.formatTime(this.startTime);
+    }
+
+    public String endTime() {
+        return Time.formatTime(this.endTime);
     }
 
     @Override
     public String toString() {
-        return this.section;
+        return this.section + " (" + this.startTime() + "-" + this.endTime() + ")";
     }
 }

@@ -10,5 +10,15 @@
     <string name="title_activity_add_lesson">Add Lesson</string>
     <string name="title_activity_grades">GradesActivity</string>
     <string name="grade">Grade</string>
+    <string name="title_activity_init_db">InitDB</string>
 
+    <string-array name="day_array">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
 </resources>
