@@ -34,11 +34,11 @@ Stories | Tasks | Difficulty (1-5)
 
 ####UML Diagram:
 
- <img src="https://drive.google.com/file/d/0Bz2RXBREUV-aZ2ZxQmF1SVhqdWc/edit?usp=sharing" />
-
+ *[Classes]("https://drive.google.com/file/d/0Bz2RXBREUV-aZ2ZxQmF1SVhqdWc/edit?usp=sharing")*
+ 
 ####UML Sequence Diagrams:
 
- <img src="https://drive.google.com/file/d/0Bz2RXBREUV-aYi1qdTRPeEtuZzA/edit?usp=sharing"/>
+ *[Classes]("https://drive.google.com/file/d/0Bz2RXBREUV-aYi1qdTRPeEtuZzA/edit?usp=sharing")*
 
 ####UML Design Patterns:
 
