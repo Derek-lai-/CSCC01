@@ -42,6 +42,7 @@ Stories | Tasks | Difficulty (1-5)
 
 ####UML Design Patterns:
 
+ *[Singleton] (https://drive.google.com/file/d/0Bz2RXBREUV-aSW9sbFRDMkVRRW8/edit?usp=sharing)*
 ---
 
 ##Burndown chart
